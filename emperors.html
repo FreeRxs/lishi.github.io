@@ -9,38 +9,61 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei", "SimSun", sans-serif;
+            font-family: "Microsoft YaHei", "SimSun", "STKaiti", sans-serif; /* 加入楷体，增强古籍感 */
         }
 
-        /* 博物馆主题配色体系 */
+        /* 全局平滑滚动 */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 博物馆主题配色+纹理升级 */
         body {
             background-color: #f2efe9;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238b5a2b' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E"); /* 浅纹理背景 */
             color: #333;
-            line-height: 1.8; /* 行高略增，提升长文本可读性 */
+            line-height: 1.8;
         }
 
-        /* 头部样式 */
+        /* 头部样式 - 渐变+纹理增强 */
         header {
             background: linear-gradient(120deg, #5c4033, #8b5a2b);
             color: #f8f5e6;
             padding: 2rem 0;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        /* 头部仿古纹理装饰 */
+        header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0h.008v.017h-.008V0zm-2.188 0h.008v.017h-.008V0zm-2.182 0h.008v.017h-.008V0zm-2.176 0h.008v.017h-.008V0zm-2.17 0h.008v.017h-.008V0zm-2.164 0h.008v.017h-.008V0zm-2.158 0h.008v.017h-.008V0zm-2.152 0h.008v.017h-.008V0zm-2.146 0h.008v.017h-.008V0zm-2.14 0h.008v.017h-.008V0zm-2.134 0h.008v.017h-.008V0zm-2.128 0h.008v.017h-.008V0zm-2.122 0h.008v.017h-.008V0zm-2.116 0h.008v.017h-.008V0zm-2.11 0h.008v.017h-.008V0zm-2.104 0h.008v.017h-.008V0zm-2.098 0h.008v.017h-.008V0zm-2.092 0h.008v.017h-.008V0zm-2.086 0h.008v.017h-.008V0zm-2.08 0h.008v.017h-.008V0z' fill='%23f8f5e6' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            pointer-events: none;
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 0.5rem;
             font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-family: "STKaiti", "Microsoft YaHei", sans-serif; /* 楷体标题 */
         }
 
         header p {
             font-size: 1.1rem;
             opacity: 0.9;
             margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
-        /* 头部一级目录 */
+        /* 头部一级目录 - 优化高亮效果 */
         .header-main-nav {
             display: flex;
             flex-wrap: wrap;
@@ -64,29 +87,49 @@
             font-weight: 500;
             transition: all 0.3s ease;
             opacity: 0.9;
+            position: relative;
         }
 
-        /* 高亮当前页 */
+        /* 高亮当前页 - 底部装饰线 */
         .header-main-nav a.active {
             background-color: rgba(248, 245, 230, 0.2);
             opacity: 1;
+        }
+        .header-main-nav a.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background-color: #f8f5e6;
+            border-radius: 1px;
         }
 
         .header-main-nav a:hover {
             background-color: rgba(248, 245, 230, 0.2);
             opacity: 1;
             transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
 
-        /* 导航栏 */
+        /* 导航栏 - 粘性+渐变背景 */
         nav {
-            background: #f9f6f0;
+            background: linear-gradient(to right, #f9f6f0, #f2efe9);
             padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
             border-bottom: 1px solid #e0d8c8;
+            transition: all 0.3s ease;
+        }
+        /* 滚动时导航栏优化 */
+        nav.scrolled {
+            padding: 0.8rem 0;
+            background: rgba(249, 246, 240, 0.95);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
         .nav-container {
@@ -105,11 +148,28 @@
             border-radius: 4px;
             transition: all 0.3s ease;
             font-weight: 500;
+            position: relative;
+            overflow: hidden;
         }
-
+        /* 导航hover渐变背景 */
+        nav a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 90, 43, 0.1), transparent);
+            transition: all 0.5s ease;
+        }
         nav a:hover {
             background-color: #8b5a2b;
             color: #f8f5e6;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(139, 90, 43, 0.2);
+        }
+        nav a:hover::before {
+            left: 100%;
         }
 
         /* 主体内容 */
@@ -119,22 +179,101 @@
             padding: 0 1rem;
         }
 
-        /* 帝王板块样式 */
+        /* 帝王板块样式 - 加朝代图标+仿古边框 */
         .emperor-section {
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
             background: #ffffff;
             border-radius: 8px;
             padding: 2rem;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             border: 1px solid #e8e0d0;
+            position: relative;
+            overflow: hidden;
+        }
+        /* 朝代板块左上角装饰 */
+        .emperor-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60px;
+            height: 60px;
+            border-top: 3px solid #8b5a2b;
+            border-left: 3px solid #8b5a2b;
+            border-radius: 8px 0 0 0;
+            opacity: 0.5;
+        }
+        /* 朝代板块右下角装饰 */
+        .emperor-section::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            border-bottom: 3px solid #8b5a2b;
+            border-right: 3px solid #8b5a2b;
+            border-radius: 0 0 8px 0;
+            opacity: 0.5;
         }
 
+        /* 朝代标题 - 加图标+纹样分隔线 */
         .emperor-section h2 {
             color: #5c4033;
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.8rem;
             border-bottom: 2px solid #8b5a2b;
+            font-family: "STKaiti", "Microsoft YaHei", sans-serif;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        /* 朝代专属小图标 */
+        .emperor-section h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        #ancient h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E"); /* 鼎（上古） */
+        }
+        #qinhan h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2V9h-2V7h4v10z'/%3E%3C/svg%3E"); /* 长城（秦汉） */
+        }
+        #weijin h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 5h-1.42v1.5h1.74v1.25h-1.74v1h2.56V8H17zm-4.5 3c0 .55-.45 1-1 1h-2v1h3v1h-4v-2c0-.55.45-1 1-1h2v-1h-3V9h4v1zm-3.5-2h1.5v1.25H8.5v-1.25zm0 2.25h1.5v1.25H8.5V11.5zm5.5 2.5h-1.75v1h1.42v1.25h-1.42v1h2.75V14zM12 9h1.5v1.25H12V9zm0 2.25h1.5v1.25H12v-1.25z'/%3E%3C/svg%3E"); /* 三国鼎立（魏晋） */
+        }
+        #suitang h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E"); /* 大雁塔（隋唐） */
+        }
+        #songliao h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 5h-1.42v1.5h1.74v1.25h-1.74v1h2.56V8H17zm-4.5 3c0 .55-.45 1-1 1h-2v1h3v1h-4v-2c0-.55.45-1 1-1h2v-1h-3V9h4v1zm-3.5-2h1.5v1.25H8.5v-1.25zm0 2.25h1.5v1.25H8.5V11.5zm5.5 2.5h-1.75v1h1.42v1.25h-1.42v1h2.75V14zM12 9h1.5v1.25H12V9zm0 2.25h1.5v1.25H12v-1.25z'/%3E%3C/svg%3E"); /* 宋瓷（宋辽） */
+        }
+        #mingqing h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E"); /* 故宫（明清） */
+        }
+
+        /* 折叠按钮样式 */
+        .collapse-btn {
+            background-color: #8b5a2b;
+            color: #f8f5e6;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            transition: all 0.2s ease;
+        }
+        .collapse-btn:hover {
+            background-color: #5c4033;
+            transform: translateY(-1px);
         }
 
         /* 帝王列表 */
@@ -144,19 +283,48 @@
             gap: 1.2rem;
         }
 
-        /* 帝王项 - 仿古籍人物卡片 */
+        /* 帝王项 - 优化+奇偶区分+hover增强 */
         .emperor-item {
             padding: 1.2rem;
             border-left: 4px solid #8b5a2b;
             background-color: #f9f6f0;
             border-radius: 4px;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             border-right: 1px solid #e0d8c8;
             border-bottom: 1px solid #e0d8c8;
             display: grid;
-            grid-template-columns: 1fr 2fr 4fr; /* 分栏布局：姓名 | 在位时间 | 备注 */
+            grid-template-columns: 1fr 2fr 4fr;
             gap: 1rem;
             align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        /* 奇偶卡片区分 */
+        .emperor-item:nth-child(even) {
+            background-color: #f5f2eb;
+            border-left-color: #7a4f28;
+        }
+        /* 卡片hover效果 - 渐变+阴影+位移 */
+        .emperor-item:hover {
+            transform: translateX(5px) translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+            border-left-width: 6px;
+        }
+        /* 卡片hover渐变背景 */
+        .emperor-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 90, 43, 0.05), transparent);
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        .emperor-item:hover::before {
+            opacity: 1;
         }
 
         /* 移动端适配分栏 */
@@ -167,16 +335,23 @@
             }
         }
 
-        .emperor-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        /* 帝王信息样式 */
+        /* 帝王信息样式 - 层级强化 */
         .emperor-name {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: #5c4033;
             font-weight: 600;
+            font-family: "STKaiti", "Microsoft YaHei", sans-serif;
+            position: relative;
+            padding-right: 0.5rem;
+        }
+        /* 帝号标注 */
+        .emperor-name::after {
+            content: attr(data-title);
+            font-size: 0.7rem;
+            color: #8b5a2b;
+            font-weight: normal;
+            margin-left: 0.5rem;
+            font-family: "SimSun", sans-serif;
         }
 
         .emperor-reign {
@@ -184,6 +359,13 @@
             color: #666;
             border-left: 1px solid #e0d8c8;
             padding-left: 1rem;
+            position: relative;
+        }
+        /* 在位时间前缀标注 */
+        .emperor-reign::before {
+            content: "在位：";
+            color: #8b5a2b;
+            font-weight: 600;
         }
 
         .emperor-note {
@@ -195,12 +377,23 @@
 
         .emperor-note strong {
             color: #8b5a2b;
+            position: relative;
+        }
+        /* 关键信息印章标注 */
+        .emperor-note strong::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #8b5a2b;
         }
 
         /* 响应式适配 */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .header-main-nav {
@@ -218,7 +411,7 @@
             }
 
             .emperor-section h2 {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
 
             .emperor-name {
@@ -233,18 +426,42 @@
             }
         }
 
-        /* 页脚 */
+        /* 页脚 - 装饰强化 */
         footer {
             background-color: #5c4033;
             color: #f8f5e6;
             text-align: center;
-            padding: 1.5rem 0;
-            margin-top: 3rem;
-            border-top: 2px solid #8b5a2b;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 3px solid #8b5a2b;
+            position: relative;
+        }
+        /* 页脚顶部装饰线 */
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #8b5a2b, #5c4033, #8b5a2b);
+            opacity: 0.8;
         }
 
         footer p {
             opacity: 0.9;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        footer p::after {
+            content: " ✦ ";
+            margin-left: 0.5rem;
+            opacity: 0.7;
+        }
+        footer p::before {
+            content: " ✦ ";
+            margin-right: 0.5rem;
+            opacity: 0.7;
         }
     </style>
 </head>
@@ -264,7 +481,7 @@
     </header>
 
     <!-- 导航栏 -->
-    <nav>
+    <nav id="main-nav">
         <div class="nav-container">
             <a href="#ancient">上古时期</a>
             <a href="#qinhan">秦汉时期</a>
@@ -280,34 +497,35 @@
         <!-- 上古时期帝王 -->
         <section id="ancient" class="emperor-section">
             <h2>上古时期（夏商周）</h2>
-            <div class="emperor-list">
+            <button class="collapse-btn" onclick="toggleSection('ancient-list')">收起/展开</button>
+            <div id="ancient-list" class="emperor-list">
                 <div class="emperor-item">
-                    <div class="emperor-name">禹（夏禹）</div>
+                    <div class="emperor-name" data-title="夏禹">禹</div>
                     <div class="emperor-reign">约前2070年 建立夏朝</div>
-                    <div class="emperor-note">夏朝开国君主，治水有功，结束禅让制，开启家天下先河。</div>
+                    <div class="emperor-note">夏朝开国君主，治水有功，结束禅让制，开启<span strong>家天下</span>先河。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">启</div>
+                    <div class="emperor-name" data-title="夏启">启</div>
                     <div class="emperor-reign">约前2069年 - 约前2050年</div>
                     <div class="emperor-note">禹之子，正式确立世袭制，建立中国第一个世袭王朝。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">汤（商汤）</div>
+                    <div class="emperor-name" data-title="商汤">汤</div>
                     <div class="emperor-reign">约前1600年 建立商朝</div>
-                    <div class="emperor-note">商朝开国君主，灭夏建商，推行仁政，史称“成汤革命”。</div>
+                    <div class="emperor-note">商朝开国君主，灭夏建商，推行仁政，史称<span strong>成汤革命</span>。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">盘庚</div>
+                    <div class="emperor-name" data-title="商盘庚">盘庚</div>
                     <div class="emperor-reign">约前1300年</div>
-                    <div class="emperor-note">迁都殷（殷墟），使商朝稳定发展，商朝又称“殷商”。</div>
+                    <div class="emperor-note">迁都殷（殷墟），使商朝稳定发展，商朝又称<span strong>殷商</span>。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">姬发（周武王）</div>
+                    <div class="emperor-name" data-title="周武王">姬发</div>
                     <div class="emperor-reign">前1046年 建立西周</div>
-                    <div class="emperor-note">灭商建周，定都镐京，开创分封制、宗法制，史称“牧野之战”。</div>
+                    <div class="emperor-note">灭商建周，定都镐京，开创分封制、宗法制，史称<span strong>牧野之战</span>。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">姬宜臼（周平王）</div>
+                    <div class="emperor-name" data-title="周平王">姬宜臼</div>
                     <div class="emperor-reign">前770年 - 前720年</div>
                     <div class="emperor-note">迁都洛邑，开启东周（春秋）时期，周天子权威衰落。</div>
                 </div>
@@ -317,26 +535,27 @@
         <!-- 秦汉时期帝王 -->
         <section id="qinhan" class="emperor-section">
             <h2>秦汉时期</h2>
-            <div class="emperor-list">
+            <button class="collapse-btn" onclick="toggleSection('qinhan-list')">收起/展开</button>
+            <div id="qinhan-list" class="emperor-list">
                 <div class="emperor-item">
-                    <div class="emperor-name">嬴政（秦始皇）</div>
+                    <div class="emperor-name" data-title="秦始皇">嬴政</div>
                     <div class="emperor-reign">前221年 - 前210年</div>
-                    <div class="emperor-note">中国第一个大一统皇帝，统一文字、度量衡、货币，建立中央集权制。</div>
+                    <div class="emperor-note">中国第一个大一统皇帝，统一文字、度量衡、货币，建立<span strong>中央集权制</span>。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">刘邦（汉高祖）</div>
+                    <div class="emperor-name" data-title="汉高祖">刘邦</div>
                     <div class="emperor-reign">前202年 - 前195年</div>
                     <div class="emperor-note">西汉开国皇帝，灭秦败楚，建立汉朝，休养生息，恢复生产。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">刘彻（汉武帝）</div>
+                    <div class="emperor-name" data-title="汉武帝">刘彻</div>
                     <div class="emperor-reign">前141年 - 前87年</div>
-                    <div class="emperor-note">罢黜百家独尊儒术，派卫青、霍去病击匈奴，开辟丝绸之路。</div>
+                    <div class="emperor-note">罢黜百家独尊儒术，派卫青、霍去病击匈奴，开辟<span strong>丝绸之路</span>。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">刘秀（汉光武帝）</div>
+                    <div class="emperor-name" data-title="汉光武帝">刘秀</div>
                     <div class="emperor-reign">25年 - 57年</div>
-                    <div class="emperor-note">东汉开国皇帝，平定乱世，重建汉朝，史称“光武中兴”。</div>
+                    <div class="emperor-note">东汉开国皇帝，平定乱世，重建汉朝，史称<span strong>光武中兴</span>。</div>
                 </div>
             </div>
         </section>
@@ -344,31 +563,32 @@
         <!-- 魏晋南北朝帝王 -->
         <section id="weijin" class="emperor-section">
             <h2>魏晋南北朝</h2>
-            <div class="emperor-list">
+            <button class="collapse-btn" onclick="toggleSection('weijin-list')">收起/展开</button>
+            <div id="weijin-list" class="emperor-list">
                 <div class="emperor-item">
-                    <div class="emperor-name">曹丕（魏文帝）</div>
+                    <div class="emperor-name" data-title="魏文帝">曹丕</div>
                     <div class="emperor-reign">220年 - 226年</div>
                     <div class="emperor-note">代汉建魏，定都洛阳，确立九品中正制，三国正式开端。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">刘备（汉昭烈帝）</div>
+                    <div class="emperor-name" data-title="汉昭烈帝">刘备</div>
                     <div class="emperor-reign">221年 - 223年</div>
                     <div class="emperor-note">建立蜀汉，定都成都，与魏、吴三足鼎立。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">孙权（吴大帝）</div>
+                    <div class="emperor-name" data-title="吴大帝">孙权</div>
                     <div class="emperor-reign">229年 - 252年</div>
                     <div class="emperor-note">建立东吴，定都建业，开发江南地区。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">司马炎（晋武帝）</div>
+                    <div class="emperor-name" data-title="晋武帝">司马炎</div>
                     <div class="emperor-reign">265年 - 290年</div>
-                    <div class="emperor-note">代魏建晋，灭吴统一全国，建立西晋，史称“太康之治”。</div>
+                    <div class="emperor-note">代魏建晋，灭吴统一全国，建立西晋，史称<span strong>太康之治</span>。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">杨坚（隋文帝）</div>
+                    <div class="emperor-name" data-title="隋文帝">杨坚</div>
                     <div class="emperor-reign">581年 - 604年</div>
-                    <div class="emperor-note">代周建隋，589年灭陈统一全国，创立三省六部制、科举制。</div>
+                    <div class="emperor-note">代周建隋，589年灭陈统一全国，创立三省六部制、<span strong>科举制</span>。</div>
                 </div>
             </div>
         </section>
@@ -376,31 +596,32 @@
         <!-- 隋唐时期帝王 -->
         <section id="suitang" class="emperor-section">
             <h2>隋唐时期</h2>
-            <div class="emperor-list">
+            <button class="collapse-btn" onclick="toggleSection('suitang-list')">收起/展开</button>
+            <div id="suitang-list" class="emperor-list">
                 <div class="emperor-item">
-                    <div class="emperor-name">杨广（隋炀帝）</div>
+                    <div class="emperor-name" data-title="隋炀帝">杨广</div>
                     <div class="emperor-reign">604年 - 618年</div>
                     <div class="emperor-note">开凿大运河，三征高句丽，滥用民力导致隋朝灭亡。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">李渊（唐高祖）</div>
+                    <div class="emperor-name" data-title="唐高祖">李渊</div>
                     <div class="emperor-reign">618年 - 626年</div>
                     <div class="emperor-note">唐朝开国皇帝，晋阳起兵，灭隋建唐。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">李世民（唐太宗）</div>
+                    <div class="emperor-name" data-title="唐太宗">李世民</div>
                     <div class="emperor-reign">626年 - 649年</div>
-                    <div class="emperor-note">发动玄武门之变，开创“贞观之治”，被尊为“天可汗”。</div>
+                    <div class="emperor-note">发动玄武门之变，开创<span strong>贞观之治</span>，被尊为“天可汗”。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">武则天</div>
+                    <div class="emperor-name" data-title="武周皇帝">武则天</div>
                     <div class="emperor-reign">690年 - 705年</div>
-                    <div class="emperor-note">中国历史上唯一女皇帝，改唐为周，重视人才，开创殿试。</div>
+                    <div class="emperor-note">中国历史上唯一女皇帝，改唐为周，重视人才，开创<span strong>殿试</span>。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">李隆基（唐玄宗）</div>
+                    <div class="emperor-name" data-title="唐玄宗">李隆基</div>
                     <div class="emperor-reign">712年 - 756年</div>
-                    <div class="emperor-note">开创“开元盛世”，后期爆发安史之乱，唐朝由盛转衰。</div>
+                    <div class="emperor-note">开创<span strong>开元盛世</span>，后期爆发安史之乱，唐朝由盛转衰。</div>
                 </div>
             </div>
         </section>
@@ -408,34 +629,35 @@
         <!-- 宋辽夏金元帝王 -->
         <section id="songliao" class="emperor-section">
             <h2>宋辽夏金元</h2>
-            <div class="emperor-list">
+            <button class="collapse-btn" onclick="toggleSection('songliao-list')">收起/展开</button>
+            <div id="songliao-list" class="emperor-list">
                 <div class="emperor-item">
-                    <div class="emperor-name">赵匡胤（宋太祖）</div>
+                    <div class="emperor-name" data-title="宋太祖">赵匡胤</div>
                     <div class="emperor-reign">960年 - 976年</div>
                     <div class="emperor-note">陈桥兵变，代周建宋，杯酒释兵权，加强中央集权。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">耶律阿保机（辽太祖）</div>
+                    <div class="emperor-name" data-title="辽太祖">耶律阿保机</div>
                     <div class="emperor-reign">916年 - 926年</div>
                     <div class="emperor-note">契丹族，建立辽国，创制契丹文字。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">李元昊（夏景宗）</div>
+                    <div class="emperor-name" data-title="夏景宗">李元昊</div>
                     <div class="emperor-reign">1038年 - 1048年</div>
                     <div class="emperor-note">党项族，建立西夏，创制西夏文字。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">完颜阿骨打（金太祖）</div>
+                    <div class="emperor-name" data-title="金太祖">完颜阿骨打</div>
                     <div class="emperor-reign">1115年 - 1123年</div>
                     <div class="emperor-note">女真族，建立金国，灭辽攻宋。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">赵构（宋高宗）</div>
+                    <div class="emperor-name" data-title="宋高宗">赵构</div>
                     <div class="emperor-reign">1127年 - 1162年</div>
-                    <div class="emperor-note">建立南宋，定都临安，与金达成“绍兴和议”。</div>
+                    <div class="emperor-note">建立南宋，定都临安，与金达成<span strong>绍兴和议</span>。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">忽必烈（元世祖）</div>
+                    <div class="emperor-name" data-title="元世祖">忽必烈</div>
                     <div class="emperor-reign">1271年 - 1294年</div>
                     <div class="emperor-note">蒙古族，改蒙古为元，1279年灭南宋统一全国，定都大都。</div>
                 </div>
@@ -445,29 +667,30 @@
         <!-- 明清时期帝王 -->
         <section id="mingqing" class="emperor-section">
             <h2>明清时期</h2>
-            <div class="emperor-list">
+            <button class="collapse-btn" onclick="toggleSection('mingqing-list')">收起/展开</button>
+            <div id="mingqing-list" class="emperor-list">
                 <div class="emperor-item">
-                    <div class="emperor-name">朱元璋（明太祖）</div>
+                    <div class="emperor-name" data-title="明太祖">朱元璋</div>
                     <div class="emperor-reign">1368年 - 1398年</div>
                     <div class="emperor-note">明朝开国皇帝，灭元建明，定都应天，废丞相，加强皇权。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">朱棣（明成祖）</div>
+                    <div class="emperor-name" data-title="明成祖">朱棣</div>
                     <div class="emperor-reign">1402年 - 1424年</div>
-                    <div class="emperor-note">发动靖难之役，迁都北京，派郑和下西洋，编纂《永乐大典》。</div>
+                    <div class="emperor-note">发动靖难之役，迁都北京，派郑和下西洋，编纂<span strong>《永乐大典》</span>。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">爱新觉罗·玄烨（康熙）</div>
+                    <div class="emperor-name" data-title="清圣祖">爱新觉罗·玄烨</div>
                     <div class="emperor-reign">1661年 - 1722年</div>
-                    <div class="emperor-note">平定三藩、收复台湾、抗击沙俄，开创康乾盛世。</div>
+                    <div class="emperor-note">平定三藩、收复台湾、抗击沙俄，开创<span strong>康乾盛世</span>。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">爱新觉罗·弘历（乾隆）</div>
+                    <div class="emperor-name" data-title="清高宗">爱新觉罗·弘历</div>
                     <div class="emperor-reign">1735年 - 1796年</div>
-                    <div class="emperor-note">康乾盛世顶峰，编纂《四库全书》，后期清朝由盛转衰。</div>
+                    <div class="emperor-note">康乾盛世顶峰，编纂<span strong>《四库全书》</span>，后期清朝由盛转衰。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-name">爱新觉罗·溥仪（宣统）</div>
+                    <div class="emperor-name" data-title="清宣统帝">爱新觉罗·溥仪</div>
                     <div class="emperor-reign">1908年 - 1912年</div>
                     <div class="emperor-note">中国最后一位皇帝，1912年退位，封建帝制结束。</div>
                 </div>
@@ -479,7 +702,29 @@
     <footer>
         <p>中国历代帝王表 | 整理自《史记》《资治通鉴》等正史，仅供学习参考</p>
     </footer>
+
     <script>
+        // 折叠/展开板块功能
+        function toggleSection(id) {
+            const section = document.getElementById(id);
+            if (section.style.display === "none") {
+                section.style.display = "flex";
+            } else {
+                section.style.display = "none";
+            }
+        }
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+	<script>
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
