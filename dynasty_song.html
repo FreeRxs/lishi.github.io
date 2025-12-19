@@ -3,49 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中国朝代歌 | 朗朗上口记历史</title>
+    <title>中国朝代歌（完整版）</title>
     <style>
-        /* 沿用统一基础样式 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei", sans-serif;
+            font-family: "Microsoft YaHei", "SimSun", "STKaiti", sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #f5f7fa;
+            background-color: #f2efe9;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238b5a2b' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
             color: #333;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
-        /* 头部样式（与其他页面完全统一） */
         header {
-            background: linear-gradient(120deg, #2c3e50, #34495e);
-            color: white;
+            background: linear-gradient(120deg, #5c4033, #8b5a2b);
+            color: #f8f5e6;
             padding: 2rem 0;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0h.008v.017h-.008V0zm-2.188 0h.008v.017h-.008V0zm-2.182 0h.008v.017h-.008V0zm-2.176 0h.008v.017h-.008V0zm-2.17 0h.008v.017h-.008V0zm-2.164 0h.008v.017h-.008V0zm-2.158 0h.008v.017h-.008V0zm-2.152 0h.008v.017h-.008V0zm-2.146 0h.008v.017h-.008V0zm-2.14 0h.008v.017h-.008V0zm-2.134 0h.008v.017h-.008V0zm-2.128 0h.008v.017h-.008V0zm-2.122 0h.008v.017h-.008V0zm-2.116 0h.008v.017h-.008V0zm-2.11 0h.008v.017h-.008V0zm-2.104 0h.008v.017h-.008V0zm-2.098 0h.008v.017h-.008V0zm-2.092 0h.008v.017h-.008V0zm-2.086 0h.008v.017h-.008V0zm-2.08 0h.008v.017h-.008V0z' fill='%23f8f5e6' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            pointer-events: none;
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 0.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-family: "STKaiti", "Microsoft YaHei", sans-serif;
         }
 
         header p {
             font-size: 1.1rem;
-            opacity: 0.8;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
-        /* 导航栏（保持联动，样式统一） */
+        .header-main-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 1rem;
+            padding: 0.8rem 0;
+            border-top: 1px solid rgba(248, 245, 230, 0.2);
+            border-bottom: 1px solid rgba(248, 245, 230, 0.2);
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .header-main-nav a {
+            text-decoration: none;
+            color: #f8f5e6;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .header-main-nav a.active {
+            background-color: rgba(248, 245, 230, 0.2);
+            opacity: 1;
+        }
+        
+        .header-main-nav a.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background-color: #f8f5e6;
+            border-radius: 1px;
+        }
+
+        .header-main-nav a:hover {
+            background-color: rgba(248, 245, 230, 0.2);
+            opacity: 1;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
         nav {
-            background: white;
+            background: linear-gradient(to right, #f9f6f0, #f2efe9);
             padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid #e0d8c8;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            padding: 0.8rem 0;
+            background: rgba(249, 246, 240, 0.95);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
         .nav-container {
@@ -59,19 +138,37 @@
 
         nav a {
             text-decoration: none;
-            color: #2c3e50;
+            color: #5c4033;
             padding: 0.5rem 1rem;
             border-radius: 4px;
             transition: all 0.3s ease;
             font-weight: 500;
+            position: relative;
+            overflow: hidden;
         }
-
+        
+        nav a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 90, 43, 0.1), transparent);
+            transition: all 0.5s ease;
+        }
+        
         nav a:hover {
-            background-color: #2c3e50;
-            color: white;
+            background-color: #8b5a2b;
+            color: #f8f5e6;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(139, 90, 43, 0.2);
+        }
+        
+        nav a:hover::before {
+            left: 100%;
         }
 
-        /* 主体内容：适配朝代歌展示 */
         main {
             max-width: 1200px;
             margin: 2rem auto;
@@ -79,114 +176,123 @@
         }
 
         .song-section {
-            margin-bottom: 3rem;
-            background: white;
+            margin-bottom: 3.5rem;
+            background: #ffffff;
             border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e8e0d0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .song-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60px;
+            height: 60px;
+            border-top: 3px solid #8b5a2b;
+            border-left: 3px solid #8b5a2b;
+            border-radius: 8px 0 0 0;
+            opacity: 0.5;
+        }
+        
+        .song-section::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            border-bottom: 3px solid #8b5a2b;
+            border-right: 3px solid #8b5a2b;
+            border-radius: 0 0 8px 0;
+            opacity: 0.5;
         }
 
         .song-section h2 {
-            color: #2c3e50;
-            font-size: 1.8rem;
+            color: #5c4033;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #3498db;
-        }
-
-        /* 朝代歌核心样式 */
-        .dynasty-song {
-            font-size: 1.2rem;
-            line-height: 2;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #8b5a2b;
+            font-family: "STKaiti", "Microsoft YaHei", sans-serif;
+            position: relative;
+            padding-left: 1.5rem;
             text-align: center;
-            padding: 2rem;
-            background-color: #f8f9fa;
-            border-radius: 8px;
+        }
+        
+        .song-section h2::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6zm-2 16c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z'/%3E%3C/svg%3E");
+        }
+
+        .song-version {
             margin-bottom: 2rem;
-            border-left: 4px solid #3498db;
         }
 
-        /* 拼音标注样式 */
-        .pinyin {
-            font-size: 0.8rem;
-            color: #7f8c8d;
-            display: block;
-            margin-top: -0.5rem;
-            letter-spacing: 0.5px;
+        .song-version h3 {
+            font-size: 1.5rem;
+            color: #8b5a2b;
+            margin-bottom: 1rem;
+            font-family: "STKaiti", "Microsoft YaHei", sans-serif;
+            text-align: center;
         }
 
-        /* 朝代关键词高亮 */
-        .dynasty-key {
-            color: #e74c3c;
-            font-weight: 600;
-        }
-
-        /* 版本切换按钮 */
-        .version-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
+        .song-text {
+            font-size: 1.3rem;
+            line-height: 2.2;
+            text-align: center;
+            font-family: "STKaiti", "KaiTi", "SimKai", sans-serif;
+            color: #5c4033;
             margin-bottom: 1.5rem;
-        }
-
-        .version-tab {
-            padding: 0.6rem 1.2rem;
-            background-color: #f1f3f5;
-            border: none;
-            border-radius: 4px;
-            color: #2c3e50;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .version-tab.active {
-            background-color: #2c3e50;
-            color: white;
-        }
-
-        .version-tab:hover {
-            background-color: #e0e6ed;
-        }
-
-        /* 解读区块样式 */
-        .song-interpret {
-            margin-top: 2rem;
-        }
-
-        .interpret-item {
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background-color: #f8f9fa;
+            padding: 1.5rem;
+            background-color: #f9f6f0;
             border-radius: 6px;
-            border-left: 3px solid #27ae60;
+            border-left: 4px solid #8b5a2b;
         }
 
-        .interpret-item h4 {
-            color: #2c3e50;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
+        .song-note {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.8;
+            background-color: #f5f2eb;
+            padding: 1.2rem;
+            border-radius: 6px;
+            border: 1px solid #e0d8c8;
         }
 
-        .interpret-item p {
-            font-size: 0.9rem;
-            color: #555;
-            line-height: 1.7;
+        .song-note p {
+            margin-bottom: 0.8rem;
         }
 
-        /* 简易版/完整版切换容器 */
-        .song-container {
-            display: none;
+        .song-note strong {
+            color: #8b5a2b;
         }
 
-        .song-container.active {
-            display: block;
-        }
-
-        /* 响应式适配 */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+
+            .header-main-nav {
+                gap: 0.8rem;
+                padding: 0.6rem 0;
+            }
+
+            .header-main-nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
             }
 
             .song-section {
@@ -194,166 +300,150 @@
             }
 
             .song-section h2 {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
 
-            .dynasty-song {
-                font-size: 1rem;
-                padding: 1.5rem 1rem;
+            .song-text {
+                font-size: 1.1rem;
+                padding: 1rem;
             }
 
-            .version-tab {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
+            .song-version h3 {
+                font-size: 1.3rem;
             }
         }
 
-        /* 页脚（统一风格） */
         footer {
-            background-color: #2c3e50;
-            color: white;
+            background-color: #5c4033;
+            color: #f8f5e6;
             text-align: center;
-            padding: 1.5rem 0;
-            margin-top: 3rem;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 3px solid #8b5a2b;
+            position: relative;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #8b5a2b, #5c4033, #8b5a2b);
+            opacity: 0.8;
         }
 
         footer p {
-            opacity: 0.8;
+            opacity: 0.9;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        
+        footer p::after {
+            content: " ✦ ";
+            margin-left: 0.5rem;
+            opacity: 0.7;
+        }
+        
+        footer p::before {
+            content: " ✦ ";
+            margin-right: 0.5rem;
+            opacity: 0.7;
         }
     </style>
 </head>
 <body>
-    <!-- 头部（统一风格） -->
     <header>
-        <h1>中国朝代歌</h1>
-        <p>朗朗上口记朝代，轻松梳理历史脉络</p>
-    </header>
-
-    <!-- 导航栏：与其他历史页面互跳 -->
-    <nav>
-        <div class="nav-container">
-            <a href="dynasties.html">朝代顺序表</a>
+        <h1>中国朝代歌（完整版）</h1>
+        <p>朗朗上口的朝代记忆口诀，涵盖核心王朝发展脉络</p>
+        <div class="header-main-nav">
+            <a href="dynasty.html">历史朝代顺序表</a>
             <a href="emperors.html">历代帝王表</a>
             <a href="chronology.html">历史纪年表</a>
-            <a href="dynasty_years.html">王朝年代详表</a>
-            <a href="#full">完整版</a>
-            <a href="#simple">简易版</a>
-            <a href="#interpret">分段解读</a>
+            <a href="#">王朝年代</a>
+            <a href="dynasty-song.html" class="active">朝代歌</a>
+        </div>
+    </header>
+
+    <nav id="main-nav">
+        <div class="nav-container">
+            <a href="#simple-version">经典简洁版</a>
+            <a href="#detail-version">详细完整版</a>
         </div>
     </nav>
 
-    <!-- 主体内容：朝代歌+解读 -->
     <main>
-        <!-- 朝代歌核心区域 -->
-        <section class="song-section">
-            <h2>经典朝代歌（附拼音/解读）</h2>
-
-            <!-- 版本切换按钮 -->
-            <div class="version-tabs">
-                <button class="version-tab active" onclick="switchVersion('full')">完整版</button>
-                <button class="version-tab" onclick="switchVersion('simple')">简易版</button>
-            </div>
-
-            <!-- 完整版朝代歌 -->
-            <div id="full-container" class="song-container active">
-                <div class="dynasty-song">
-                    三皇五帝始，尧舜禹相传。<br>
-                    <span class="pinyin">sān huáng wǔ dì shǐ，yáo shùn yǔ xiāng chuán。</span><br>
-                    夏<span class="dynasty-key">商</span>与<span class="dynasty-key">周</span>，分西东。<br>
-                    <span class="pinyin">xià shāng yǔ zhōu，fēn xī dōng。</span><br>
-                    <span class="dynasty-key">秦</span>汉<span class="dynasty-key">三</span>国<span class="dynasty-key">两</span>晋<span class="dynasty-key">朝</span>，<br>
-                    <span class="pinyin">qín hàn sān guó liǎng jìn cháo，</span><br>
-                    <span class="dynasty-key">南</span>北<span class="dynasty-key">朝</span>并立，<span class="dynasty-key">隋</span><span class="dynasty-key">唐</span>五代传。<br>
-                    <span class="pinyin">nán běi cháo bìng lì，suí táng wǔ dài chuán。</span><br>
-                    <span class="dynasty-key">宋</span>元<span class="dynasty-key">明</span><span class="dynasty-key">清</span>后，王朝至此完。<br>
-                    <span class="pinyin">sòng yuán míng qīng hòu，wáng cháo zhì cǐ wán。</span><br>
-                    民國再到共和，代代往下传。<br>
-                    <span class="pinyin">mín guó zài dào gòng hé，dài dài wǎng xià chuán。</span>
+        <!-- 经典简洁版 -->
+        <section id="simple-version" class="song-section">
+            <h2>经典简洁版（通用版）</h2>
+            <div class="song-version">
+                <h3>朝代歌原文</h3>
+                <div class="song-text">
+                    夏商与西周，东周分两段；<br>
+                    春秋和战国，一统秦两汉；<br>
+                    三分魏蜀吴，两晋前后延；<br>
+                    南北朝并立，隋唐五代传；<br>
+                    宋元明清后，王朝至此完。
+                </div>
+                <div class="song-note">
+                    <p><strong>注释1</strong>：东周分「春秋」（前770-前476）和「战国」（前475-前221）两个阶段；</p>
+                    <p><strong>注释2</strong>：秦两汉指「秦朝」+「西汉」+「东汉」（含新朝）；</p>
+                    <p><strong>注释3</strong>：两晋指「西晋」（统一）和「东晋」（偏安）；</p>
+                    <p><strong>注释4</strong>：南北朝为南朝（宋齐梁陈）和北朝（北魏/东魏/西魏/北齐/北周）并立；</p>
+                    <p><strong>注释5</strong>：五代指唐亡后北方的后梁、后唐、后晋、后汉、后周，南方另有十国；</p>
+                    <p><strong>注释6</strong>：「王朝至此完」指1912年清朝灭亡，封建王朝时代结束。</p>
                 </div>
             </div>
+        </section>
 
-            <!-- 简易版朝代歌 -->
-            <div id="simple-container" class="song-container">
-                <div class="dynasty-song">
-                    <span class="dynasty-key">夏</span>商<span class="dynasty-key">周</span>秦<span class="dynasty-key">西</span>东汉，<br>
-                    <span class="pinyin">xià shāng zhōu qín xī dōng hàn，</span><br>
-                    <span class="dynasty-key">三</span>国<span class="dynasty-key">两</span>晋<span class="dynasty-key">南</span>北<span class="dynasty-key">朝</span>，<br>
-                    <span class="pinyin">sān guó liǎng jìn nán běi cháo，</span><br>
-                    <span class="dynasty-key">隋</span><span class="dynasty-key">唐</span>五代<span class="dynasty-key">宋</span>元<span class="dynasty-key">明</span>，<br>
-                    <span class="pinyin">suí táng wǔ dài sòng yuán míng，</span><br>
-                    <span class="dynasty-key">清</span>后民国立，共和到如今。<br>
-                    <span class="pinyin">qīng hòu mín guó lì，gòng hé dào rú jīn。</span>
+        <!-- 详细完整版 -->
+        <section id="detail-version" class="song-section">
+            <h2>详细完整版（拓展版）</h2>
+            <div class="song-version">
+                <h3>朝代歌原文</h3>
+                <div class="song-text">
+                    三皇五帝始，尧舜禹相传；<br>
+                    夏商与西周，东周分两段；<br>
+                    春秋和战国，一统秦两汉；<br>
+                    三分魏蜀吴，两晋前后延；<br>
+                    南北朝并立，隋唐五代传；<br>
+                    宋元明清后，皇朝至此完；<br>
+                    民国再共和，代代往下传。
+                </div>
+                <div class="song-note">
+                    <p><strong>注释1</strong>：三皇五帝为上古部落联盟时期（非王朝），尧舜禹为禅让制代表；</p>
+                    <p><strong>注释2</strong>：禹传位启，开启「家天下」，夏朝为首个世袭制王朝；</p>
+                    <p><strong>注释3</strong>：补充「民国再共和」，涵盖1912年中华民国建立，封建制转共和制；</p>
+                    <p><strong>注释4</strong>：此版本更完整覆盖中国历史脉络，兼顾上古至近代的核心节点；</p>
+                    <p><strong>记忆技巧</strong>：每句7字，押韵顺口，可按「上古-先秦-秦汉-三国两晋南北朝-隋唐五代-宋元明清-近代」分段记忆。</p>
                 </div>
             </div>
-
-            <!-- 分段解读 -->
-            <section id="interpret" class="song-interpret">
-                <h2>朝代歌分段解读</h2>
-
-                <div class="interpret-item">
-                    <h4>「三皇五帝始，尧舜禹相传」</h4>
-                    <p>三皇五帝为上古传说时代的部落首领（如伏羲、黄帝、尧、舜），尧禅让于舜，舜禅让于禹，是“公天下”的禅让制时期；禹建立夏朝后，禅让制变为世袭制，开启“家天下”。</p>
-                </div>
-
-                <div class="interpret-item">
-                    <h4>「夏商与周，分西东」</h4>
-                    <p>夏（约前2070-前1600）是中国首个世袭制王朝；商（约前1600-前1046）以甲骨文、青铜文明为特色；周分为西周（前1046-前771）和东周（前770-前221，含春秋、战国），东周礼崩乐坏，诸侯争霸。</p>
-                </div>
-
-                <div class="interpret-item">
-                    <h4>「秦汉三国两晋朝，南北朝并立」</h4>
-                    <p>秦（前221-前207）是首个大一统中央集权王朝；汉分西汉（前202-8）、东汉（25-220）；三国（魏、蜀、吴）鼎立后，西晋（265-316）短暂统一，东晋（317-420）偏安江南，南北朝（420-589）南北政权对峙。</p>
-                </div>
-
-                <div class="interpret-item">
-                    <h4>「隋唐五代传，宋元明清后」</h4>
-                    <p>隋（581-618）统一南北，创科举制；唐（618-907）是鼎盛王朝，安史之乱后衰落；五代十国（907-960）政权更迭频繁；宋（北宋960-1127、南宋1127-1279）与辽、夏、金并立，元（1271-1368）大一统，明（1368-1644）、清（1636-1912）为最后两个封建王朝。</p>
-                </div>
-
-                <div class="interpret-item">
-                    <h4>「民国再到共和，代代往下传」</h4>
-                    <p>1912年清帝退位，中华民国建立；1949年中华人民共和国成立，进入共和时代，封建王朝制度彻底终结。</p>
-                </div>
-            </section>
         </section>
     </main>
 
-    <!-- 页脚（统一风格） -->
     <footer>
-        <p>中国朝代歌 | 整理自经典版本，拼音/解读仅供学习参考</p>
+        <p>中国朝代歌 | 整理自传统蒙学经典，适配现代历史认知，便于记忆中国历代王朝顺序</p>
     </footer>
 
-    <!-- 版本切换脚本 -->
     <script>
-        // 切换朝代歌版本
-        function switchVersion(version) {
-            // 隐藏所有容器
-            document.querySelectorAll('.song-container').forEach(container => {
-                container.classList.remove('active');
-            });
-            // 移除所有按钮激活态
-            document.querySelectorAll('.version-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            // 激活选中版本
-            document.getElementById(`${version}-container`).classList.add('active');
-            document.querySelector(`.version-tab[onclick="switchVersion('${version}')"]`).classList.add('active');
-        }
-
-        // 平滑滚动（锚点跳转）
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#full') switchVersion('full');
-                else if (targetId === '#simple') switchVersion('simple');
-                else {
-                    document.querySelector(targetId).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
         });
     </script>
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e243130e8f6ef010e7208a7a5022e200";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </body>
 </html>
