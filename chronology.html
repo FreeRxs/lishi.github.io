@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国历史纪年表</title>
+    <style>
+        /* 沿用统一基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* 头部样式（与前两页一致） */
+        header {
+            background: linear-gradient(120deg, #2c3e50, #34495e);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        /* 导航栏（新增互跳链接，样式统一） */
+        nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2c3e50;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        /* 主体内容（适配纪年表展示） */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .period-section {
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        }
+
+        .period-section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        /* 纪年时间轴样式 */
+        .chronology-timeline {
+            position: relative;
+            padding-left: 2.5rem;
+            border-left: 2px solid #e0e6ed;
+        }
+
+        /* 时间轴节点分隔线 */
+        .chronology-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -10px;
+            width: 18px;
+            height: 18px;
+            background: #3498db;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .chronology-item {
+            position: relative;
+            margin-bottom: 1.8rem;
+            padding: 1.2rem;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            transition: transform 0.2s ease;
+        }
+
+        .chronology-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        }
+
+        /* 纪年节点标记 */
+        .chronology-item::before {
+            content: '';
+            position: absolute;
+            left: -3.2rem;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: #2c3e50;
+            border-radius: 50%;
+            border: 2px solid white;
+            z-index: 2;
+        }
+
+        /* 不同类型事件的边框区分 */
+        .event-founding {
+            border-left: 4px solid #27ae60; /* 朝代建立-绿色 */
+        }
+
+        .event-war {
+            border-left: 4px solid #e74c3c; /* 战争/灭亡-红色 */
+        }
+
+        .event-politics {
+            border-left: 4px solid #3498db; /* 政治变革-蓝色 */
+        }
+
+        .event-culture {
+            border-left: 4px solid #f39c12; /* 文化/科技-橙色 */
+        }
+
+        /* 年份样式（突出显示） */
+        .chronology-year {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .chronology-year span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #7f8c8d;
+        }
+
+        .chronology-desc {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .chronology-desc span:first-child {
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .period-section {
+                padding: 1.5rem;
+            }
+
+            .period-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .chronology-timeline {
+                padding-left: 1.8rem;
+            }
+
+            .chronology-item::before {
+                left: -2.5rem;
+            }
+
+            .chronology-year {
+                font-size: 1rem;
+            }
+        }
+
+        /* 页脚（与前两页统一） */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部（统一风格） -->
+    <header>
+        <h1>中国历史纪年表</h1>
+        <p>以时间为轴，梳理华夏数千年关键节点</p>
+    </header>
+
+    <!-- 导航栏：新增与朝代表、帝王表的互跳链接 -->
+    <nav>
+        <div class="nav-container">
+            <a href="dynasties.html">朝代顺序表</a>
+            <a href="emperors.html">历代帝王表</a>
+            <a href="#ancient">上古时期</a>
+            <a href="#qinhan">秦汉时期</a>
+            <a href="#weijin">魏晋南北朝</a>
+            <a href="#suitang">隋唐时期</a>
+            <a href="#songyuan">宋辽夏金元</a>
+            <a href="#mingqing">明清时期</a>
+            <a href="#modern">近现代</a>
+        </div>
+    </nav>
+
+    <!-- 主体内容：按时期梳理核心纪年 -->
+    <main>
+        <!-- 上古时期 -->
+        <section id="ancient" class="period-section">
+            <h2>上古时期（约前2070年 - 前771年）</h2>
+            <div class="chronology-timeline">
+                <div class="chronology-item event-founding">
+                    <div class="chronology-year">约前2070年 <span>夏朝</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>禹建立夏朝，中国史载第一个世袭制王朝，“家天下”取代禅让制。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">约前1600年 <span>商汤灭夏</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>商汤率方国灭夏桀，建立商朝，定都亳（今河南商丘）。
+                    </div>
+                </div>
+                <div class="chronology-item event-culture">
+                    <div class="chronology-year">约前1300年 <span>盘庚迁殷</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>商王盘庚迁都至殷（今河南安阳），商朝进入稳定期，又称“殷商”。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">前1046年 <span>武王伐纣</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>周武王姬发率诸侯灭商纣王，建立西周，定都镐京（今陕西西安）。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">前771年 <span>犬戎灭西周</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>犬戎攻破镐京，杀死周幽王，西周灭亡；次年周平王东迁洛邑，东周开始。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 秦汉时期 -->
+        <section id="qinhan" class="period-section">
+            <h2>秦汉时期（前770年 - 220年）</h2>
+            <div class="chronology-timeline">
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">前221年 <span>秦统一六国</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>秦始皇嬴政灭齐、楚、燕、韩、赵、魏六国，建立中国第一个大一统中央集权王朝。
+                    </div>
+                </div>
+                <div class="chronology-item event-politics">
+                    <div class="chronology-year">前210年 <span>秦始皇病逝</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>秦始皇在东巡途中病逝于沙丘，赵高、李斯拥立胡亥即位，为秦二世。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">前209年 <span>陈胜吴广起义</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>大泽乡起义爆发，是中国历史上第一次大规模农民起义。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">前202年 <span>刘邦建立西汉</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>刘邦击败项羽，在定陶称帝，国号汉，定都长安，史称西汉。
+                    </div>
+                </div>
+                <div class="chronology-item event-politics">
+                    <div class="chronology-year">前141年 <span>汉武帝即位</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>刘彻登基，推行“罢黜百家独尊儒术”“推恩令”，开启西汉鼎盛期。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">8年 <span>王莽篡汉</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>王莽废孺子婴，建立新朝，西汉灭亡；23年新朝被绿林军推翻。
+                    </div>
+                </div>
+                <div class="chronology-item event-founding">
+                    <div class="chronology-year">25年 <span>刘秀建立东汉</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>刘秀在鄗城称帝，国号汉，定都洛阳，史称东汉，史称“光武中兴”。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">220年 <span>曹丕代汉</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>曹丕逼迫汉献帝禅位，建立曹魏，东汉灭亡，三国时代开启。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 魏晋南北朝 -->
+        <section id="weijin" class="period-section">
+            <h2>魏晋南北朝（220年 - 589年）</h2>
+            <div class="chronology-timeline">
+                <div class="chronology-item event-founding">
+                    <div class="chronology-year">221年 <span>刘备建蜀汉</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>刘备在成都称帝，国号汉，史称蜀汉；229年孙权建东吴，三足鼎立形成。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">280年 <span>西晋统一</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>西晋武帝司马炎灭东吴，结束三国分裂，统一全国。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">316年 <span>西晋灭亡</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>匈奴攻破长安，晋愍帝投降，西晋灭亡；317年司马睿建东晋，定都建康。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">420年 <span>刘裕建宋</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>刘裕废晋恭帝，建立刘宋，南朝开始；北方进入北魏统治时期，南北朝对峙形成。
+                    </div>
+                </div>
+                <div class="chronology-item event-politics">
+                    <div class="chronology-year">494年 <span>北魏孝文帝改革</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>孝文帝迁都洛阳，推行汉化政策，促进民族融合。
+                    </div>
+                </div>
+                <div class="chronology-item event-founding">
+                    <div class="chronology-year">581年 <span>杨坚建隋</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>杨坚废北周静帝，建立隋朝，定都大兴城（今西安）。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">589年 <span>隋灭陈</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>隋军攻破建康，灭南陈，结束南北朝分裂，全国统一。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 隋唐时期 -->
+        <section id="suitang" class="period-section">
+            <h2>隋唐时期（581年 - 907年）</h2>
+            <div class="chronology-timeline">
+                <div class="chronology-item event-politics">
+                    <div class="chronology-year">605年 <span>隋炀帝开大运河</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>隋炀帝下令开凿京杭大运河，贯通海河、黄河、淮河、长江、钱塘江五大水系。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">618年 <span>李渊建唐</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>李渊在长安称帝，建立唐朝；同年隋炀帝在江都被杀，隋朝灭亡。
+                    </div>
+                </div>
+                <div class="chronology-item event-politics">
+                    <div class="chronology-year">626年 <span>玄武门之变</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>李世民发动政变，杀死李建成、李元吉，后即位为唐太宗，开创“贞观之治”。
+                    </div>
+                </div>
+                <div class="chronology-item event-founding">
+                    <div class="chronology-year">690年 <span>武则天建周</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>武则天废唐睿宗，称帝建周，定都洛阳，是中国唯一正统女皇帝。
+                    </div>
+                </div>
+                <div class="chronology-item event-politics">
+                    <div class="chronology-year">713年 <span>开元盛世</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>唐玄宗李隆基开创“开元盛世”，唐朝达到鼎盛。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">755年 <span>安史之乱</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>安禄山、史思明发动叛乱，763年平定，唐朝由盛转衰。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">907年 <span>朱温建后梁</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>朱温废唐哀帝，建立后梁，唐朝灭亡，五代十国开始。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 宋辽夏金元 -->
+        <section id="songyuan" class="period-section">
+            <h2>宋辽夏金元（907年 - 1368年）</h2>
+            <div class="chronology-timeline">
+                <div class="chronology-item event-founding">
+                    <div class="chronology-year">960年 <span>赵匡胤建宋</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>陈桥兵变，赵匡胤黄袍加身，建立北宋，定都开封，史称宋太祖。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">1127年 <span>靖康之耻</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>金军攻破开封，掳走徽、钦二帝，北宋灭亡；赵构在临安建南宋。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">1206年 <span>成吉思汗建蒙古</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>铁木真统一蒙古各部，称“成吉思汗”，建立大蒙古国。
+                    </div>
+                </div>
+                <div class="chronology-item event-founding">
+                    <div class="chronology-year">1271年 <span>忽必烈建元</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>忽必烈改国号为“大元”，定都大都（今北京）。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">1279年 <span>元灭南宋</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>崖山海战，南宋灭亡，元朝统一全国。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">1368年 <span>朱元璋建明</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>朱元璋在应天（南京）称帝，建立明朝；同年徐达攻破大都，元朝灭亡。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 明清时期 -->
+        <section id="mingqing" class="period-section">
+            <h2>明清时期（1368年 - 1912年）</h2>
+            <div class="chronology-timeline">
+                <div class="chronology-item event-politics">
+                    <div class="chronology-year">1402年 <span>靖难之役</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>朱棣攻破南京，夺取皇位，1421年迁都北京。
+                    </div>
+                </div>
+                <div class="chronology-item event-culture">
+                    <div class="chronology-year">1405年 <span>郑和下西洋</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>郑和首次出使西洋，前后七次，加强中外交流。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">1644年 <span>李自成破北京</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>李自成攻入北京，崇祯帝自缢，明朝灭亡；吴三桂引清兵入关，清朝开始统一全国。
+                    </div>
+                </div>
+                <div class="chronology-item event-politics">
+                    <div class="chronology-year">1683年 <span>康熙收台湾</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>清军攻占台湾，郑克塽投降，清朝统一台湾。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">1840年 <span>鸦片战争</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>中英鸦片战争爆发，1842年签订《南京条约》，中国开始沦为半殖民地半封建社会。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">1894年 <span>甲午中日战争</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>甲午战争爆发，1895年签订《马关条约》，中国半殖民地化程度加深。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">1911年 <span>辛亥革命</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>武昌起义爆发，各省纷纷独立，清朝统治瓦解。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">1912年 <span>清帝退位</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>溥仪颁布退位诏书，清朝灭亡，中国封建帝制结束。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 近现代 -->
+        <section id="modern" class="period-section">
+            <h2>近现代（1912年 - 至今）</h2>
+            <div class="chronology-timeline">
+                <div class="chronology-item event-founding">
+                    <div class="chronology-year">1912年 <span>中华民国成立</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>孙中山在南京就任临时大总统，中华民国正式成立。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">1937年 <span>全面抗战爆发</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>卢沟桥事变爆发，中国开始全面抗日战争。
+                    </div>
+                </div>
+                <div class="chronology-item event-war">
+                    <div class="chronology-year">1945年 <span>抗日战争胜利</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>日本宣布无条件投降，中国抗日战争取得最终胜利。
+                    </div>
+                </div>
+                <div class="chronology-item event-founding">
+                    <div class="chronology-year">1949年 <span>中华人民共和国成立</span></div>
+                    <div class="chronology-desc">
+                        <span>核心事件：</span>开国大典在北京天安门举行，中华人民共和国正式成立。
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚（统一风格） -->
+    <footer>
+        <p>中国历史纪年表 | 整理自正史记载，仅供学习参考</p>
+    </footer>
+</body>
+</html>
