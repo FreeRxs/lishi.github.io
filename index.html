@@ -5,115 +5,235 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>中国历史朝代顺序表</title>
     <style>
-       /* 全局重置 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Microsoft YaHei", sans-serif;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "SimSun", sans-serif; /* 加入宋体，更贴合历史感 */
+        }
 
-body {
-    background-color: #f5f7fa;
-    color: #333;
-    line-height: 1.6;
-}
+        /* 博物馆主题主配色：浅米底+赭石+深棕+青铜色 */
+        body {
+            background-color: #f2efe9; /* 浅米色（古籍纸张质感） */
+            color: #333;
+            line-height: 1.6;
+        }
 
-/* 一级导航（核心5个页面）- 固定顶部，权重最高 */
-.header-nav {
-    background: linear-gradient(120deg, #2c3e50, #34495e);
-    padding: 1rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
+        /* 头部样式 - 深棕渐变（博物馆展柜木色） */
+        header {
+            background: linear-gradient(120deg, #5c4033, #8b5a2b); /* 深棕→赭石渐变 */
+            color: #f8f5e6; /* 米白文字 */
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2); /* 加深阴影，更厚重 */
+        }
 
-.header-nav .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.2rem;
-}
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
 
-.header-nav a {
-    text-decoration: none;
-    color: white;
-    padding: 0.6rem 1.2rem;
-    border-radius: 4px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    font-size: 1rem;
-}
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
 
-.header-nav a:hover {
-    background-color: rgba(255,255,255,0.2);
-    transform: translateY(-2px);
-}
+        /* 头部一级目录样式 */
+        .header-main-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 1rem;
+            padding: 0.8rem 0;
+            border-top: 1px solid rgba(248, 245, 230, 0.2);
+            border-bottom: 1px solid rgba(248, 245, 230, 0.2);
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-.header-nav a.active {
-    background-color: white;
-    color: #2c3e50;
-    font-weight: 600;
-}
+        .header-main-nav a {
+            text-decoration: none;
+            color: #f8f5e6;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            opacity: 0.9;
+        }
 
-/* 二级导航（页面内锚点）- 辅助导航 */
-.sub-nav {
-    background: white;
-    padding: 0.8rem 0;
-    margin: 1rem auto;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    max-width: 1200px;
-}
+        .header-main-nav a:hover {
+            background-color: rgba(248, 245, 230, 0.2);
+            opacity: 1;
+            transform: translateY(-2px);
+        }
 
-.sub-nav .sub-nav-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.8rem;
-    padding: 0 1rem;
-}
+        /* 导航栏 - 浅卡其底色（博物馆展架） */
+        nav {
+            background: #f9f6f0; /* 浅卡其色 */
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #e0d8c8; /* 浅边框，模拟木质纹理 */
+        }
 
-.sub-nav a {
-    text-decoration: none;
-    color: #2c3e50;
-    padding: 0.4rem 0.8rem;
-    border-radius: 3px;
-    font-size: 0.9rem;
-    transition: all 0.2s ease;
-}
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
 
-.sub-nav a:hover {
-    background-color: #2c3e50;
-    color: white;
-}
+        nav a {
+            text-decoration: none;
+            color: #5c4033; /* 深棕色文字 */
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
 
-/* 页面主体容器 */
-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem 2rem;
-}
+        nav a:hover {
+            background-color: #8b5a2b; /* 赭石色hover背景 */
+            color: #f8f5e6; /* 米白文字 */
+        }
 
-/* 响应式适配 */
-@media (max-width: 768px) {
-    .header-nav .nav-container {
-        gap: 0.8rem;
-    }
-    .header-nav a {
-        padding: 0.5rem 0.9rem;
-        font-size: 0.9rem;
-    }
-    .sub-nav .sub-nav-container {
-        gap: 0.5rem;
-    }
-    .sub-nav a {
-        padding: 0.3rem 0.6rem;
-        font-size: 0.85rem;
-    }
-}
+        /* 主体内容 */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* 朝代板块 - 仿古籍函套质感 */
+        .dynasty-section {
+            margin-bottom: 3rem;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            border: 1px solid #e8e0d0; /* 浅边框 */
+        }
+
+        .dynasty-section h2 {
+            color: #5c4033; /* 深棕色标题 */
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #8b5a2b; /* 赭石色分隔线 */
+        }
+
+        /* 朝代列表 */
+        .dynasty-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* 朝代项 - 仿竹简/古籍卡片 */
+        .dynasty-item {
+            padding: 1rem;
+            border-left: 4px solid #8b5a2b; /* 赭石色左侧标识 */
+            background-color: #f9f6f0; /* 浅卡其背景 */
+            border-radius: 4px;
+            transition: transform 0.2s ease;
+            border-right: 1px solid #e0d8c8;
+            border-bottom: 1px solid #e0d8c8;
+        }
+
+        .dynasty-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* hover轻微浮起 */
+        }
+
+        .dynasty-item h3 {
+            font-size: 1.4rem;
+            color: #5c4033; /* 深棕色标题 */
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .dynasty-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-item span:first-child {
+            font-weight: 600;
+            color: #8b5a2b; /* 赭石色强调 */
+        }
+
+        .dynasty-note {
+            margin-top: 0.8rem;
+            color: #666;
+            font-style: italic;
+            border-top: 1px dashed #e0d8c8; /* 虚线分隔，仿古籍批注 */
+            padding-top: 0.8rem;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .header-main-nav {
+                gap: 0.8rem;
+                padding: 0.6rem 0;
+            }
+
+            .header-main-nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .dynasty-section {
+                padding: 1.5rem;
+            }
+
+            .dynasty-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .dynasty-item h3 {
+                font-size: 1.2rem;
+            }
+
+            .dynasty-info {
+                gap: 1rem;
+            }
+        }
+
+        /* 页脚 - 深棕底色，呼应头部 */
+        footer {
+            background-color: #5c4033; /* 深棕色 */
+            color: #f8f5e6; /* 米白文字 */
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+            border-top: 2px solid #8b5a2b; /* 赭石色上边框 */
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
@@ -121,28 +241,27 @@ main {
     <header>
         <h1>中国历史朝代顺序表</h1>
         <p>梳理华夏文明脉络，纵览数千年历史变迁</p>
+        <!-- 头部一级目录 -->
+        <div class="header-main-nav">
+            <a href="#">历史朝代顺序表</a>
+            <a href="#">历代帝王表</a>
+            <a href="#">历史纪年表</a>
+            <a href="#">王朝年代</a>
+            <a href="#">朝代歌</a>
+        </div>
     </header>
 
-    <!-- 一级导航（所有页面相同） -->
-    <nav class="header-nav">
+    <!-- 导航栏 -->
+    <nav>
         <div class="nav-container">
-            <a href="index.html" class="active">朝代顺序表</a>
-            <a href="emperors.html">历代帝王表</a>
-            <a href="chronology.html">历史纪年表</a>
-            <a href="dynasty_years.html">王朝年代详表</a>
-            <a href="dynasty_song.html">朝代歌</a>
-        </div>
-    </nav>
-
-    <!-- 二级导航（当前页面专属锚点） -->
-    <nav class="sub-nav">
-        <div class="sub-nav-container">
             <a href="#ancient">上古时期</a>
             <a href="#qinhan">秦汉时期</a>
             <a href="#weijin">魏晋南北朝</a>
             <a href="#suitang">隋唐时期</a>
-            <a href="#songyuan">宋辽夏金元</a>
+            <a href="#wudai">五代十国</a>
+            <a href="#songliao">宋辽夏金元</a>
             <a href="#mingqing">明清时期</a>
+            <a href="#modern">近现代</a>
         </div>
     </nav>
 
@@ -363,5 +482,15 @@ main {
     <footer>
         <p>中国历史朝代顺序表 | 整理自正史记载，仅供学习参考</p>
     </footer>
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e243130e8f6ef010e7208a7a5022e200";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 </body>
 </html>
