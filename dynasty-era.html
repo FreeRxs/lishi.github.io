@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国王朝年代详表（完整版）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "SimSun", "STKaiti", sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f2efe9;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238b5a2b' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            color: #333;
+            line-height: 1.8;
+        }
+
+        header {
+            background: linear-gradient(120deg, #5c4033, #8b5a2b);
+            color: #f8f5e6;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0h.008v.017h-.008V0zm-2.188 0h.008v.017h-.008V0zm-2.182 0h.008v.017h-.008V0zm-2.176 0h.008v.017h-.008V0zm-2.17 0h.008v.017h-.008V0zm-2.164 0h.008v.017h-.008V0zm-2.158 0h.008v.017h-.008V0zm-2.152 0h.008v.017h-.008V0zm-2.146 0h.008v.017h-.008V0zm-2.14 0h.008v.017h-.008V0zm-2.134 0h.008v.017h-.008V0zm-2.128 0h.008v.017h-.008V0zm-2.122 0h.008v.017h-.008V0zm-2.116 0h.008v.017h-.008V0zm-2.11 0h.008v.017h-.008V0zm-2.104 0h.008v.017h-.008V0zm-2.098 0h.008v.017h-.008V0zm-2.092 0h.008v.017h-.008V0zm-2.086 0h.008v.017h-.008V0zm-2.08 0h.008v.017h-.008V0z' fill='%23f8f5e6' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-family: "STKaiti", "Microsoft YaHei", sans-serif;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .header-main-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 1rem;
+            padding: 0.8rem 0;
+            border-top: 1px solid rgba(248, 245, 230, 0.2);
+            border-bottom: 1px solid rgba(248, 245, 230, 0.2);
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .header-main-nav a {
+            text-decoration: none;
+            color: #f8f5e6;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .header-main-nav a.active {
+            background-color: rgba(248, 245, 230, 0.2);
+            opacity: 1;
+        }
+        
+        .header-main-nav a.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background-color: #f8f5e6;
+            border-radius: 1px;
+        }
+
+        .header-main-nav a:hover {
+            background-color: rgba(248, 245, 230, 0.2);
+            opacity: 1;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        nav {
+            background: linear-gradient(to right, #f9f6f0, #f2efe9);
+            padding: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #e0d8c8;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            padding: 0.8rem 0;
+            background: rgba(249, 246, 240, 0.95);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #5c4033;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        nav a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 90, 43, 0.1), transparent);
+            transition: all 0.5s ease;
+        }
+        
+        nav a:hover {
+            background-color: #8b5a2b;
+            color: #f8f5e6;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(139, 90, 43, 0.2);
+        }
+        
+        nav a:hover::before {
+            left: 100%;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .chronology-section {
+            margin-bottom: 3.5rem;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e8e0d0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chronology-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60px;
+            height: 60px;
+            border-top: 3px solid #8b5a2b;
+            border-left: 3px solid #8b5a2b;
+            border-radius: 8px 0 0 0;
+            opacity: 0.5;
+        }
+        
+        .chronology-section::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            border-bottom: 3px solid #8b5a2b;
+            border-right: 3px solid #8b5a2b;
+            border-radius: 0 0 8px 0;
+            opacity: 0.5;
+        }
+
+        .chronology-section h2 {
+            color: #5c4033;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #8b5a2b;
+            font-family: "STKaiti", "Microsoft YaHei", sans-serif;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .chronology-section h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        
+        #ancient-dynasty h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2V9h-2V7h4v10z'/%3E%3C/svg%3E");
+        }
+        
+        #qinhan-dynasty h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E");
+        }
+        
+        #weijin-dynasty h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 5h-1.42v1.5h1.74v1.25h-1.74v1h2.56V8H17zm-4.5 3c0 .55-.45 1-1 1h-2v1h3v1h-4v-2c0-.55.45-1 1-1h2v-1h-3V9h4v1zm-3.5-2h1.5v1.25H8.5v-1.25zm0 2.25h1.5v1.25H8.5V11.5zm5.5 2.5h-1.75v1h1.42v1.25h-1.42v1h2.75V14zM12 9h1.5v1.25H12V9zm0 2.25h1.5v1.25H12v-1.25z'/%3E%3C/svg%3E");
+        }
+        
+        #suitang-dynasty h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E");
+        }
+        
+        #songliao-dynasty h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 5h-1.42v1.5h1.74v1.25h-1.74v1h2.56V8H17zm-4.5 3c0 .55-.45 1-1 1h-2v1h3v1h-4v-2c0-.55.45-1 1-1h2v-1h-3V9h4v1zm-3.5-2h1.5v1.25H8.5v-1.25zm0 2.25h1.5v1.25H8.5V11.5zm5.5 2.5h-1.75v1h1.42v1.25h-1.42v1h2.75V14zM12 9h1.5v1.25H12V9zm0 2.25h1.5v1.25H12v-1.25z'/%3E%3C/svg%3E");
+        }
+        
+        #mingqing-dynasty h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E");
+        }
+
+        .collapse-btn {
+            background-color: #8b5a2b;
+            color: #f8f5e6;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            transition: all 0.2s ease;
+        }
+        
+        .collapse-btn:hover {
+            background-color: #5c4033;
+            transform: translateY(-1px);
+        }
+
+        .chronology-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .chronology-item {
+            padding: 1.2rem;
+            border-left: 4px solid #8b5a2b;
+            background-color: #f9f6f0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border-right: 1px solid #e0d8c8;
+            border-bottom: 1px solid #e0d8c8;
+            display: grid;
+            grid-template-columns: 1fr 2fr 4fr;
+            gap: 1rem;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chronology-item:nth-child(even) {
+            background-color: #f5f2eb;
+            border-left-color: #7a4f28;
+        }
+        
+        .chronology-item:hover {
+            transform: translateX(5px) translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+            border-left-width: 6px;
+        }
+        
+        .chronology-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 90, 43, 0.05), transparent);
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .chronology-item:hover::before {
+            opacity: 1;
+        }
+
+        .chrono-type {
+            font-size: 1.4rem;
+            color: #5c4033;
+            font-weight: 600;
+            font-family: "FZKai-Z03", "STKaiti", "KaiTi", "SimKai", "Microsoft YaHei", sans-serif;
+            position: relative;
+            padding-right: 0.5rem;
+        }
+
+        .chrono-example {
+            font-size: 0.95rem;
+            color: #666;
+            border-left: 1px solid #e0d8c8;
+            padding-left: 1rem;
+            position: relative;
+        }
+        
+        .chrono-example::before {
+            content: "年代/都城：";
+            color: #8b5a2b;
+            font-weight: 600;
+        }
+
+        .chrono-desc {
+            font-size: 0.95rem;
+            color: #555;
+            border-left: 1px solid #e0d8c8;
+            padding-left: 1rem;
+        }
+
+        .chrono-desc strong {
+            color: #8b5a2b;
+            position: relative;
+        }
+        
+        .chrono-desc strong::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #8b5a2b;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            .header-main-nav {
+                gap: 0.8rem;
+                padding: 0.6rem 0;
+            }
+
+            .header-main-nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .chronology-section {
+                padding: 1.5rem;
+            }
+
+            .chronology-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .chrono-type {
+                font-size: 1.2rem;
+            }
+
+            .chronology-item {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .chrono-example, .chrono-desc {
+                border-left: none;
+                padding-left: 0;
+                padding-top: 0.5rem;
+                border-top: 1px dashed #e0d8c8;
+            }
+        }
+
+        footer {
+            background-color: #5c4033;
+            color: #f8f5e6;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 3px solid #8b5a2b;
+            position: relative;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #8b5a2b, #5c4033, #8b5a2b);
+            opacity: 0.8;
+        }
+
+        footer p {
+            opacity: 0.9;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        
+        footer p::after {
+            content: " ✦ ";
+            margin-left: 0.5rem;
+            opacity: 0.7;
+        }
+        
+        footer p::before {
+            content: " ✦ ";
+            margin-right: 0.5rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>中国王朝年代详表（完整版）</h1>
+        <p>完整梳理中国历代王朝起讫时间、都城、核心君主与王朝特征</p>
+        <div class="header-main-nav">
+            <a href="dynasty.html" class="active">历史朝代顺序表</a>
+            <a href="emperors.html">历代帝王表</a>
+            <a href="chronology.html">历史纪年表</a>
+            <a href="#">王朝年代</a>
+            <a href="dynasty-song.html">朝代歌</a>
+        </div>
+    </header>
+
+    <nav id="main-nav">
+        <div class="nav-container">
+            <a href="#ancient-dynasty">上古王朝（三皇五帝至周）</a>
+            <a href="#qinhan-dynasty">秦汉王朝</a>
+            <a href="#weijin-dynasty">魏晋南北朝王朝</a>
+            <a href="#suitang-dynasty">隋唐王朝</a>
+            <a href="#songliao-dynasty">宋辽夏金元王朝</a>
+            <a href="#mingqing-dynasty">明清王朝</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- 上古王朝（三皇五帝至周） -->
+        <section id="ancient-dynasty" class="chronology-section">
+            <h2>上古王朝（三皇五帝至周，前2070-前256）</h2>
+            <button class="collapse-btn" onclick="toggleSection('ancient-dynasty-list')">收起/展开</button>
+            <div id="ancient-dynasty-list" class="chronology-list">
+                <div class="chrono-item">
+                    <div class="chrono-type">夏朝</div>
+                    <div class="chrono-example">前2070-前1600年 | 都城：阳城（今登封）、阳翟（今禹州）、斟鄩（今偃师）等</div>
+                    <div class="chrono-desc">中国首个世袭制王朝，<strong>开国君主禹（传位启），末代君主桀</strong>；二里头遗址为夏代晚期都城遗存，无文字直接佐证，靠考古与文献互证。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">商朝</div>
+                    <div class="chrono-example">前1600-前1046年 | 都城：亳（今商丘）、殷（今安阳，盘庚迁殷后固定）</div>
+                    <div class="chrono-desc">青铜文明鼎盛期，<strong>开国君主汤，末代君主纣（帝辛）</strong>；甲骨文证实商王世系，殷墟为世界文化遗产，实行内外服制度。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">西周</div>
+                    <div class="chrono-example">前1046-前771年 | 都城：镐京（今西安）、成周（今洛阳）</div>
+                    <div class="chrono-desc">分封制与宗法制确立，<strong>开国君主武王姬发，末代君主幽王姬宫湦</strong>；幽王烽火戏诸侯致犬戎破镐京，平王东迁后西周灭亡。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">东周（春秋）</div>
+                    <div class="chrono-example">前770-前476年 | 都城：洛邑（今洛阳）</div>
+                    <div class="chrono-desc">平王东迁后周天子权威衰落，<strong>春秋五霸（齐桓、晋文、楚庄、秦穆、宋襄）</strong>；礼乐崩坏，各国争霸，孔子修《春秋》记此时期。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">东周（战国）</div>
+                    <div class="chrono-example">前475-前221年 | 都城：洛邑（今洛阳）</div>
+                    <div class="chrono-desc">七雄并立（齐楚燕韩赵魏秦），<strong>各国变法（商鞅、李悝、吴起）</strong>；铁器普及，中央集权萌芽，秦王政最终统一六国。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 秦汉王朝 -->
+        <section id="qinhan-dynasty" class="chronology-section">
+            <h2>秦汉王朝（前221-220）</h2>
+            <button class="collapse-btn" onclick="toggleSection('qinhan-dynasty-list')">收起/展开</button>
+            <div id="qinhan-dynasty-list" class="chronology-list">
+                <div class="chrono-item">
+                    <div class="chrono-type">秦朝</div>
+                    <div class="chrono-example">前221-前207年 | 都城：咸阳（今西安咸阳）</div>
+                    <div class="chrono-desc">中国首个大一统中央集权王朝，<strong>开国皇帝嬴政（始皇帝），末代君主子婴</strong>；废分封行郡县，书同文车同轨，仅历二世而亡。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">西汉</div>
+                    <div class="chrono-example">前202-8年 | 都城：长安（今西安）</div>
+                    <div class="chrono-desc">文景之治、汉武盛世，<strong>开国皇帝刘邦（高祖），末代皇帝孺子婴</strong>；罢黜百家独尊儒术，丝绸之路开辟，疆域扩至西域。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">新朝</div>
+                    <div class="chrono-example">8-23年 | 都城：长安（今西安）</div>
+                    <div class="chrono-desc">王莽篡汉建立，<strong>仅历一帝王莽</strong>；推行托古改制（王田制、五均六筦），改革失败引发绿林赤眉起义，更始帝刘玄灭新。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">东汉</div>
+                    <div class="chrono-example">25-220年 | 都城：洛阳（今洛阳）</div>
+                    <div class="chrono-desc">光武中兴重振汉室，<strong>开国皇帝刘秀（光武帝），末代皇帝献帝刘协</strong>；豪强地主崛起，宦官外戚专权，黄巾起义后名存实亡。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 魏晋南北朝王朝 -->
+        <section id="weijin-dynasty" class="chronology-section">
+            <h2>魏晋南北朝王朝（220-589）</h2>
+            <button class="collapse-btn" onclick="toggleSection('weijin-dynasty-list')">收起/展开</button>
+            <div id="weijin-dynasty-list" class="chronology-list">
+                <div class="chrono-item">
+                    <div class="chrono-type">三国（魏）</div>
+                    <div class="chrono-example">220-265年 | 都城：洛阳（今洛阳）</div>
+                    <div class="chrono-desc">曹丕代汉建魏，<strong>开国皇帝曹丕，末代皇帝曹奂</strong>；九品中正制确立，司马懿家族逐渐掌权，265年司马炎代魏建晋。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">三国（蜀）</div>
+                    <div class="chrono-example">221-263年 | 都城：成都（今成都）</div>
+                    <div class="chrono-desc">刘备称帝建蜀汉，<strong>开国皇帝刘备，末代皇帝刘禅</strong>；诸葛亮治蜀，六出祁山伐魏，263年被魏将邓艾、钟会所灭。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">三国（吴）</div>
+                    <div class="chrono-example">222-280年 | 都城：建业（今南京）</div>
+                    <div class="chrono-desc">孙权称王称帝，<strong>开国皇帝孙权，末代皇帝孙皓</strong>；开发江南，航海至夷洲（台湾），280年被西晋所灭，三国统一。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">西晋</div>
+                    <div class="chrono-example">265-316年 | 都城：洛阳（今洛阳）</div>
+                    <div class="chrono-desc">司马炎统一全国，<strong>开国皇帝司马炎，末代皇帝司马邺</strong>；八王之乱引发五胡乱华，316年匈奴破长安，西晋灭亡。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">东晋</div>
+                    <div class="chrono-example">317-420年 | 都城：建康（今南京）</div>
+                    <div class="chrono-desc">司马睿南渡建东晋，<strong>开国皇帝司马睿，末代皇帝司马德文</strong>；门阀政治鼎盛（王谢袁萧），淝水之战击败前秦，420年刘裕代晋建宋。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">南朝（宋齐梁陈）</div>
+                    <div class="chrono-example">420-589年 | 都城：建康（今南京）</div>
+                    <div class="chrono-desc">宋（刘裕）、齐（萧道成）、梁（萧衍）、陈（陈霸先）依次更替，<strong>陈后主陈叔宝为末代君主</strong>；江南经济持续发展，589年隋灭陈统一。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">北朝（北魏/东魏/西魏/北齐/北周）</div>
+                    <div class="chrono-example">386-581年 | 都城：平城（大同）→洛阳（北魏）、邺城（东魏/北齐）、长安（西魏/北周）</div>
+                    <div class="chrono-desc">北魏孝文帝汉化改革，<strong>北周武帝宇文邕灭北齐统一北方</strong>；581年杨坚代周建隋，北朝结束。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 隋唐王朝 -->
+        <section id="suitang-dynasty" class="chronology-section">
+            <h2>隋唐王朝（581-907）</h2>
+            <button class="collapse-btn" onclick="toggleSection('suitang-dynasty-list')">收起/展开</button>
+            <div id="suitang-dynasty-list" class="chronology-list">
+                <div class="chrono-item">
+                    <div class="chrono-type">隋朝</div>
+                    <div class="chrono-example">581-618年 | 都城：大兴（西安）、洛阳（东都）</div>
+                    <div class="chrono-desc">杨坚代周建隋，<strong>开国皇帝杨坚（文帝），末代皇帝杨广（炀帝）</strong>；开皇之治，开凿大运河，创立科举制，618年宇文化及兵变弑炀帝。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">唐朝</div>
+                    <div class="chrono-example">618-907年 | 都城：长安（西安）、洛阳（东都）</div>
+                    <div class="chrono-desc">中国古代鼎盛王朝，<strong>开国皇帝李渊（高祖），末代皇帝李柷</strong>；贞观之治、开元盛世，安史之乱后由盛转衰，藩镇割据终致灭亡。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">武周</div>
+                    <div class="chrono-example">690-705年 | 都城：神都洛阳（今洛阳）</div>
+                    <div class="chrono-desc">武则天废唐建周，<strong>中国唯一女皇帝武则天</strong>；完善科举（殿试、武举），打击门阀，705年神龙政变复唐，仍以李唐为正统。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 宋辽夏金元王朝 -->
+        <section id="songliao-dynasty" class="chronology-section">
+            <h2>宋辽夏金元王朝（960-1368）</h2>
+            <button class="collapse-btn" onclick="toggleSection('songliao-dynasty-list')">收起/展开</button>
+            <div id="songliao-dynasty-list" class="chronology-list">
+                <div class="chrono-item">
+                    <div class="chrono-type">北宋</div>
+                    <div class="chrono-example">960-1127年 | 都城：东京开封府（今开封）</div>
+                    <div class="chrono-desc">赵匡胤陈桥兵变建宋，<strong>开国皇帝赵匡胤（太祖），末代皇帝钦宗赵桓</strong>；重文轻武，经济文化鼎盛，1127年靖康之耻被金所灭。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">辽朝</div>
+                    <div class="chrono-example">916-1125年 | 都城：上京临潢府（今巴林左旗）、南京析津府（今北京）</div>
+                    <div class="chrono-desc">契丹族耶律阿保机建立，<strong>开国皇帝耶律阿保机，末代皇帝耶律延禧</strong>；南北面官制，与宋签订澶渊之盟，1125年被金所灭。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">西夏</div>
+                    <div class="chrono-example">1038-1227年 | 都城：兴庆府（今银川）</div>
+                    <div class="chrono-desc">党项族李元昊建立，<strong>开国皇帝李元昊，末代皇帝李睍</strong>；仿宋制立官制，与宋辽金三足鼎立，1227年被蒙古所灭。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">南宋</div>
+                    <div class="chrono-example">1127-1279年 | 都城：临安府（今杭州）</div>
+                    <div class="chrono-desc">赵构南渡建南宋，<strong>开国皇帝赵构（高宗），末代皇帝赵昺</strong>；偏安江南，联蒙灭金，1279年崖山海战战败，陆秀夫负帝昺投海。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">金朝</div>
+                    <div class="chrono-example">1115-1234年 | 都城：上京会宁府（今阿城）、中都大兴府（今北京）、南京开封府（今开封）</div>
+                    <div class="chrono-desc">女真族完颜阿骨打建立，<strong>开国皇帝完颜阿骨打，末代皇帝完颜承麟</strong>；灭辽灭北宋，汉化程度深，1234年被蒙宋联军所灭。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">元朝</div>
+                    <div class="chrono-example">1271-1368年 | 都城：大都（今北京）</div>
+                    <div class="chrono-desc">忽必烈改国号为元，<strong>开国皇帝忽必烈（世祖），末代皇帝妥懽帖睦尔（顺帝）</strong>；中国首个少数民族大一统王朝，行省制确立，1368年朱元璋北伐攻占大都。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 明清王朝 -->
+        <section id="mingqing-dynasty" class="chronology-section">
+            <h2>明清王朝（1368-1912）</h2>
+            <button class="collapse-btn" onclick="toggleSection('mingqing-dynasty-list')">收起/展开</button>
+            <div id="mingqing-dynasty-list" class="chronology-list">
+                <div class="chrono-item">
+                    <div class="chrono-type">明朝</div>
+                    <div class="chrono-example">1368-1644年 | 都城：应天府（南京）→顺天府（北京，朱棣迁都）</div>
+                    <div class="chrono-desc">朱元璋推翻元朝建明，<strong>开国皇帝朱元璋（太祖），末代皇帝朱由检（崇祯）</strong>；废丞相设内阁，郑和下西洋，1644年李自成破北京，崇祯自缢。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">南明</div>
+                    <div class="chrono-example">1644-1683年 | 都城：南京、福州、广州、昆明等（辗转迁徙）</div>
+                    <div class="chrono-desc">明宗室南逃建立，<strong>主要君主弘光、隆武、永历</strong>；抗清数十年，1683年郑克塽降清，南明最后势力覆灭。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">清朝</div>
+                    <div class="chrono-example">1636-1912年 | 都城：盛京（沈阳）→京师（北京，顺治入关）</div>
+                    <div class="chrono-desc">皇太极改国号为清，<strong>开国皇帝皇太极（太宗），末代皇帝溥仪（宣统）</strong>；康乾盛世为古代最后鼎盛期，1912年溥仪退位，封建王朝终结。</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>中国王朝年代详表（完整版） | 整理自《史记》《资治通鉴》《二十四史》《中国通史》等，含所有核心王朝起讫、都城与特征</p>
+    </footer>
+
+    <script>
+        function toggleSection(id) {
+            const section = document.getElementById(id);
+            if (section.style.display === "none") {
+                section.style.display = "flex";
+            } else {
+                section.style.display = "none";
+            }
+        }
+
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e243130e8f6ef010e7208a7a5022e200";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</body>
+</html>
