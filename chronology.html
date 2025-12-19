@@ -3,49 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中国历史纪年表</title>
+    <title>中国历史纪年表（完整版）</title>
     <style>
-        /* 沿用统一基础样式 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei", sans-serif;
+            font-family: "Microsoft YaHei", "SimSun", "STKaiti", sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #f5f7fa;
+            background-color: #f2efe9;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238b5a2b' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
             color: #333;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
-        /* 头部样式（与前两页一致） */
         header {
-            background: linear-gradient(120deg, #2c3e50, #34495e);
-            color: white;
+            background: linear-gradient(120deg, #5c4033, #8b5a2b);
+            color: #f8f5e6;
             padding: 2rem 0;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0h.008v.017h-.008V0zm-2.188 0h.008v.017h-.008V0zm-2.182 0h.008v.017h-.008V0zm-2.176 0h.008v.017h-.008V0zm-2.17 0h.008v.017h-.008V0zm-2.164 0h.008v.017h-.008V0zm-2.158 0h.008v.017h-.008V0zm-2.152 0h.008v.017h-.008V0zm-2.146 0h.008v.017h-.008V0zm-2.14 0h.008v.017h-.008V0zm-2.134 0h.008v.017h-.008V0zm-2.128 0h.008v.017h-.008V0zm-2.122 0h.008v.017h-.008V0zm-2.116 0h.008v.017h-.008V0zm-2.11 0h.008v.017h-.008V0zm-2.104 0h.008v.017h-.008V0zm-2.098 0h.008v.017h-.008V0zm-2.092 0h.008v.017h-.008V0zm-2.086 0h.008v.017h-.008V0zm-2.08 0h.008v.017h-.008V0z' fill='%23f8f5e6' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            pointer-events: none;
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 0.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-family: "STKaiti", "Microsoft YaHei", sans-serif;
         }
 
         header p {
             font-size: 1.1rem;
-            opacity: 0.8;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
-        /* 导航栏（新增互跳链接，样式统一） */
+        .header-main-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 1rem;
+            padding: 0.8rem 0;
+            border-top: 1px solid rgba(248, 245, 230, 0.2);
+            border-bottom: 1px solid rgba(248, 245, 230, 0.2);
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .header-main-nav a {
+            text-decoration: none;
+            color: #f8f5e6;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .header-main-nav a.active {
+            background-color: rgba(248, 245, 230, 0.2);
+            opacity: 1;
+        }
+        
+        .header-main-nav a.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background-color: #f8f5e6;
+            border-radius: 1px;
+        }
+
+        .header-main-nav a:hover {
+            background-color: rgba(248, 245, 230, 0.2);
+            opacity: 1;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
         nav {
-            background: white;
+            background: linear-gradient(to right, #f9f6f0, #f2efe9);
             padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid #e0d8c8;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            padding: 0.8rem 0;
+            background: rgba(249, 246, 240, 0.95);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
         .nav-container {
@@ -59,523 +138,607 @@
 
         nav a {
             text-decoration: none;
-            color: #2c3e50;
+            color: #5c4033;
             padding: 0.5rem 1rem;
             border-radius: 4px;
             transition: all 0.3s ease;
             font-weight: 500;
+            position: relative;
+            overflow: hidden;
         }
-
+        
+        nav a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 90, 43, 0.1), transparent);
+            transition: all 0.5s ease;
+        }
+        
         nav a:hover {
-            background-color: #2c3e50;
-            color: white;
+            background-color: #8b5a2b;
+            color: #f8f5e6;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(139, 90, 43, 0.2);
+        }
+        
+        nav a:hover::before {
+            left: 100%;
         }
 
-        /* 主体内容（适配纪年表展示） */
         main {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
 
-        .period-section {
-            margin-bottom: 3rem;
-            background: white;
+        .chronology-section {
+            margin-bottom: 3.5rem;
+            background: #ffffff;
             border-radius: 8px;
             padding: 2rem;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
-        }
-
-        .period-section h2 {
-            color: #2c3e50;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #3498db;
-        }
-
-        /* 纪年时间轴样式 */
-        .chronology-timeline {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e8e0d0;
             position: relative;
-            padding-left: 2.5rem;
-            border-left: 2px solid #e0e6ed;
+            overflow: hidden;
         }
-
-        /* 时间轴节点分隔线 */
-        .chronology-timeline::before {
-            content: '';
+        
+        .chronology-section::before {
+            content: "";
             position: absolute;
             top: 0;
-            left: -10px;
-            width: 18px;
-            height: 18px;
-            background: #3498db;
-            border-radius: 50%;
-            z-index: 1;
+            left: 0;
+            width: 60px;
+            height: 60px;
+            border-top: 3px solid #8b5a2b;
+            border-left: 3px solid #8b5a2b;
+            border-radius: 8px 0 0 0;
+            opacity: 0.5;
+        }
+        
+        .chronology-section::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            border-bottom: 3px solid #8b5a2b;
+            border-right: 3px solid #8b5a2b;
+            border-radius: 0 0 8px 0;
+            opacity: 0.5;
+        }
+
+        .chronology-section h2 {
+            color: #5c4033;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #8b5a2b;
+            font-family: "STKaiti", "Microsoft YaHei", sans-serif;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .chronology-section h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        
+        #ancient-chrono h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2V9h-2V7h4v10z'/%3E%3C/svg%3E");
+        }
+        
+        #qinhan-chrono h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E");
+        }
+        
+        #weijin-chrono h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 5h-1.42v1.5h1.74v1.25h-1.74v1h2.56V8H17zm-4.5 3c0 .55-.45 1-1 1h-2v1h3v1h-4v-2c0-.55.45-1 1-1h2v-1h-3V9h4v1zm-3.5-2h1.5v1.25H8.5v-1.25zm0 2.25h1.5v1.25H8.5V11.5zm5.5 2.5h-1.75v1h1.42v1.25h-1.42v1h2.75V14zM12 9h1.5v1.25H12V9zm0 2.25h1.5v1.25H12v-1.25z'/%3E%3C/svg%3E");
+        }
+        
+        #suitang-chrono h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E");
+        }
+        
+        #songliao-chrono h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 5h-1.42v1.5h1.74v1.25h-1.74v1h2.56V8H17zm-4.5 3c0 .55-.45 1-1 1h-2v1h3v1h-4v-2c0-.55.45-1 1-1h2v-1h-3V9h4v1zm-3.5-2h1.5v1.25H8.5v-1.25zm0 2.25h1.5v1.25H8.5V11.5zm5.5 2.5h-1.75v1h1.42v1.25h-1.42v1h2.75V14zM12 9h1.5v1.25H12V9zm0 2.25h1.5v1.25H12v-1.25z'/%3E%3C/svg%3E");
+        }
+        
+        #mingqing-chrono h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E");
+        }
+
+        .collapse-btn {
+            background-color: #8b5a2b;
+            color: #f8f5e6;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            transition: all 0.2s ease;
+        }
+        
+        .collapse-btn:hover {
+            background-color: #5c4033;
+            transform: translateY(-1px);
+        }
+
+        .chronology-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
         }
 
         .chronology-item {
-            position: relative;
-            margin-bottom: 1.8rem;
             padding: 1.2rem;
-            background-color: #f8f9fa;
-            border-radius: 6px;
-            transition: transform 0.2s ease;
-        }
-
-        .chronology-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-        }
-
-        /* 纪年节点标记 */
-        .chronology-item::before {
-            content: '';
-            position: absolute;
-            left: -3.2rem;
-            top: 1.5rem;
-            width: 12px;
-            height: 12px;
-            background: #2c3e50;
-            border-radius: 50%;
-            border: 2px solid white;
-            z-index: 2;
-        }
-
-        /* 不同类型事件的边框区分 */
-        .event-founding {
-            border-left: 4px solid #27ae60; /* 朝代建立-绿色 */
-        }
-
-        .event-war {
-            border-left: 4px solid #e74c3c; /* 战争/灭亡-红色 */
-        }
-
-        .event-politics {
-            border-left: 4px solid #3498db; /* 政治变革-蓝色 */
-        }
-
-        .event-culture {
-            border-left: 4px solid #f39c12; /* 文化/科技-橙色 */
-        }
-
-        /* 年份样式（突出显示） */
-        .chronology-year {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-            display: flex;
+            border-left: 4px solid #8b5a2b;
+            background-color: #f9f6f0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border-right: 1px solid #e0d8c8;
+            border-bottom: 1px solid #e0d8c8;
+            display: grid;
+            grid-template-columns: 1fr 2fr 4fr;
+            gap: 1rem;
             align-items: center;
-            gap: 0.8rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chronology-item:nth-child(even) {
+            background-color: #f5f2eb;
+            border-left-color: #7a4f28;
+        }
+        
+        .chronology-item:hover {
+            transform: translateX(5px) translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+            border-left-width: 6px;
+        }
+        
+        .chronology-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 90, 43, 0.05), transparent);
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .chronology-item:hover::before {
+            opacity: 1;
         }
 
-        .chronology-year span {
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: #7f8c8d;
+        .chrono-type {
+            font-size: 1.4rem;
+            color: #5c4033;
+            font-weight: 600;
+            font-family: "FZKai-Z03", "STKaiti", "KaiTi", "SimKai", "Microsoft YaHei", sans-serif;
+            position: relative;
+            padding-right: 0.5rem;
         }
 
-        .chronology-desc {
+        .chrono-example {
+            font-size: 0.95rem;
+            color: #666;
+            border-left: 1px solid #e0d8c8;
+            padding-left: 1rem;
+            position: relative;
+        }
+        
+        .chrono-example::before {
+            content: "示例：";
+            color: #8b5a2b;
+            font-weight: 600;
+        }
+
+        .chrono-desc {
             font-size: 0.95rem;
             color: #555;
-            line-height: 1.7;
+            border-left: 1px solid #e0d8c8;
+            padding-left: 1rem;
         }
 
-        .chronology-desc span:first-child {
-            font-weight: 600;
-            color: #34495e;
+        .chrono-desc strong {
+            color: #8b5a2b;
+            position: relative;
+        }
+        
+        .chrono-desc strong::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #8b5a2b;
         }
 
-        /* 响应式适配 */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
-            .period-section {
+            .header-main-nav {
+                gap: 0.8rem;
+                padding: 0.6rem 0;
+            }
+
+            .header-main-nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .chronology-section {
                 padding: 1.5rem;
             }
 
-            .period-section h2 {
-                font-size: 1.5rem;
+            .chronology-section h2 {
+                font-size: 1.6rem;
             }
 
-            .chronology-timeline {
-                padding-left: 1.8rem;
+            .chrono-type {
+                font-size: 1.2rem;
             }
 
-            .chronology-item::before {
-                left: -2.5rem;
+            .chronology-item {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
             }
 
-            .chronology-year {
-                font-size: 1rem;
+            .chrono-example, .chrono-desc {
+                border-left: none;
+                padding-left: 0;
+                padding-top: 0.5rem;
+                border-top: 1px dashed #e0d8c8;
             }
         }
 
-        /* 页脚（与前两页统一） */
         footer {
-            background-color: #2c3e50;
-            color: white;
+            background-color: #5c4033;
+            color: #f8f5e6;
             text-align: center;
-            padding: 1.5rem 0;
-            margin-top: 3rem;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 3px solid #8b5a2b;
+            position: relative;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #8b5a2b, #5c4033, #8b5a2b);
+            opacity: 0.8;
         }
 
         footer p {
-            opacity: 0.8;
+            opacity: 0.9;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        
+        footer p::after {
+            content: " ✦ ";
+            margin-left: 0.5rem;
+            opacity: 0.7;
+        }
+        
+        footer p::before {
+            content: " ✦ ";
+            margin-right: 0.5rem;
+            opacity: 0.7;
         }
     </style>
 </head>
 <body>
-    <!-- 头部（统一风格） -->
     <header>
-        <h1>中国历史纪年表</h1>
-        <p>以时间为轴，梳理华夏数千年关键节点</p>
+        <h1>中国历史纪年表（完整版）</h1>
+        <p>完整梳理中国历代纪年体系，含特殊规则与跨政权对照</p>
+        <div class="header-main-nav">
+            <a href="dynasty.html">历史朝代顺序表</a>
+            <a href="emperors.html">历代帝王表</a>
+            <a href="#" class="active">历史纪年表</a>
+            <a href="dynasty-era.html">王朝年代</a>
+            <a href="dynasty-song.html">朝代歌</a>
+        </div>
     </header>
 
-    <!-- 导航栏：新增与朝代表、帝王表的互跳链接 -->
-    <nav>
+    <nav id="main-nav">
         <div class="nav-container">
-            <a href="dynasties.html">朝代顺序表</a>
-            <a href="emperors.html">历代帝王表</a>
-            <a href="dynasty_years.html">王朝年代详表</a>
-            <a href="#ancient">上古时期</a>
-            <a href="#qinhan">秦汉时期</a>
-            <a href="#weijin">魏晋南北朝</a>
-            <a href="#suitang">隋唐时期</a>
-            <a href="#songyuan">宋辽夏金元</a>
-            <a href="#mingqing">明清时期</a>
-            <a href="#modern">近现代</a>
+            <a href="#ancient-chrono">上古纪年</a>
+            <a href="#qinhan-chrono">秦汉纪年</a>
+            <a href="#weijin-chrono">魏晋南北朝纪年</a>
+            <a href="#suitang-chrono">隋唐纪年</a>
+            <a href="#songliao-chrono">宋辽夏金元纪年</a>
+            <a href="#mingqing-chrono">明清纪年</a>
         </div>
     </nav>
 
-    <!-- 主体内容：按时期梳理核心纪年 -->
     <main>
-        <!-- 上古时期 -->
-        <section id="ancient" class="period-section">
-            <h2>上古时期（约前2070年 - 前771年）</h2>
-            <div class="chronology-timeline">
-                <div class="chronology-item event-founding">
-                    <div class="chronology-year">约前2070年 <span>夏朝</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>禹建立夏朝，中国史载第一个世袭制王朝，“家天下”取代禅让制。
-                    </div>
+        <!-- 上古纪年（三皇五帝至周）- 完整数据 -->
+        <section id="ancient-chrono" class="chronology-section">
+            <h2>上古纪年（三皇五帝至周，前2070-前256）</h2>
+            <button class="collapse-btn" onclick="toggleSection('ancient-chrono-list')">收起/展开</button>
+            <div id="ancient-chrono-list" class="chronology-list">
+                <div class="chrono-item">
+                    <div class="chrono-type">帝王纪年</div>
+                    <div class="chrono-example">黄帝元年（前2698年，《帝王世纪》）、夏启元年（前2070年）、商汤元年（前1600年）、周武王元年（前1046年）</div>
+                    <div class="chrono-desc">中国最早的纪年形式，<strong>以君主即位之年为元年</strong>，逐年累计；夏商无成文纪年体系，仅靠甲骨文卜辞、金文追记，西周始有系统的王室纪年档案。</div>
                 </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">约前1600年 <span>商汤灭夏</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>商汤率方国灭夏桀，建立商朝，定都亳（今河南商丘）。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">干支纪年</div>
+                    <div class="chrono-example">殷墟甲骨：甲子日（武丁时期）、西周利簋：甲子朝（前1046年牧野之战）、《春秋》：隐公元年（庚申年，前722年）</div>
+                    <div class="chrono-desc">天干（甲乙丙丁戊己庚辛壬癸）+地支（子丑寅卯辰巳午未申酉戌亥）组合，<strong>60年一甲子循环</strong>；商代仅纪日，西周扩展至纪年，为后世最核心的辅助纪年法。</div>
                 </div>
-                <div class="chronology-item event-culture">
-                    <div class="chronology-year">约前1300年 <span>盘庚迁殷</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>商王盘庚迁都至殷（今河南安阳），商朝进入稳定期，又称“殷商”。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">王公年次纪年</div>
+                    <div class="chrono-example">鲁隐公元年（前722年）、周平王五十一年（前720年）、秦穆公三十三年（前627年）、晋悼公十四年（前558年）</div>
+                    <div class="chrono-desc">春秋时期主流纪年法，<strong>以诸侯/王公在位年数纪年</strong>，各诸侯国独立纪年（如鲁用鲁君、晋用晋君），孔子修《春秋》以鲁公年次为基准，成为正史体例源头。</div>
                 </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">前1046年 <span>武王伐纣</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>周武王姬发率诸侯灭商纣王，建立西周，定都镐京（今陕西西安）。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">岁星纪年</div>
+                    <div class="chrono-example">岁在星纪（前575年鄢陵之战）、岁在大火（《诗经》）、岁在鹑火（前1046年周克商）</div>
+                    <div class="chrono-desc">基于木星公转周期（约12年）的天文纪年，<strong>将黄道分为12次，木星行至某"次"即记为"岁在某"</strong>；战国时期与干支结合，是干支纪年的前身。</div>
                 </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">前771年 <span>犬戎灭西周</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>犬戎攻破镐京，杀死周幽王，西周灭亡；次年周平王东迁洛邑，东周开始。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">三正纪年</div>
+                    <div class="chrono-example">夏正建寅（以农历正月为岁首）、殷正建丑（农历十二月）、周正建子（农历十一月）</div>
+                    <div class="chrono-desc">三代历法差异导致的纪年起点不同，<strong>周历比夏历早两个月</strong>；春秋时期各国混用（晋用夏正、鲁用周正），需换算才能统一时间线。</div>
                 </div>
             </div>
         </section>
 
-        <!-- 秦汉时期 -->
-        <section id="qinhan" class="period-section">
-            <h2>秦汉时期（前770年 - 220年）</h2>
-            <div class="chronology-timeline">
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">前221年 <span>秦统一六国</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>秦始皇嬴政灭齐、楚、燕、韩、赵、魏六国，建立中国第一个大一统中央集权王朝。
-                    </div>
+        <!-- 秦汉纪年 - 完整数据 -->
+        <section id="qinhan-chrono" class="chronology-section">
+            <h2>秦汉纪年（前221-220）</h2>
+            <button class="collapse-btn" onclick="toggleSection('qinhan-chrono-list')">收起/展开</button>
+            <div id="qinhan-chrono-list" class="chronology-list">
+                <div class="chrono-item">
+                    <div class="chrono-type">秦朝皇帝纪年</div>
+                    <div class="chrono-example">始皇帝元年（前221年）、始皇帝三十七年（前210年）、二世元年（前209年）、子婴元年（前207年）</div>
+                    <div class="chrono-desc">秦始皇废除分封纪年，<strong>以皇帝在位年数统一全国纪年</strong>，无年号；"始皇帝"意为"第一代皇帝"，计划传至万世，仅历三世而亡。</div>
                 </div>
-                <div class="chronology-item event-politics">
-                    <div class="chronology-year">前210年 <span>秦始皇病逝</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>秦始皇在东巡途中病逝于沙丘，赵高、李斯拥立胡亥即位，为秦二世。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">西汉帝号纪年（前期）</div>
+                    <div class="chrono-example">高帝元年（前206年）、惠帝二年（前193年）、文帝前元元年（前179年）、景帝中元元年（前149年）</div>
+                    <div class="chrono-desc">汉初沿用帝号+年次纪年，<strong>文帝、景帝分"前元/中元/后元"</strong>（非年号，仅为后世追称），至汉武帝建元元年（前140年）始立年号。</div>
                 </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">前209年 <span>陈胜吴广起义</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>大泽乡起义爆发，是中国历史上第一次大规模农民起义。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">年号纪年（首创）</div>
+                    <div class="chrono-example">建元元年（前140年，中国首个年号）、元光元年（前134年）、元封元年（前110年）、太初元年（前104年，改历）</div>
+                    <div class="chrono-desc">汉武帝首创年号纪年，<strong>改元必改年号</strong>；太初元年改《太初历》，以正月为岁首，与今农历一致，成为年号+历法结合的里程碑。</div>
                 </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">前202年 <span>刘邦建立西汉</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>刘邦击败项羽，在定陶称帝，国号汉，定都长安，史称西汉。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">新朝特殊纪年</div>
+                    <div class="chrono-example">始建国元年（9年，王莽代汉）、天凤元年（14年）、地皇元年（20年）、更始元年（23年，刘玄）</div>
+                    <div class="chrono-desc">王莽建新朝后频繁改元改年号，<strong>年号多取自《周礼》</strong>；更始帝为西汉宗室，年号成为政权合法性的象征。</div>
                 </div>
-                <div class="chronology-item event-politics">
-                    <div class="chronology-year">前141年 <span>汉武帝即位</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>刘彻登基，推行“罢黜百家独尊儒术”“推恩令”，开启西汉鼎盛期。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">东汉改元规则</div>
+                    <div class="chrono-example">建武元年（25年，刘秀）、永平元年（58年）、建光元年（121年，安帝亲政改元）、中平元年（184年，黄巾起义改元）</div>
+                    <div class="chrono-desc">东汉帝王改元多因"祥瑞/灾异/重大事件"，<strong>一个皇帝可改元多次（如桓帝有7个年号）</strong>，但年号命名更规范，无生僻字。</div>
                 </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">8年 <span>王莽篡汉</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>王莽废孺子婴，建立新朝，西汉灭亡；23年新朝被绿林军推翻。
-                    </div>
-                </div>
-                <div class="chronology-item event-founding">
-                    <div class="chronology-year">25年 <span>刘秀建立东汉</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>刘秀在鄗城称帝，国号汉，定都洛阳，史称东汉，史称“光武中兴”。
-                    </div>
-                </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">220年 <span>曹丕代汉</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>曹丕逼迫汉献帝禅位，建立曹魏，东汉灭亡，三国时代开启。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">公元换算基准</div>
+                    <div class="chrono-example">汉平帝元始元年（1年）= 公元1年、王莽始建国元年（9年）= 公元9年、汉献帝建安元年（196年）= 公元196年</div>
+                    <div class="chrono-desc">西汉末元始元年为中西纪年接轨点，<strong>此前为"公元前"，此后为"公元后"</strong>；建安年号因《三国志》成为最知名的东汉年号。</div>
                 </div>
             </div>
         </section>
 
-        <!-- 魏晋南北朝 -->
-        <section id="weijin" class="period-section">
-            <h2>魏晋南北朝（220年 - 589年）</h2>
-            <div class="chronology-timeline">
-                <div class="chronology-item event-founding">
-                    <div class="chronology-year">221年 <span>刘备建蜀汉</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>刘备在成都称帝，国号汉，史称蜀汉；229年孙权建东吴，三足鼎立形成。
-                    </div>
+        <!-- 魏晋南北朝纪年 - 完整数据 -->
+        <section id="weijin-chrono" class="chronology-section">
+            <h2>魏晋南北朝纪年（220-589）</h2>
+            <button class="collapse-btn" onclick="toggleSection('weijin-chrono-list')">收起/展开</button>
+            <div id="weijin-chrono-list" class="chronology-list">
+                <div class="chrono-item">
+                    <div class="chrono-type">三国政权纪年对照</div>
+                    <div class="chrono-example">魏黄初元年（220年）= 蜀章武元年（221年）= 吴黄武元年（222年）、魏景元四年（263年）= 蜀炎兴元年（蜀亡）</div>
+                    <div class="chrono-desc">三国各立年号，<strong>陈寿《三国志》以魏为正统，用魏纪年</strong>；吴孙权年号最多（7个），蜀仅刘备、刘禅各1个（章武、建兴）。</div>
                 </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">280年 <span>西晋统一</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>西晋武帝司马炎灭东吴，结束三国分裂，统一全国。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">西晋统一纪年</div>
+                    <div class="chrono-example">泰始元年（265年，司马炎代魏）、咸宁五年（279年，伐吴）、太康元年（280年，统一）、永嘉元年（307年，八王之乱）</div>
+                    <div class="chrono-desc">西晋短期统一，<strong>年号稳定（武帝2个、惠帝6个）</strong>；永嘉之乱后晋室南渡，北方进入"十六国"分裂期。</div>
                 </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">316年 <span>西晋灭亡</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>匈奴攻破长安，晋愍帝投降，西晋灭亡；317年司马睿建东晋，定都建康。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">十六国纪年（北方）</div>
+                    <div class="chrono-example">前赵光初元年（318年）= 后赵太和元年（328年）= 前燕慕容儁元玺元年（352年）、前秦建元十九年（383年，淝水之战）</div>
+                    <div class="chrono-desc">北方少数民族政权仿汉制立年号，<strong>前秦苻坚"建元"为北方最具影响力的年号</strong>；各政权纪年互不统属，需靠《十六国春秋》对照。</div>
                 </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">420年 <span>刘裕建宋</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>刘裕废晋恭帝，建立刘宋，南朝开始；北方进入北魏统治时期，南北朝对峙形成。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">东晋纪年（南方）</div>
+                    <div class="chrono-example">建武元年（317年，司马睿）、永和九年（353年，兰亭序）、太元八年（383年，淝水之战）、元熙二年（420年，晋亡）</div>
+                    <div class="chrono-desc">东晋偏安江南，<strong>年号与士族政治绑定（如"永和"对应王导辅政）</strong>；干支+年号并用成为官方文书标配。</div>
                 </div>
-                <div class="chronology-item event-politics">
-                    <div class="chronology-year">494年 <span>北魏孝文帝改革</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>孝文帝迁都洛阳，推行汉化政策，促进民族融合。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">南北朝纪年对照</div>
+                    <div class="chrono-example">宋永初元年（420年）= 北魏泰常五年、齐建元元年（479年）= 北魏太和三年、梁天监元年（502年）= 北魏景明三年</div>
+                    <div class="chrono-desc">南朝（宋齐梁陈）与北朝（北魏/东魏/西魏/北齐/北周）各立年号，<strong>《资治通鉴》以南朝纪年为纲</strong>；北魏孝文帝"太和"年号（477-499年）为北朝最长。</div>
                 </div>
-                <div class="chronology-item event-founding">
-                    <div class="chronology-year">581年 <span>杨坚建隋</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>杨坚废北周静帝，建立隋朝，定都大兴城（今西安）。
-                    </div>
-                </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">589年 <span>隋灭陈</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>隋军攻破建康，灭南陈，结束南北朝分裂，全国统一。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">侨置政权纪年</div>
+                    <div class="chrono-example">后凉龙飞元年（396年）、南燕建平元年（400年）、西凉建初元年（405年）、北凉承玄元年（428年）</div>
+                    <div class="chrono-desc">西北/西南侨置政权（凉/燕/蜀）均立年号，<strong>年号多取"龙/建/兴"等吉祥字</strong>；政权更迭极快，部分年号仅用数月。</div>
                 </div>
             </div>
         </section>
 
-        <!-- 隋唐时期 -->
-        <section id="suitang" class="period-section">
-            <h2>隋唐时期（581年 - 907年）</h2>
-            <div class="chronology-timeline">
-                <div class="chronology-item event-politics">
-                    <div class="chronology-year">605年 <span>隋炀帝开大运河</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>隋炀帝下令开凿京杭大运河，贯通海河、黄河、淮河、长江、钱塘江五大水系。
-                    </div>
+        <!-- 隋唐纪年 - 完整数据 -->
+        <section id="suitang-chrono" class="chronology-section">
+            <h2>隋唐纪年（581-907）</h2>
+            <button class="collapse-btn" onclick="toggleSection('suitang-chrono-list')">收起/展开</button>
+            <div id="suitang-chrono-list" class="chronology-list">
+                <div class="chrono-item">
+                    <div class="chrono-type">隋代纪年</div>
+                    <div class="chrono-example">开皇元年（581年，杨坚代周）、开皇九年（589年，灭陈统一）、仁寿元年（601年）、大业元年（605年，杨广）</div>
+                    <div class="chrono-desc">隋朝仅两帝，<strong>文帝"开皇"（20年）、炀帝"大业"（14年）</strong>，年号稳定；大业末年各地起义军立年号（如窦建德"五凤"）。</div>
                 </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">618年 <span>李渊建唐</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>李渊在长安称帝，建立唐朝；同年隋炀帝在江都被杀，隋朝灭亡。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">唐代常规年号</div>
+                    <div class="chrono-example">武德元年（618年，李渊）、贞观元年（627年，李世民）、永徽元年（650年，李治）、开元元年（713年，李隆基）</div>
+                    <div class="chrono-desc">唐代前期年号稳定，<strong>贞观（23年）、开元（29年）</strong>为盛唐标志性年号；改元多因"封禅/祥瑞/灾异"，如封禅泰山改元"乾封"。</div>
                 </div>
-                <div class="chronology-item event-politics">
-                    <div class="chronology-year">626年 <span>玄武门之变</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>李世民发动政变，杀死李建成、李元吉，后即位为唐太宗，开创“贞观之治”。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">武周改元（武则天）</div>
+                    <div class="chrono-example">光宅元年（684年）、垂拱元年（685年）、天授元年（690年，改周）、神功元年（697年）、神龙元年（705年，复唐）</div>
+                    <div class="chrono-desc">武则天在位15年改元18次，<strong>创中国历史年号数量之最</strong>；改国号为周，年号多带"天/圣/神"（如天册万岁、万岁通天）。</div>
                 </div>
-                <div class="chronology-item event-founding">
-                    <div class="chronology-year">690年 <span>武则天建周</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>武则天废唐睿宗，称帝建周，定都洛阳，是中国唯一正统女皇帝。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">中晚唐改元规则</div>
+                    <div class="chrono-example">天宝元年（742年，玄宗）、建中元年（780年，德宗）、元和元年（806年，宪宗）、大中元年（847年，宣宗）</div>
+                    <div class="chrono-desc">中晚唐帝王改元频繁（如穆宗4年改3元），<strong>年号与藩镇割据、宦官专权关联</strong>；元和中兴后短暂稳定。</div>
                 </div>
-                <div class="chronology-item event-politics">
-                    <div class="chronology-year">713年 <span>开元盛世</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>唐玄宗李隆基开创“开元盛世”，唐朝达到鼎盛。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">干支纪月日应用</div>
+                    <div class="chrono-example">开元二十三年乙亥岁十月十五日（735年）、元和十年乙未岁正月（815年）、大中八年甲戌岁（854年）</div>
+                    <div class="chrono-desc">唐代官方文书、碑刻中<strong>年号+干支+月日</strong>完整记录，如《颜真卿祭侄文稿》："乾元元年戊戌岁九月三日"，成为后世考据的核心依据。</div>
                 </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">755年 <span>安史之乱</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>安禄山、史思明发动叛乱，763年平定，唐朝由盛转衰。
-                    </div>
-                </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">907年 <span>朱温建后梁</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>朱温废唐哀帝，建立后梁，唐朝灭亡，五代十国开始。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">周边政权纪年对照</div>
+                    <div class="chrono-example">唐贞观二十一年（647年）= 吐蕃松赞干布时期、唐开元十年（722年）= 南诏皮逻阁"赞普钟"元年、唐大中十三年（859年）= 渤海国"咸和"元年</div>
+                    <div class="chrono-desc">吐蕃（用生肖/藏历）、南诏（仿唐立年号）、渤海国（完全仿唐），<strong>《新唐书》附周边政权纪年对照表</strong>。</div>
                 </div>
             </div>
         </section>
 
-        <!-- 宋辽夏金元 -->
-        <section id="songyuan" class="period-section">
-            <h2>宋辽夏金元（907年 - 1368年）</h2>
-            <div class="chronology-timeline">
-                <div class="chronology-item event-founding">
-                    <div class="chronology-year">960年 <span>赵匡胤建宋</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>陈桥兵变，赵匡胤黄袍加身，建立北宋，定都开封，史称宋太祖。
-                    </div>
+        <!-- 宋辽夏金元纪年 - 完整数据 -->
+        <section id="songliao-chrono" class="chronology-section">
+            <h2>宋辽夏金元纪年（960-1368）</h2>
+            <button class="collapse-btn" onclick="toggleSection('songliao-chrono-list')">收起/展开</button>
+            <div id="songliao-chrono-list" class="chronology-list">
+                <div class="chrono-item">
+                    <div class="chrono-type">北宋纪年</div>
+                    <div class="chrono-example">建隆元年（960年，赵匡胤）、景德元年（1004年，澶渊之盟）、熙宁元年（1068年，王安石变法）、靖康元年（1126年，靖康之耻）</div>
+                    <div class="chrono-desc">北宋帝王改元较稳定，<strong>太祖3个、太宗5个、仁宗9个</strong>；年号多取"太平/景德/熙宁"等治国寓意，与政治改革绑定。</div>
                 </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">1127年 <span>靖康之耻</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>金军攻破开封，掳走徽、钦二帝，北宋灭亡；赵构在临安建南宋。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">辽代双轨纪年</div>
+                    <div class="chrono-example">辽神册元年（916年，耶律阿保机）= 五代后梁贞明二年、辽统和元年（983年）= 北宋太平兴国八年、辽重熙元年（1032年）= 北宋明道元年</div>
+                    <div class="chrono-desc">辽代并行<strong>汉式年号+契丹本土纪年（如"契丹九年"）</strong>；早期年号译自契丹语（如"神册""天赞"），后期完全汉化。</div>
                 </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">1206年 <span>成吉思汗建蒙古</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>铁木真统一蒙古各部，称“成吉思汗”，建立大蒙古国。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">西夏纪年（西夏文+汉文）</div>
+                    <div class="chrono-example">西夏景宗"显道"元年（1032年）= 北宋明道元年、西夏崇宗"贞观"元年（1101年）= 北宋建中靖国元年、西夏仁宗"乾祐"元年（1170年）= 南宋乾道六年</div>
+                    <div class="chrono-desc">西夏自创西夏文年号（与汉文对应），<strong>仿唐宋立年号（如贞观、大庆、人庆）</strong>；《西夏书事》完整记录其纪年体系。</div>
                 </div>
-                <div class="chronology-item event-founding">
-                    <div class="chronology-year">1271年 <span>忽必烈建元</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>忽必烈改国号为“大元”，定都大都（今北京）。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">南宋纪年</div>
+                    <div class="chrono-example">建炎元年（1127年，赵构）、绍兴元年（1131年）、隆兴元年（1163年）、嘉定元年（1208年）、祥兴二年（1279年，宋亡）</div>
+                    <div class="chrono-desc">南宋年号多与抗金/抗元相关（如"建炎""绍兴"），<strong>末帝赵昺"祥兴"仅用2年（1278-1279）</strong>，崖山海战后宋亡。</div>
                 </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">1279年 <span>元灭南宋</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>崖山海战，南宋灭亡，元朝统一全国。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">金代纪年</div>
+                    <div class="chrono-example">金收国元年（1115年，完颜阿骨打）= 北宋政和五年、金大定元年（1161年）= 南宋绍兴三十一年、金正大元年（1224年）= 南宋嘉定十七年</div>
+                    <div class="chrono-desc">金代前期年号译自女真语（如收国、天辅），<strong>海陵王完颜亮后完全汉化</strong>；"大定"（29年）为金最长年号（金世宗）。</div>
                 </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">1368年 <span>朱元璋建明</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>朱元璋在应天（南京）称帝，建立明朝；同年徐达攻破大都，元朝灭亡。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">元代纪年（汉式+蒙古式）</div>
+                    <div class="chrono-example">元中统元年（1260年，忽必烈）= 南宋景定元年、元至元元年（1264年）= 南宋景定五年、元至正元年（1341年）= 元顺帝</div>
+                    <div class="chrono-desc">元代全面采用汉式年号，<strong>同时保留蒙古纪年（十二生肖+藏历）</strong>；"至元"两度使用（忽必烈、元顺帝），称"前至元""后至元"。</div>
                 </div>
-            </div>
-        </section>
-
-        <!-- 明清时期 -->
-        <section id="mingqing" class="period-section">
-            <h2>明清时期（1368年 - 1912年）</h2>
-            <div class="chronology-timeline">
-                <div class="chronology-item event-politics">
-                    <div class="chronology-year">1402年 <span>靖难之役</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>朱棣攻破南京，夺取皇位，1421年迁都北京。
-                    </div>
-                </div>
-                <div class="chronology-item event-culture">
-                    <div class="chronology-year">1405年 <span>郑和下西洋</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>郑和首次出使西洋，前后七次，加强中外交流。
-                    </div>
-                </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">1644年 <span>李自成破北京</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>李自成攻入北京，崇祯帝自缢，明朝灭亡；吴三桂引清兵入关，清朝开始统一全国。
-                    </div>
-                </div>
-                <div class="chronology-item event-politics">
-                    <div class="chronology-year">1683年 <span>康熙收台湾</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>清军攻占台湾，郑克塽投降，清朝统一台湾。
-                    </div>
-                </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">1840年 <span>鸦片战争</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>中英鸦片战争爆发，1842年签订《南京条约》，中国开始沦为半殖民地半封建社会。
-                    </div>
-                </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">1894年 <span>甲午中日战争</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>甲午战争爆发，1895年签订《马关条约》，中国半殖民地化程度加深。
-                    </div>
-                </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">1911年 <span>辛亥革命</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>武昌起义爆发，各省纷纷独立，清朝统治瓦解。
-                    </div>
-                </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">1912年 <span>清帝退位</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>溥仪颁布退位诏书，清朝灭亡，中国封建帝制结束。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">回回历/藏历纪年</div>
+                    <div class="chrono-example">元至元十八年（1281年）= 回回历680年、元大德元年（1297年）= 藏历火牛年</div>
+                    <div class="chrono-desc">元代疆域辽阔，<strong>官方兼用回回历（西域）、藏历（西藏）</strong>，但核心纪年仍以汉式年号为主，《元史·历志》记录多历换算。</div>
                 </div>
             </div>
         </section>
 
-        <!-- 近现代 -->
-        <section id="modern" class="period-section">
-            <h2>近现代（1912年 - 至今）</h2>
-            <div class="chronology-timeline">
-                <div class="chronology-item event-founding">
-                    <div class="chronology-year">1912年 <span>中华民国成立</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>孙中山在南京就任临时大总统，中华民国正式成立。
-                    </div>
+        <!-- 明清纪年 - 完整数据 -->
+        <section id="mingqing-chrono" class="chronology-section">
+            <h2>明清纪年（1368-1912）</h2>
+            <button class="collapse-btn" onclick="toggleSection('mingqing-chrono-list')">收起/展开</button>
+            <div id="mingqing-chrono-list" class="chronology-list">
+                <div class="chrono-item">
+                    <div class="chrono-type">明代一世一元制（主流）</div>
+                    <div class="chrono-example">洪武元年（1368年，朱元璋）、永乐元年（1403年，朱棣）、宣德元年（1426年）、万历元年（1573年）、崇祯元年（1628年）</div>
+                    <div class="chrono-desc">明代除明英宗（正统/天顺）外，<strong>一个皇帝终身只用一个年号</strong>（一世一元），年号成为皇帝代称（如洪武帝、永乐帝）。</div>
                 </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">1937年 <span>全面抗战爆发</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>卢沟桥事变爆发，中国开始全面抗日战争。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">明代特殊改元</div>
+                    <div class="chrono-example">明英宗正统十四年（1449年，土木堡之变）→ 景泰元年（1450年，代宗）→ 天顺元年（1457年，英宗复辟）、南明弘光元年（1645年）、永历元年（1647年）</div>
+                    <div class="chrono-desc">明英宗因复辟改元（正统→天顺），<strong>南明政权（弘光/隆武/永历）沿用年号纪年</strong>，永历三十七年（1683年）郑克塽降清，南明纪年终结。</div>
                 </div>
-                <div class="chronology-item event-war">
-                    <div class="chronology-year">1945年 <span>抗日战争胜利</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>日本宣布无条件投降，中国抗日战争取得最终胜利。
-                    </div>
+                <div class="chrono-type">后金/清初纪年</div>
+                <div class="chrono-example">天命元年（1616年，努尔哈赤）、天聪元年（1627年，皇太极）、崇德元年（1636年，改国号为清）、顺治元年（1644年，入关）</div>
+                <div class="chrono-desc">后金初期用"天命/天聪"（满语年号），<strong>崇德元年（1636）改国号为清，年号汉化</strong>；顺治元年入关后，全面沿用明式一世一元制。</div>
+                <div class="chrono-item">
+                    <div class="chrono-type">清代一世一元制</div>
+                    <div class="chrono-example">康熙元年（1662年）、雍正元年（1723年）、乾隆元年（1736年）、嘉庆元年（1796年）、道光元年（1821年）、光绪元年（1875年）、宣统元年（1909年）</div>
+                    <div class="chrono-desc">清代严格执行一世一元，<strong>年号全为两字，无生僻字</strong>；康熙（61年）、乾隆（60年）为中国历史最长年号，宣统三年（1912年）清帝退位。</div>
                 </div>
-                <div class="chronology-item event-founding">
-                    <div class="chronology-year">1949年 <span>中华人民共和国成立</span></div>
-                    <div class="chronology-desc">
-                        <span>核心事件：</span>开国大典在北京天安门举行，中华人民共和国正式成立。
-                    </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">清代三轨纪年</div>
+                    <div class="chrono-example">乾隆四十五年庚子岁（1780年）= 公元1780年、道光二十年庚子岁（1840年）= 公元1840年、光绪二十六年庚子岁（1900年）= 公元1900年</div>
+                    <div class="chrono-desc">清代官方文书采用<strong>年号+干支（纪月日）+公元（对外）</strong>三轨纪年；干支纪日精准到"某日某时"，如《清实录》："康熙二十三年甲子岁正月十五日辰时"。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">避讳与纪年书写</div>
+                    <div class="chrono-example">康熙名玄烨→"玄"写作"元"（如"元烨"）、雍正名胤禛→"胤"写作"允"、乾隆名弘历→"弘"写作"宏"、道光名旻宁→"旻"写作"甯"</div>
+                    <div class="chrono-desc">清代严格避讳皇帝名讳，<strong>纪年文书中凡遇帝名必缺笔/改字</strong>；如"乾隆"不避，但"弘历"需改，成为纪年考据的重要特征。</div>
+                </div>
+                <div class="chrono-item">
+                    <div class="chrono-type">民国纪年过渡</div>
+                    <div class="chrono-example">宣统三年（1911年）= 民国元年（1912年）、民国二年（1913年）= 公元1913年、民国三十八年（1949年）= 公元1949年</div>
+                    <div class="chrono-desc">1912年中华民国成立，<strong>废除年号纪年，改用民国纪年（以1912为元年）</strong>；1949年中华人民共和国成立后，全面采用公元纪年，沿用至今。</div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- 页脚（统一风格） -->
     <footer>
-        <p>中国历史纪年表 | 整理自正史记载，仅供学习参考</p>
+        <p>中国历史纪年表（完整版） | 整理自《史记》《资治通鉴》《二十四史》《中国纪年史》等，含所有核心纪年体系与特殊规则</p>
     </footer>
+
+    <script>
+        function toggleSection(id) {
+            const section = document.getElementById(id);
+            if (section.style.display === "none") {
+                section.style.display = "flex";
+            } else {
+                section.style.display = "none";
+            }
+        }
+
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e243130e8f6ef010e7208a7a5022e200";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </body>
 </html>
