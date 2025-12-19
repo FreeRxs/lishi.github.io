@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国朝代歌 | 朗朗上口记历史</title>
+    <style>
+        /* 沿用统一基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* 头部样式（与其他页面完全统一） */
+        header {
+            background: linear-gradient(120deg, #2c3e50, #34495e);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        /* 导航栏（保持联动，样式统一） */
+        nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2c3e50;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        /* 主体内容：适配朝代歌展示 */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .song-section {
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        }
+
+        .song-section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        /* 朝代歌核心样式 */
+        .dynasty-song {
+            font-size: 1.2rem;
+            line-height: 2;
+            text-align: center;
+            padding: 2rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #3498db;
+        }
+
+        /* 拼音标注样式 */
+        .pinyin {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            display: block;
+            margin-top: -0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* 朝代关键词高亮 */
+        .dynasty-key {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        /* 版本切换按钮 */
+        .version-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .version-tab {
+            padding: 0.6rem 1.2rem;
+            background-color: #f1f3f5;
+            border: none;
+            border-radius: 4px;
+            color: #2c3e50;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .version-tab.active {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .version-tab:hover {
+            background-color: #e0e6ed;
+        }
+
+        /* 解读区块样式 */
+        .song-interpret {
+            margin-top: 2rem;
+        }
+
+        .interpret-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            border-left: 3px solid #27ae60;
+        }
+
+        .interpret-item h4 {
+            color: #2c3e50;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .interpret-item p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* 简易版/完整版切换容器 */
+        .song-container {
+            display: none;
+        }
+
+        .song-container.active {
+            display: block;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .song-section {
+                padding: 1.5rem;
+            }
+
+            .song-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .dynasty-song {
+                font-size: 1rem;
+                padding: 1.5rem 1rem;
+            }
+
+            .version-tab {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* 页脚（统一风格） */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部（统一风格） -->
+    <header>
+        <h1>中国朝代歌</h1>
+        <p>朗朗上口记朝代，轻松梳理历史脉络</p>
+    </header>
+
+    <!-- 导航栏：与其他历史页面互跳 -->
+    <nav>
+        <div class="nav-container">
+            <a href="dynasties.html">朝代顺序表</a>
+            <a href="emperors.html">历代帝王表</a>
+            <a href="chronology.html">历史纪年表</a>
+            <a href="dynasty_years.html">王朝年代详表</a>
+            <a href="#full">完整版</a>
+            <a href="#simple">简易版</a>
+            <a href="#interpret">分段解读</a>
+        </div>
+    </nav>
+
+    <!-- 主体内容：朝代歌+解读 -->
+    <main>
+        <!-- 朝代歌核心区域 -->
+        <section class="song-section">
+            <h2>经典朝代歌（附拼音/解读）</h2>
+
+            <!-- 版本切换按钮 -->
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="switchVersion('full')">完整版</button>
+                <button class="version-tab" onclick="switchVersion('simple')">简易版</button>
+            </div>
+
+            <!-- 完整版朝代歌 -->
+            <div id="full-container" class="song-container active">
+                <div class="dynasty-song">
+                    三皇五帝始，尧舜禹相传。<br>
+                    <span class="pinyin">sān huáng wǔ dì shǐ，yáo shùn yǔ xiāng chuán。</span><br>
+                    夏<span class="dynasty-key">商</span>与<span class="dynasty-key">周</span>，分西东。<br>
+                    <span class="pinyin">xià shāng yǔ zhōu，fēn xī dōng。</span><br>
+                    <span class="dynasty-key">秦</span>汉<span class="dynasty-key">三</span>国<span class="dynasty-key">两</span>晋<span class="dynasty-key">朝</span>，<br>
+                    <span class="pinyin">qín hàn sān guó liǎng jìn cháo，</span><br>
+                    <span class="dynasty-key">南</span>北<span class="dynasty-key">朝</span>并立，<span class="dynasty-key">隋</span><span class="dynasty-key">唐</span>五代传。<br>
+                    <span class="pinyin">nán běi cháo bìng lì，suí táng wǔ dài chuán。</span><br>
+                    <span class="dynasty-key">宋</span>元<span class="dynasty-key">明</span><span class="dynasty-key">清</span>后，王朝至此完。<br>
+                    <span class="pinyin">sòng yuán míng qīng hòu，wáng cháo zhì cǐ wán。</span><br>
+                    民國再到共和，代代往下传。<br>
+                    <span class="pinyin">mín guó zài dào gòng hé，dài dài wǎng xià chuán。</span>
+                </div>
+            </div>
+
+            <!-- 简易版朝代歌 -->
+            <div id="simple-container" class="song-container">
+                <div class="dynasty-song">
+                    <span class="dynasty-key">夏</span>商<span class="dynasty-key">周</span>秦<span class="dynasty-key">西</span>东汉，<br>
+                    <span class="pinyin">xià shāng zhōu qín xī dōng hàn，</span><br>
+                    <span class="dynasty-key">三</span>国<span class="dynasty-key">两</span>晋<span class="dynasty-key">南</span>北<span class="dynasty-key">朝</span>，<br>
+                    <span class="pinyin">sān guó liǎng jìn nán běi cháo，</span><br>
+                    <span class="dynasty-key">隋</span><span class="dynasty-key">唐</span>五代<span class="dynasty-key">宋</span>元<span class="dynasty-key">明</span>，<br>
+                    <span class="pinyin">suí táng wǔ dài sòng yuán míng，</span><br>
+                    <span class="dynasty-key">清</span>后民国立，共和到如今。<br>
+                    <span class="pinyin">qīng hòu mín guó lì，gòng hé dào rú jīn。</span>
+                </div>
+            </div>
+
+            <!-- 分段解读 -->
+            <section id="interpret" class="song-interpret">
+                <h2>朝代歌分段解读</h2>
+
+                <div class="interpret-item">
+                    <h4>「三皇五帝始，尧舜禹相传」</h4>
+                    <p>三皇五帝为上古传说时代的部落首领（如伏羲、黄帝、尧、舜），尧禅让于舜，舜禅让于禹，是“公天下”的禅让制时期；禹建立夏朝后，禅让制变为世袭制，开启“家天下”。</p>
+                </div>
+
+                <div class="interpret-item">
+                    <h4>「夏商与周，分西东」</h4>
+                    <p>夏（约前2070-前1600）是中国首个世袭制王朝；商（约前1600-前1046）以甲骨文、青铜文明为特色；周分为西周（前1046-前771）和东周（前770-前221，含春秋、战国），东周礼崩乐坏，诸侯争霸。</p>
+                </div>
+
+                <div class="interpret-item">
+                    <h4>「秦汉三国两晋朝，南北朝并立」</h4>
+                    <p>秦（前221-前207）是首个大一统中央集权王朝；汉分西汉（前202-8）、东汉（25-220）；三国（魏、蜀、吴）鼎立后，西晋（265-316）短暂统一，东晋（317-420）偏安江南，南北朝（420-589）南北政权对峙。</p>
+                </div>
+
+                <div class="interpret-item">
+                    <h4>「隋唐五代传，宋元明清后」</h4>
+                    <p>隋（581-618）统一南北，创科举制；唐（618-907）是鼎盛王朝，安史之乱后衰落；五代十国（907-960）政权更迭频繁；宋（北宋960-1127、南宋1127-1279）与辽、夏、金并立，元（1271-1368）大一统，明（1368-1644）、清（1636-1912）为最后两个封建王朝。</p>
+                </div>
+
+                <div class="interpret-item">
+                    <h4>「民国再到共和，代代往下传」</h4>
+                    <p>1912年清帝退位，中华民国建立；1949年中华人民共和国成立，进入共和时代，封建王朝制度彻底终结。</p>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <!-- 页脚（统一风格） -->
+    <footer>
+        <p>中国朝代歌 | 整理自经典版本，拼音/解读仅供学习参考</p>
+    </footer>
+
+    <!-- 版本切换脚本 -->
+    <script>
+        // 切换朝代歌版本
+        function switchVersion(version) {
+            // 隐藏所有容器
+            document.querySelectorAll('.song-container').forEach(container => {
+                container.classList.remove('active');
+            });
+            // 移除所有按钮激活态
+            document.querySelectorAll('.version-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // 激活选中版本
+            document.getElementById(`${version}-container`).classList.add('active');
+            document.querySelector(`.version-tab[onclick="switchVersion('${version}')"]`).classList.add('active');
+        }
+
+        // 平滑滚动（锚点跳转）
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#full') switchVersion('full');
+                else if (targetId === '#simple') switchVersion('simple');
+                else {
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
