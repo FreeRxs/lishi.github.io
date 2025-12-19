@@ -9,38 +9,61 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei", "SimSun", sans-serif; /* 加入宋体，更贴合历史感 */
+            font-family: "Microsoft YaHei", "SimSun", "STKaiti", sans-serif; /* 保留楷体增强古籍感 */
         }
 
-        /* 博物馆主题主配色：浅米底+赭石+深棕+青铜色 */
+        /* 全局平滑滚动 */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 复用博物馆主题配色+纹理背景 */
         body {
-            background-color: #f2efe9; /* 浅米色（古籍纸张质感） */
+            background-color: #f2efe9;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238b5a2b' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
             color: #333;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
-        /* 头部样式 - 深棕渐变（博物馆展柜木色） */
+        /* 头部样式 - 完全复用帝王表的渐变+纹理 */
         header {
-            background: linear-gradient(120deg, #5c4033, #8b5a2b); /* 深棕→赭石渐变 */
-            color: #f8f5e6; /* 米白文字 */
+            background: linear-gradient(120deg, #5c4033, #8b5a2b);
+            color: #f8f5e6;
             padding: 2rem 0;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2); /* 加深阴影，更厚重 */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0h.008v.017h-.008V0zm-2.188 0h.008v.017h-.008V0zm-2.182 0h.008v.017h-.008V0zm-2.176 0h.008v.017h-.008V0zm-2.17 0h.008v.017h-.008V0zm-2.164 0h.008v.017h-.008V0zm-2.158 0h.008v.017h-.008V0zm-2.152 0h.008v.017h-.008V0zm-2.146 0h.008v.017h-.008V0zm-2.14 0h.008v.017h-.008V0zm-2.134 0h.008v.017h-.008V0zm-2.128 0h.008v.017h-.008V0zm-2.122 0h.008v.017h-.008V0zm-2.116 0h.008v.017h-.008V0zm-2.11 0h.008v.017h-.008V0zm-2.104 0h.008v.017h-.008V0zm-2.098 0h.008v.017h-.008V0zm-2.092 0h.008v.017h-.008V0zm-2.086 0h.008v.017h-.008V0zm-2.08 0h.008v.017h-.008V0z' fill='%23f8f5e6' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            pointer-events: none;
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 0.5rem;
             font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-family: "STKaiti", "Microsoft YaHei", sans-serif;
         }
 
         header p {
             font-size: 1.1rem;
             opacity: 0.9;
             margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
-        /* 头部一级目录样式 */
+        /* 头部一级目录 - 高亮当前页（历史朝代顺序表） */
         .header-main-nav {
             display: flex;
             flex-wrap: wrap;
@@ -64,23 +87,49 @@
             font-weight: 500;
             transition: all 0.3s ease;
             opacity: 0.9;
+            position: relative;
+        }
+
+        .header-main-nav a.active {
+            background-color: rgba(248, 245, 230, 0.2);
+            opacity: 1;
+        }
+        
+        .header-main-nav a.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background-color: #f8f5e6;
+            border-radius: 1px;
         }
 
         .header-main-nav a:hover {
             background-color: rgba(248, 245, 230, 0.2);
             opacity: 1;
             transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
 
-        /* 导航栏 - 浅卡其底色（博物馆展架） */
+        /* 粘性导航栏 - 完全复用原有样式 */
         nav {
-            background: #f9f6f0; /* 浅卡其色 */
+            background: linear-gradient(to right, #f9f6f0, #f2efe9);
             padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid #e0d8c8; /* 浅边框，模拟木质纹理 */
+            border-bottom: 1px solid #e0d8c8;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            padding: 0.8rem 0;
+            background: rgba(249, 246, 240, 0.95);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
         .nav-container {
@@ -94,16 +143,35 @@
 
         nav a {
             text-decoration: none;
-            color: #5c4033; /* 深棕色文字 */
+            color: #5c4033;
             padding: 0.5rem 1rem;
             border-radius: 4px;
             transition: all 0.3s ease;
             font-weight: 500;
+            position: relative;
+            overflow: hidden;
         }
-
+        
+        nav a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 90, 43, 0.1), transparent);
+            transition: all 0.5s ease;
+        }
+        
         nav a:hover {
-            background-color: #8b5a2b; /* 赭石色hover背景 */
-            color: #f8f5e6; /* 米白文字 */
+            background-color: #8b5a2b;
+            color: #f8f5e6;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(139, 90, 43, 0.2);
+        }
+        
+        nav a:hover::before {
+            left: 100%;
         }
 
         /* 主体内容 */
@@ -113,85 +181,213 @@
             padding: 0 1rem;
         }
 
-        /* 朝代板块 - 仿古籍函套质感 */
+        /* 朝代板块样式 - 复用帝王板块的仿古边框和装饰 */
         .dynasty-section {
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
             background: #ffffff;
             border-radius: 8px;
             padding: 2rem;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-            border: 1px solid #e8e0d0; /* 浅边框 */
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e8e0d0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dynasty-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60px;
+            height: 60px;
+            border-top: 3px solid #8b5a2b;
+            border-left: 3px solid #8b5a2b;
+            border-radius: 8px 0 0 0;
+            opacity: 0.5;
+        }
+        
+        .dynasty-section::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            border-bottom: 3px solid #8b5a2b;
+            border-right: 3px solid #8b5a2b;
+            border-radius: 0 0 8px 0;
+            opacity: 0.5;
         }
 
+        /* 朝代标题 - 复用图标和样式 */
         .dynasty-section h2 {
-            color: #5c4033; /* 深棕色标题 */
-            font-size: 1.8rem;
+            color: #5c4033;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #8b5a2b; /* 赭石色分隔线 */
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #8b5a2b;
+            font-family: "STKaiti", "Microsoft YaHei", sans-serif;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .dynasty-section h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        
+        #ancient h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E"); /* 鼎（上古） */
+        }
+        
+        #qinhan h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2V9h-2V7h4v10z'/%3E%3C/svg%3E"); /* 长城（秦汉） */
+        }
+        
+        #weijin h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 5h-1.42v1.5h1.74v1.25h-1.74v1h2.56V8H17zm-4.5 3c0 .55-.45 1-1 1h-2v1h3v1h-4v-2c0-.55.45-1 1-1h2v-1h-3V9h4v1zm-3.5-2h1.5v1.25H8.5v-1.25zm0 2.25h1.5v1.25H8.5V11.5zm5.5 2.5h-1.75v1h1.42v1.25h-1.42v1h2.75V14zM12 9h1.5v1.25H12V9zm0 2.25h1.5v1.25H12v-1.25z'/%3E%3C/svg%3E"); /* 三国鼎立（魏晋） */
+        }
+        
+        #suitang h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E"); /* 大雁塔（隋唐） */
+        }
+        
+        #songliao h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 5h-1.42v1.5h1.74v1.25h-1.74v1h2.56V8H17zm-4.5 3c0 .55-.45 1-1 1h-2v1h3v1h-4v-2c0-.55.45-1 1-1h2v-1h-3V9h4v1zm-3.5-2h1.5v1.25H8.5v-1.25zm0 2.25h1.5v1.25H8.5V11.5zm5.5 2.5h-1.75v1h1.42v1.25h-1.42v1h2.75V14zM12 9h1.5v1.25H12V9zm0 2.25h1.5v1.25H12v-1.25z'/%3E%3C/svg%3E"); /* 宋瓷（宋辽） */
+        }
+        
+        #mingqing h2::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b5a2b'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E"); /* 故宫（明清） */
         }
 
-        /* 朝代列表 */
+        /* 折叠按钮 - 复用原有样式 */
+        .collapse-btn {
+            background-color: #8b5a2b;
+            color: #f8f5e6;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            transition: all 0.2s ease;
+        }
+        
+        .collapse-btn:hover {
+            background-color: #5c4033;
+            transform: translateY(-1px);
+        }
+
+        /* 朝代列表 - 复用帝王列表的布局逻辑 */
         .dynasty-list {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.2rem;
         }
 
-        /* 朝代项 - 仿竹简/古籍卡片 */
+        /* 朝代项 - 复用帝王项的样式（奇偶区分、hover效果） */
         .dynasty-item {
-            padding: 1rem;
-            border-left: 4px solid #8b5a2b; /* 赭石色左侧标识 */
-            background-color: #f9f6f0; /* 浅卡其背景 */
+            padding: 1.2rem;
+            border-left: 4px solid #8b5a2b;
+            background-color: #f9f6f0;
             border-radius: 4px;
-            transition: transform 0.2s ease;
+            transition: all 0.3s ease;
             border-right: 1px solid #e0d8c8;
             border-bottom: 1px solid #e0d8c8;
+            display: grid;
+            grid-template-columns: 1fr 2fr 4fr;
+            gap: 1rem;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
-
+        
+        .dynasty-item:nth-child(even) {
+            background-color: #f5f2eb;
+            border-left-color: #7a4f28;
+        }
+        
         .dynasty-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* hover轻微浮起 */
+            transform: translateX(5px) translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+            border-left-width: 6px;
+        }
+        
+        .dynasty-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 90, 43, 0.05), transparent);
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .dynasty-item:hover::before {
+            opacity: 1;
         }
 
-        .dynasty-item h3 {
+        /* 朝代信息样式 - 保留第一方案楷体，移除后方小字 */
+        .dynasty-name {
             font-size: 1.4rem;
-            color: #5c4033; /* 深棕色标题 */
-            margin-bottom: 0.5rem;
+            color: #5c4033;
+            font-weight: 600;
+            /* 方案1：强化楷体（推荐）- 方正楷体优先，兼容系统楷体 */
+            font-family: "FZKai-Z03", "STKaiti", "KaiTi", "SimKai", "Microsoft YaHei", sans-serif;
+            position: relative;
+            padding-right: 0.5rem;
+        }
+
+        .dynasty-time {
+            font-size: 0.95rem;
+            color: #666;
+            border-left: 1px solid #e0d8c8;
+            padding-left: 1rem;
+            position: relative;
+        }
+        
+        .dynasty-time::before {
+            content: "存续：";
+            color: #8b5a2b;
             font-weight: 600;
         }
 
-        .dynasty-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
+        .dynasty-desc {
             font-size: 0.95rem;
             color: #555;
+            border-left: 1px solid #e0d8c8;
+            padding-left: 1rem;
         }
 
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        .dynasty-desc strong {
+            color: #8b5a2b;
+            position: relative;
+        }
+        
+        .dynasty-desc strong::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #8b5a2b;
         }
 
-        .info-item span:first-child {
-            font-weight: 600;
-            color: #8b5a2b; /* 赭石色强调 */
-        }
-
-        .dynasty-note {
-            margin-top: 0.8rem;
-            color: #666;
-            font-style: italic;
-            border-top: 1px dashed #e0d8c8; /* 虚线分隔，仿古籍批注 */
-            padding-top: 0.8rem;
-        }
-
-        /* 响应式适配 */
+        /* 响应式适配 - 完全复用原有逻辑 */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .header-main-nav {
@@ -209,91 +405,124 @@
             }
 
             .dynasty-section h2 {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
 
-            .dynasty-item h3 {
+            .dynasty-name {
                 font-size: 1.2rem;
             }
 
-            .dynasty-info {
-                gap: 1rem;
+            .dynasty-item {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .dynasty-time, .dynasty-desc {
+                border-left: none;
+                padding-left: 0;
+                padding-top: 0.5rem;
+                border-top: 1px dashed #e0d8c8;
             }
         }
 
-        /* 页脚 - 深棕底色，呼应头部 */
+        /* 页脚 - 完全复用原有样式 */
         footer {
-            background-color: #5c4033; /* 深棕色 */
-            color: #f8f5e6; /* 米白文字 */
+            background-color: #5c4033;
+            color: #f8f5e6;
             text-align: center;
-            padding: 1.5rem 0;
-            margin-top: 3rem;
-            border-top: 2px solid #8b5a2b; /* 赭石色上边框 */
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 3px solid #8b5a2b;
+            position: relative;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #8b5a2b, #5c4033, #8b5a2b);
+            opacity: 0.8;
         }
 
         footer p {
             opacity: 0.9;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        
+        footer p::after {
+            content: " ✦ ";
+            margin-left: 0.5rem;
+            opacity: 0.7;
+        }
+        
+        footer p::before {
+            content: " ✦ ";
+            margin-right: 0.5rem;
+            opacity: 0.7;
         }
     </style>
 </head>
 <body>
-    <!-- 头部 -->
+    <!-- 头部 - 保持导航结构，高亮当前页 -->
     <header>
         <h1>中国历史朝代顺序表</h1>
-        <p>梳理华夏文明脉络，纵览数千年历史变迁</p>
-        <!-- 头部一级目录 -->
+        <p>理清朝代脉络，纵观华夏千年</p>
         <div class="header-main-nav">
             <a href="#" class="active">历史朝代顺序表</a>
             <a href="emperors.html">历代帝王表</a>
-            <a href="#">历史纪年表</a>
-            <a href="#">王朝年代</a>
-            <a href="#">朝代歌</a>
+            <a href="chronology.html">历史纪年表</a>
+            <a href="dynasty-era.html">王朝年代</a>
+            <a href="dynasty-song.html">朝代歌</a>
         </div>
     </header>
 
-    <!-- 导航栏 -->
-    <nav>
+    <!-- 粘性导航栏 - 跳转对应朝代板块 -->
+    <nav id="main-nav">
         <div class="nav-container">
             <a href="#ancient">上古时期</a>
             <a href="#qinhan">秦汉时期</a>
             <a href="#weijin">魏晋南北朝</a>
             <a href="#suitang">隋唐时期</a>
-            <a href="#wudai">五代十国</a>
             <a href="#songliao">宋辽夏金元</a>
             <a href="#mingqing">明清时期</a>
-            <a href="#modern">近现代</a>
         </div>
     </nav>
 
-    <!-- 主体内容 -->
+    <!-- 主体内容 - 朝代顺序表核心 -->
     <main>
         <!-- 上古时期 -->
         <section id="ancient" class="dynasty-section">
-            <h2>上古时期</h2>
-            <div class="dynasty-list">
+            <h2>上古时期（三皇五帝至周）</h2>
+            <button class="collapse-btn" onclick="toggleSection('ancient-list')">收起/展开</button>
+            <div id="ancient-list" class="dynasty-list">
                 <div class="dynasty-item">
-                    <h3>夏朝</h3>
-                    <div class="dynasty-info">
-                        <div class="info-item"><span>起止年份：</span>约前2070年 - 约前1600年</div>
-                        <div class="info-item"><span>都城：</span>阳城、阳翟、斟鄩等</div>
-                    </div>
-                    <p class="dynasty-note">中国史载第一个世袭制朝代，禹传位于子启，家天下取代禅让制。</p>
+                    <div class="dynasty-name">三皇五帝</div>
+                    <div class="dynasty-time">约前6000年 - 约前2070年</div>
+                    <div class="dynasty-desc">部落联盟时期，禅让制为主，<strong>炎黄部落</strong>融合形成华夏族核心。</div>
                 </div>
                 <div class="dynasty-item">
-                    <h3>商朝</h3>
-                    <div class="dynasty-info">
-                        <div class="info-item"><span>起止年份：</span>约前1600年 - 前1046年</div>
-                        <div class="info-item"><span>都城：</span>亳、殷（殷墟）等</div>
-                    </div>
-                    <p class="dynasty-note">又称殷商，甲骨文是目前发现的中国最早的成熟文字，青铜文明鼎盛。</p>
+                    <div class="dynasty-name">夏朝</div>
+                    <div class="dynasty-time">约前2070年 - 约前1600年</div>
+                    <div class="dynasty-desc">中国第一个世袭制王朝，<strong>二里头遗址</strong>为重要考古佐证，启废禅让立世袭。</div>
                 </div>
                 <div class="dynasty-item">
-                    <h3>周朝（西周+东周）</h3>
-                    <div class="dynasty-info">
-                        <div class="info-item"><span>西周：</span>前1046年 - 前771年（都城：镐京）</div>
-                        <div class="info-item"><span>东周：</span>前770年 - 前256年（都城：洛邑）</div>
-                    </div>
-                    <p class="dynasty-note">东周分为春秋（前770-前476）和战国（前475-前221），是礼乐制度崩溃、百家争鸣的时代。</p>
+                    <div class="dynasty-name">商朝</div>
+                    <div class="dynasty-time">约前1600年 - 前1046年</div>
+                    <div class="dynasty-desc">青铜文明鼎盛，有成熟文字<strong>甲骨文</strong>，盘庚迁殷后国力稳定。</div>
+                </div>
+                <div class="dynasty-item">
+                    <div class="dynasty-name">西周</div>
+                    <div class="dynasty-time">前1046年 - 前771年</div>
+                    <div class="dynasty-desc">分封制、宗法制完善，<strong>礼乐制度</strong>确立，定都镐京，幽王烽火戏诸侯致灭亡。</div>
+                </div>
+                <div class="dynasty-item">
+                    <div class="dynasty-name">东周</div>
+                    <div class="dynasty-time">前770年 - 前256年</div>
+                    <div class="dynasty-desc">分春秋、战国两阶段，周天子衰微，<strong>礼崩乐坏</strong>，各国争霸兼并。</div>
                 </div>
             </div>
         </section>
@@ -301,22 +530,27 @@
         <!-- 秦汉时期 -->
         <section id="qinhan" class="dynasty-section">
             <h2>秦汉时期</h2>
-            <div class="dynasty-list">
+            <button class="collapse-btn" onclick="toggleSection('qinhan-list')">收起/展开</button>
+            <div id="qinhan-list" class="dynasty-list">
                 <div class="dynasty-item">
-                    <h3>秦朝</h3>
-                    <div class="dynasty-info">
-                        <div class="info-item"><span>起止年份：</span>前221年 - 前207年</div>
-                        <div class="info-item"><span>都城：</span>咸阳</div>
-                    </div>
-                    <p class="dynasty-note">中国第一个大一统中央集权王朝，秦始皇统一文字、度量衡、货币，修长城。</p>
+                    <div class="dynasty-name">秦朝</div>
+                    <div class="dynasty-time">前221年 - 前207年</div>
+                    <div class="dynasty-desc">中国第一个大一统中央集权王朝，<strong>书同文、车同轨</strong>，设郡县制。</div>
                 </div>
                 <div class="dynasty-item">
-                    <h3>汉朝（西汉+东汉）</h3>
-                    <div class="dynasty-info">
-                        <div class="info-item"><span>西汉：</span>前202年 - 8年（都城：长安）</div>
-                        <div class="info-item"><span>东汉：</span>25年 - 220年（都城：洛阳）</div>
-                    </div>
-                    <p class="dynasty-note">中间穿插王莽新朝（8-23年），汉朝是中国历史上强盛的大一统王朝，罢黜百家独尊儒术，丝绸之路开辟。</p>
+                    <div class="dynasty-name">西汉</div>
+                    <div class="dynasty-time">前202年 - 8年</div>
+                    <div class="dynasty-desc">休养生息恢复国力，<strong>文景之治</strong>、汉武盛世，开辟丝绸之路。</div>
+                </div>
+                <div class="dynasty-item">
+                    <div class="dynasty-name">新朝</div>
+                    <div class="dynasty-time">8年 - 23年</div>
+                    <div class="dynasty-desc">王莽篡汉建立，推行改制失败，<strong>绿林赤眉起义</strong>推翻。</div>
+                </div>
+                <div class="dynasty-item">
+                    <div class="dynasty-name">东汉</div>
+                    <div class="dynasty-time">25年 - 220年</div>
+                    <div class="dynasty-desc">刘秀重建汉朝，<strong>光武中兴</strong>，后期外戚宦官专权，黄巾起义瓦解。</div>
                 </div>
             </div>
         </section>
@@ -324,31 +558,27 @@
         <!-- 魏晋南北朝 -->
         <section id="weijin" class="dynasty-section">
             <h2>魏晋南北朝</h2>
-            <div class="dynasty-list">
+            <button class="collapse-btn" onclick="toggleSection('weijin-list')">收起/展开</button>
+            <div id="weijin-list" class="dynasty-list">
                 <div class="dynasty-item">
-                    <h3>三国（魏、蜀、吴）</h3>
-                    <div class="dynasty-info">
-                        <div class="info-item"><span>曹魏：</span>220年 - 265年（都城：洛阳）</div>
-                        <div class="info-item"><span>蜀汉：</span>221年 - 263年（都城：成都）</div>
-                        <div class="info-item"><span>东吴：</span>229年 - 280年（都城：建业）</div>
-                    </div>
-                    <p class="dynasty-note">东汉末年群雄割据，最终形成三足鼎立局面，280年西晋灭吴统一全国。</p>
+                    <div class="dynasty-name">三国</div>
+                    <div class="dynasty-time">220年 - 280年</div>
+                    <div class="dynasty-desc">魏、蜀、吴三足鼎立，<strong>官渡之战、赤壁之战</strong>奠定格局。</div>
                 </div>
                 <div class="dynasty-item">
-                    <h3>晋朝（西晋+东晋）</h3>
-                    <div class="dynasty-info">
-                        <div class="info-item"><span>西晋：</span>265年 - 316年（都城：洛阳）</div>
-                        <div class="info-item"><span>东晋：</span>317年 - 420年（都城：建康）</div>
-                    </div>
-                    <p class="dynasty-note">西晋短暂统一后因八王之乱、五胡乱华灭亡，东晋偏安江南，北方进入十六国时期。</p>
+                    <div class="dynasty-name">西晋</div>
+                    <div class="dynasty-time">265年 - 316年</div>
+                    <div class="dynasty-desc">短暂统一全国，<strong>八王之乱、五胡乱华</strong>导致灭亡，北方陷入分裂。</div>
                 </div>
                 <div class="dynasty-item">
-                    <h3>南北朝</h3>
-                    <div class="dynasty-info">
-                        <div class="info-item"><span>南朝：</span>420年 - 589年（宋、齐、梁、陈，都城均在建康）</div>
-                        <div class="info-item"><span>北朝：</span>386年 - 581年（北魏、东魏、西魏、北齐、北周）</div>
-                    </div>
-                    <p class="dynasty-note">南北朝是中国南北分裂对峙的时期，581年北周外戚杨坚建立隋朝，589年灭陈统一全国。</p>
+                    <div class="dynasty-name">东晋</div>
+                    <div class="dynasty-time">317年 - 420年</div>
+                    <div class="dynasty-desc">偏安江南，与北方十六国并立，<strong>淝水之战</strong>击败前秦。</div>
+                </div>
+                <div class="dynasty-item">
+                    <div class="dynasty-name">南北朝</div>
+                    <div class="dynasty-time">420年 - 589年</div>
+                    <div class="dynasty-desc">南朝（宋齐梁陈）、北朝（北魏、东魏、西魏、北齐、北周）对峙，<strong>民族大融合</strong>。</div>
                 </div>
             </div>
         </section>
@@ -356,45 +586,22 @@
         <!-- 隋唐时期 -->
         <section id="suitang" class="dynasty-section">
             <h2>隋唐时期</h2>
-            <div class="dynasty-list">
+            <button class="collapse-btn" onclick="toggleSection('suitang-list')">收起/展开</button>
+            <div id="suitang-list" class="dynasty-list">
                 <div class="dynasty-item">
-                    <h3>隋朝</h3>
-                    <div class="dynasty-info">
-                        <div class="info-item"><span>起止年份：</span>581年 - 618年</div>
-                        <div class="info-item"><span>都城：</span>大兴城、洛阳</div>
-                    </div>
-                    <p class="dynasty-note">结束南北朝分裂，创立三省六部制、科举制，开凿大运河，国力强盛但二世而亡。</p>
+                    <div class="dynasty-name">隋朝</div>
+                    <div class="dynasty-time">581年 - 618年</div>
+                    <div class="dynasty-desc">重新统一全国，创立<strong>三省六部制、科举制</strong>，开凿大运河。</div>
                 </div>
                 <div class="dynasty-item">
-                    <h3>唐朝</h3>
-                    <div class="dynasty-info">
-                        <div class="info-item"><span>起止年份：</span>618年 - 907年</div>
-                        <div class="info-item"><span>都城：</span>长安、洛阳</div>
-                    </div>
-                    <p class="dynasty-note">中国历史上鼎盛的大一统王朝，贞观之治、开元盛世，文化、经济、外交全面繁荣，安史之乱后由盛转衰。</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 五代十国 -->
-        <section id="wudai" class="dynasty-section">
-            <h2>五代十国</h2>
-            <div class="dynasty-list">
-                <div class="dynasty-item">
-                    <h3>五代</h3>
-                    <div class="dynasty-info">
-                        <div class="info-item"><span>起止年份：</span>907年 - 960年</div>
-                        <div class="info-item"><span>政权：</span>后梁、后唐、后晋、后汉、后周（均定都中原）</div>
-                    </div>
-                    <p class="dynasty-note">唐朝灭亡后中原地区的五个短命王朝，更迭频繁，战乱不休。</p>
+                    <div class="dynasty-name">唐朝</div>
+                    <div class="dynasty-time">618年 - 907年</div>
+                    <div class="dynasty-desc">中国鼎盛时期，<strong>贞观之治、开元盛世</strong>，兼容并包，文化繁荣。</div>
                 </div>
                 <div class="dynasty-item">
-                    <h3>十国</h3>
-                    <div class="dynasty-info">
-                        <div class="info-item"><span>起止年份：</span>902年 - 979年</div>
-                        <div class="info-item"><span>主要政权：</span>前蜀、后蜀、南吴、南唐、吴越、闽、楚、南汉、南平、北汉</div>
-                    </div>
-                    <p class="dynasty-note">五代时期中原以外的割据政权，979年北宋灭北汉，统一大部分地区。</p>
+                    <div class="dynasty-name">武周</div>
+                    <div class="dynasty-time">690年 - 705年</div>
+                    <div class="dynasty-desc">武则天改唐为周，中国唯一女皇帝时期，<strong>殿试制度</strong>完善。</div>
                 </div>
             </div>
         </section>
@@ -402,31 +609,37 @@
         <!-- 宋辽夏金元 -->
         <section id="songliao" class="dynasty-section">
             <h2>宋辽夏金元</h2>
-            <div class="dynasty-list">
+            <button class="collapse-btn" onclick="toggleSection('songliao-list')">收起/展开</button>
+            <div id="songliao-list" class="dynasty-list">
                 <div class="dynasty-item">
-                    <h3>宋朝（北宋+南宋）</h3>
-                    <div class="dynasty-info">
-                        <div class="info-item"><span>北宋：</span>960年 - 1127年（都城：开封）</div>
-                        <div class="info-item"><span>南宋：</span>1127年 - 1279年（都城：临安）</div>
-                    </div>
-                    <p class="dynasty-note">经济、文化、科技高度发达，重文轻武，北宋亡于金（靖康之耻），南宋亡于元。</p>
+                    <div class="dynasty-name">北宋</div>
+                    <div class="dynasty-time">960年 - 1127年</div>
+                    <div class="dynasty-desc">重文轻武，经济文化发达，<strong>活字印刷、指南针</strong>应用，靖康之变灭亡。</div>
                 </div>
                 <div class="dynasty-item">
-                    <h3>辽、西夏、金</h3>
-                    <div class="dynasty-info">
-                        <div class="info-item"><span>辽：</span>916年 - 1125年（契丹族，都城：上京）</div>
-                        <div class="info-item"><span>西夏：</span>1038年 - 1227年（党项族，都城：兴庆府）</div>
-                        <div class="info-item"><span>金：</span>1115年 - 1234年（女真族，都城：中都）</div>
-                    </div>
-                    <p class="dynasty-note">与两宋并立的少数民族政权，辽被金所灭，西夏、金被蒙古所灭。</p>
+                    <div class="dynasty-name">辽朝</div>
+                    <div class="dynasty-time">916年 - 1125年</div>
+                    <div class="dynasty-desc">契丹族建立，<strong>南北面官制</strong>，与宋签订澶渊之盟，被金所灭。</div>
                 </div>
                 <div class="dynasty-item">
-                    <h3>元朝</h3>
-                    <div class="dynasty-info">
-                        <div class="info-item"><span>起止年份：</span>1271年 - 1368年</div>
-                        <div class="info-item"><span>都城：</span>大都（今北京）</div>
-                    </div>
-                    <p class="dynasty-note">蒙古族建立的大一统王朝，疆域空前辽阔，实行行省制度，1368年被朱元璋推翻。</p>
+                    <div class="dynasty-name">西夏</div>
+                    <div class="dynasty-time">1038年 - 1227年</div>
+                    <div class="dynasty-desc">党项族建立，与宋、辽、金三足鼎立，被蒙古所灭。</div>
+                </div>
+                <div class="dynasty-item">
+                    <div class="dynasty-name">金朝</div>
+                    <div class="dynasty-time">1115年 - 1234年</div>
+                    <div class="dynasty-desc">女真族建立，灭辽、北宋，<strong>靖康之耻</strong>，后被蒙古、南宋联合灭。</div>
+                </div>
+                <div class="dynasty-item">
+                    <div class="dynasty-name">南宋</div>
+                    <div class="dynasty-time">1127年 - 1279年</div>
+                    <div class="dynasty-desc">偏安江南，<strong>岳飞抗金</strong>，经济重心南移完成，崖山海战亡于元。</div>
+                </div>
+                <div class="dynasty-item">
+                    <div class="dynasty-name">元朝</div>
+                    <div class="dynasty-time">1271年 - 1368年</div>
+                    <div class="dynasty-desc">蒙古族建立，疆域最广，<strong>行省制度</strong>，加强对边疆管辖。</div>
                 </div>
             </div>
         </section>
@@ -434,54 +647,53 @@
         <!-- 明清时期 -->
         <section id="mingqing" class="dynasty-section">
             <h2>明清时期</h2>
-            <div class="dynasty-list">
+            <button class="collapse-btn" onclick="toggleSection('mingqing-list')">收起/展开</button>
+            <div id="mingqing-list" class="dynasty-list">
                 <div class="dynasty-item">
-                    <h3>明朝</h3>
-                    <div class="dynasty-info">
-                        <div class="info-item"><span>起止年份：</span>1368年 - 1644年</div>
-                        <div class="info-item"><span>都城：</span>应天（南京）、北京</div>
-                    </div>
-                    <p class="dynasty-note">汉族建立的最后一个大一统王朝，废丞相设内阁，郑和下西洋，后期闭关锁国，1644年李自成攻入北京，崇祯帝自缢。</p>
+                    <div class="dynasty-name">明朝</div>
+                    <div class="dynasty-time">1368年 - 1644年</div>
+                    <div class="dynasty-desc">朱元璋建立，<strong>废丞相、设内阁</strong>，郑和下西洋，后期东林党争、农民起义灭亡。</div>
                 </div>
                 <div class="dynasty-item">
-                    <h3>清朝</h3>
-                    <div class="dynasty-info">
-                        <div class="info-item"><span>起止年份：</span>1636年 - 1912年</div>
-                        <div class="info-item"><span>都城：</span>北京</div>
-                    </div>
-                    <p class="dynasty-note">满族建立的大一统王朝，康乾盛世达到顶峰，1840年鸦片战争后逐步沦为半殖民地半封建社会，1912年溥仪退位，清朝灭亡。</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 近现代 -->
-        <section id="modern" class="dynasty-section">
-            <h2>近现代</h2>
-            <div class="dynasty-list">
-                <div class="dynasty-item">
-                    <h3>中华民国</h3>
-                    <div class="dynasty-info">
-                        <div class="info-item"><span>起止年份：</span>1912年 - 1949年</div>
-                        <div class="info-item"><span>都城：</span>南京、北京等</div>
-                    </div>
-                    <p class="dynasty-note">结束封建帝制，建立共和政体，历经北洋政府、国民政府时期，1949年新中国成立后退至台湾。</p>
+                    <div class="dynasty-name">南明</div>
+                    <div class="dynasty-time">1644年 - 1662年</div>
+                    <div class="dynasty-desc">明朝残余势力建立，历经弘光、隆武、永历等政权，被清朝逐步消灭。</div>
                 </div>
                 <div class="dynasty-item">
-                    <h3>中华人民共和国</h3>
-                    <div class="dynasty-info">
-                        <div class="info-item"><span>成立时间：</span>1949年10月1日</div>
-                        <div class="info-item"><span>首都：</span>北京</div>
-                    </div>
-                    <p class="dynasty-note">社会主义国家，实现民族独立和人民解放，历经改革开放等阶段，逐步走向现代化强国。</p>
+                    <div class="dynasty-name">清朝</div>
+                    <div class="dynasty-time">1636年 - 1912年</div>
+                    <div class="dynasty-desc">满族建立，<strong>康乾盛世</strong>，奠定现代中国疆域，鸦片战争后逐步衰落，1912年退位。</div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- 页脚 -->
+    <!-- 页脚 - 保持原有样式 -->
     <footer>
-        <p>中国历史朝代顺序表 | 整理自正史记载，仅供学习参考</p>
+        <p>中国历史朝代顺序表 | 整理自《史记》《资治通鉴》《中国通史》等，仅供学习参考</p>
     </footer>
+
+    <script>
+        // 折叠/展开板块功能 - 复用原有逻辑
+        function toggleSection(id) {
+            const section = document.getElementById(id);
+            if (section.style.display === "none") {
+                section.style.display = "flex";
+            } else {
+                section.style.display = "none";
+            }
+        }
+
+        // 导航栏滚动效果 - 复用原有逻辑
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
     <script>
 var _hmt = _hmt || [];
 (function() {
@@ -491,6 +703,5 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
-
 </body>
 </html>
