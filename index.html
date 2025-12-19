@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国历史朝代顺序表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* 头部样式 */
+        header {
+            background: linear-gradient(120deg, #2c3e50, #34495e);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        /* 导航栏 */
+        nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2c3e50;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        /* 主体内容 */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .dynasty-section {
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        }
+
+        .dynasty-section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        /* 朝代列表 */
+        .dynasty-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .dynasty-item {
+            padding: 1rem;
+            border-left: 4px solid #3498db;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            transition: transform 0.2s ease;
+        }
+
+        .dynasty-item:hover {
+            transform: translateX(5px);
+        }
+
+        .dynasty-item h3 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .dynasty-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-item span:first-child {
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        .dynasty-note {
+            margin-top: 0.8rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .dynasty-section {
+                padding: 1.5rem;
+            }
+
+            .dynasty-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .dynasty-item h3 {
+                font-size: 1.2rem;
+            }
+
+            .dynasty-info {
+                gap: 1rem;
+            }
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <h1>中国历史朝代顺序表</h1>
+        <p>梳理华夏文明脉络，纵览数千年历史变迁</p>
+    </header>
+
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-container">
+            <a href="#ancient">上古时期</a>
+            <a href="#qinhan">秦汉时期</a>
+            <a href="#weijin">魏晋南北朝</a>
+            <a href="#suitang">隋唐时期</a>
+            <a href="#wudai">五代十国</a>
+            <a href="#songliao">宋辽夏金元</a>
+            <a href="#mingqing">明清时期</a>
+            <a href="#modern">近现代</a>
+        </div>
+    </nav>
+
+    <!-- 主体内容 -->
+    <main>
+        <!-- 上古时期 -->
+        <section id="ancient" class="dynasty-section">
+            <h2>上古时期</h2>
+            <div class="dynasty-list">
+                <div class="dynasty-item">
+                    <h3>夏朝</h3>
+                    <div class="dynasty-info">
+                        <div class="info-item"><span>起止年份：</span>约前2070年 - 约前1600年</div>
+                        <div class="info-item"><span>都城：</span>阳城、阳翟、斟鄩等</div>
+                    </div>
+                    <p class="dynasty-note">中国史载第一个世袭制朝代，禹传位于子启，家天下取代禅让制。</p>
+                </div>
+                <div class="dynasty-item">
+                    <h3>商朝</h3>
+                    <div class="dynasty-info">
+                        <div class="info-item"><span>起止年份：</span>约前1600年 - 前1046年</div>
+                        <div class="info-item"><span>都城：</span>亳、殷（殷墟）等</div>
+                    </div>
+                    <p class="dynasty-note">又称殷商，甲骨文是目前发现的中国最早的成熟文字，青铜文明鼎盛。</p>
+                </div>
+                <div class="dynasty-item">
+                    <h3>周朝（西周+东周）</h3>
+                    <div class="dynasty-info">
+                        <div class="info-item"><span>西周：</span>前1046年 - 前771年（都城：镐京）</div>
+                        <div class="info-item"><span>东周：</span>前770年 - 前256年（都城：洛邑）</div>
+                    </div>
+                    <p class="dynasty-note">东周分为春秋（前770-前476）和战国（前475-前221），是礼乐制度崩溃、百家争鸣的时代。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 秦汉时期 -->
+        <section id="qinhan" class="dynasty-section">
+            <h2>秦汉时期</h2>
+            <div class="dynasty-list">
+                <div class="dynasty-item">
+                    <h3>秦朝</h3>
+                    <div class="dynasty-info">
+                        <div class="info-item"><span>起止年份：</span>前221年 - 前207年</div>
+                        <div class="info-item"><span>都城：</span>咸阳</div>
+                    </div>
+                    <p class="dynasty-note">中国第一个大一统中央集权王朝，秦始皇统一文字、度量衡、货币，修长城。</p>
+                </div>
+                <div class="dynasty-item">
+                    <h3>汉朝（西汉+东汉）</h3>
+                    <div class="dynasty-info">
+                        <div class="info-item"><span>西汉：</span>前202年 - 8年（都城：长安）</div>
+                        <div class="info-item"><span>东汉：</span>25年 - 220年（都城：洛阳）</div>
+                    </div>
+                    <p class="dynasty-note">中间穿插王莽新朝（8-23年），汉朝是中国历史上强盛的大一统王朝，罢黜百家独尊儒术，丝绸之路开辟。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 魏晋南北朝 -->
+        <section id="weijin" class="dynasty-section">
+            <h2>魏晋南北朝</h2>
+            <div class="dynasty-list">
+                <div class="dynasty-item">
+                    <h3>三国（魏、蜀、吴）</h3>
+                    <div class="dynasty-info">
+                        <div class="info-item"><span>曹魏：</span>220年 - 265年（都城：洛阳）</div>
+                        <div class="info-item"><span>蜀汉：</span>221年 - 263年（都城：成都）</div>
+                        <div class="info-item"><span>东吴：</span>229年 - 280年（都城：建业）</div>
+                    </div>
+                    <p class="dynasty-note">东汉末年群雄割据，最终形成三足鼎立局面，280年西晋灭吴统一全国。</p>
+                </div>
+                <div class="dynasty-item">
+                    <h3>晋朝（西晋+东晋）</h3>
+                    <div class="dynasty-info">
+                        <div class="info-item"><span>西晋：</span>265年 - 316年（都城：洛阳）</div>
+                        <div class="info-item"><span>东晋：</span>317年 - 420年（都城：建康）</div>
+                    </div>
+                    <p class="dynasty-note">西晋短暂统一后因八王之乱、五胡乱华灭亡，东晋偏安江南，北方进入十六国时期。</p>
+                </div>
+                <div class="dynasty-item">
+                    <h3>南北朝</h3>
+                    <div class="dynasty-info">
+                        <div class="info-item"><span>南朝：</span>420年 - 589年（宋、齐、梁、陈，都城均在建康）</div>
+                        <div class="info-item"><span>北朝：</span>386年 - 581年（北魏、东魏、西魏、北齐、北周）</div>
+                    </div>
+                    <p class="dynasty-note">南北朝是中国南北分裂对峙的时期，581年北周外戚杨坚建立隋朝，589年灭陈统一全国。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 隋唐时期 -->
+        <section id="suitang" class="dynasty-section">
+            <h2>隋唐时期</h2>
+            <div class="dynasty-list">
+                <div class="dynasty-item">
+                    <h3>隋朝</h3>
+                    <div class="dynasty-info">
+                        <div class="info-item"><span>起止年份：</span>581年 - 618年</div>
+                        <div class="info-item"><span>都城：</span>大兴城、洛阳</div>
+                    </div>
+                    <p class="dynasty-note">结束南北朝分裂，创立三省六部制、科举制，开凿大运河，国力强盛但二世而亡。</p>
+                </div>
+                <div class="dynasty-item">
+                    <h3>唐朝</h3>
+                    <div class="dynasty-info">
+                        <div class="info-item"><span>起止年份：</span>618年 - 907年</div>
+                        <div class="info-item"><span>都城：</span>长安、洛阳</div>
+                    </div>
+                    <p class="dynasty-note">中国历史上鼎盛的大一统王朝，贞观之治、开元盛世，文化、经济、外交全面繁荣，安史之乱后由盛转衰。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 五代十国 -->
+        <section id="wudai" class="dynasty-section">
+            <h2>五代十国</h2>
+            <div class="dynasty-list">
+                <div class="dynasty-item">
+                    <h3>五代</h3>
+                    <div class="dynasty-info">
+                        <div class="info-item"><span>起止年份：</span>907年 - 960年</div>
+                        <div class="info-item"><span>政权：</span>后梁、后唐、后晋、后汉、后周（均定都中原）</div>
+                    </div>
+                    <p class="dynasty-note">唐朝灭亡后中原地区的五个短命王朝，更迭频繁，战乱不休。</p>
+                </div>
+                <div class="dynasty-item">
+                    <h3>十国</h3>
+                    <div class="dynasty-info">
+                        <div class="info-item"><span>起止年份：</span>902年 - 979年</div>
+                        <div class="info-item"><span>主要政权：</span>前蜀、后蜀、南吴、南唐、吴越、闽、楚、南汉、南平、北汉</div>
+                    </div>
+                    <p class="dynasty-note">五代时期中原以外的割据政权，979年北宋灭北汉，统一大部分地区。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 宋辽夏金元 -->
+        <section id="songliao" class="dynasty-section">
+            <h2>宋辽夏金元</h2>
+            <div class="dynasty-list">
+                <div class="dynasty-item">
+                    <h3>宋朝（北宋+南宋）</h3>
+                    <div class="dynasty-info">
+                        <div class="info-item"><span>北宋：</span>960年 - 1127年（都城：开封）</div>
+                        <div class="info-item"><span>南宋：</span>1127年 - 1279年（都城：临安）</div>
+                    </div>
+                    <p class="dynasty-note">经济、文化、科技高度发达，重文轻武，北宋亡于金（靖康之耻），南宋亡于元。</p>
+                </div>
+                <div class="dynasty-item">
+                    <h3>辽、西夏、金</h3>
+                    <div class="dynasty-info">
+                        <div class="info-item"><span>辽：</span>916年 - 1125年（契丹族，都城：上京）</div>
+                        <div class="info-item"><span>西夏：</span>1038年 - 1227年（党项族，都城：兴庆府）</div>
+                        <div class="info-item"><span>金：</span>1115年 - 1234年（女真族，都城：中都）</div>
+                    </div>
+                    <p class="dynasty-note">与两宋并立的少数民族政权，辽被金所灭，西夏、金被蒙古所灭。</p>
+                </div>
+                <div class="dynasty-item">
+                    <h3>元朝</h3>
+                    <div class="dynasty-info">
+                        <div class="info-item"><span>起止年份：</span>1271年 - 1368年</div>
+                        <div class="info-item"><span>都城：</span>大都（今北京）</div>
+                    </div>
+                    <p class="dynasty-note">蒙古族建立的大一统王朝，疆域空前辽阔，实行行省制度，1368年被朱元璋推翻。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 明清时期 -->
+        <section id="mingqing" class="dynasty-section">
+            <h2>明清时期</h2>
+            <div class="dynasty-list">
+                <div class="dynasty-item">
+                    <h3>明朝</h3>
+                    <div class="dynasty-info">
+                        <div class="info-item"><span>起止年份：</span>1368年 - 1644年</div>
+                        <div class="info-item"><span>都城：</span>应天（南京）、北京</div>
+                    </div>
+                    <p class="dynasty-note">汉族建立的最后一个大一统王朝，废丞相设内阁，郑和下西洋，后期闭关锁国，1644年李自成攻入北京，崇祯帝自缢。</p>
+                </div>
+                <div class="dynasty-item">
+                    <h3>清朝</h3>
+                    <div class="dynasty-info">
+                        <div class="info-item"><span>起止年份：</span>1636年 - 1912年</div>
+                        <div class="info-item"><span>都城：</span>北京</div>
+                    </div>
+                    <p class="dynasty-note">满族建立的大一统王朝，康乾盛世达到顶峰，1840年鸦片战争后逐步沦为半殖民地半封建社会，1912年溥仪退位，清朝灭亡。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 近现代 -->
+        <section id="modern" class="dynasty-section">
+            <h2>近现代</h2>
+            <div class="dynasty-list">
+                <div class="dynasty-item">
+                    <h3>中华民国</h3>
+                    <div class="dynasty-info">
+                        <div class="info-item"><span>起止年份：</span>1912年 - 1949年</div>
+                        <div class="info-item"><span>都城：</span>南京、北京等</div>
+                    </div>
+                    <p class="dynasty-note">结束封建帝制，建立共和政体，历经北洋政府、国民政府时期，1949年新中国成立后退至台湾。</p>
+                </div>
+                <div class="dynasty-item">
+                    <h3>中华人民共和国</h3>
+                    <div class="dynasty-info">
+                        <div class="info-item"><span>成立时间：</span>1949年10月1日</div>
+                        <div class="info-item"><span>首都：</span>北京</div>
+                    </div>
+                    <p class="dynasty-note">社会主义国家，实现民族独立和人民解放，历经改革开放等阶段，逐步走向现代化强国。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>中国历史朝代顺序表 | 整理自正史记载，仅供学习参考</p>
+    </footer>
+</body>
+</html>
