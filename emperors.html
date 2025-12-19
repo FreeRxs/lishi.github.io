@@ -3,48 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中国历代主要帝王表</title>
+    <title>中国历代帝王表</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei", sans-serif;
+            font-family: "Microsoft YaHei", "SimSun", sans-serif;
         }
 
+        /* 博物馆主题配色体系 */
         body {
-            background-color: #f5f7fa;
+            background-color: #f2efe9;
             color: #333;
-            line-height: 1.6;
+            line-height: 1.8; /* 行高略增，提升长文本可读性 */
         }
 
         /* 头部样式 */
         header {
-            background: linear-gradient(120deg, #2c3e50, #34495e);
-            color: white;
+            background: linear-gradient(120deg, #5c4033, #8b5a2b);
+            color: #f8f5e6;
             padding: 2rem 0;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
         header h1 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
+            font-weight: 700;
         }
 
         header p {
             font-size: 1.1rem;
-            opacity: 0.8;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        /* 头部一级目录 */
+        .header-main-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 1rem;
+            padding: 0.8rem 0;
+            border-top: 1px solid rgba(248, 245, 230, 0.2);
+            border-bottom: 1px solid rgba(248, 245, 230, 0.2);
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .header-main-nav a {
+            text-decoration: none;
+            color: #f8f5e6;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            opacity: 0.9;
+        }
+
+        /* 高亮当前页 */
+        .header-main-nav a.active {
+            background-color: rgba(248, 245, 230, 0.2);
+            opacity: 1;
+        }
+
+        .header-main-nav a:hover {
+            background-color: rgba(248, 245, 230, 0.2);
+            opacity: 1;
+            transform: translateY(-2px);
         }
 
         /* 导航栏 */
         nav {
-            background: white;
+            background: #f9f6f0;
             padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid #e0d8c8;
         }
 
         .nav-container {
@@ -58,7 +100,7 @@
 
         nav a {
             text-decoration: none;
-            color: #2c3e50;
+            color: #5c4033;
             padding: 0.5rem 1rem;
             border-radius: 4px;
             transition: all 0.3s ease;
@@ -66,8 +108,8 @@
         }
 
         nav a:hover {
-            background-color: #2c3e50;
-            color: white;
+            background-color: #8b5a2b;
+            color: #f8f5e6;
         }
 
         /* 主体内容 */
@@ -77,97 +119,82 @@
             padding: 0 1rem;
         }
 
-        .dynasty-section {
+        /* 帝王板块样式 */
+        .emperor-section {
             margin-bottom: 3rem;
-            background: white;
+            background: #ffffff;
             border-radius: 8px;
             padding: 2rem;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            border: 1px solid #e8e0d0;
         }
 
-        .dynasty-section h2 {
-            color: #2c3e50;
+        .emperor-section h2 {
+            color: #5c4033;
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid #3498db;
-        }
-
-        /* 朝代基础信息 */
-        .dynasty-basic {
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background-color: #f8f9fa;
-            border-radius: 4px;
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        .dynasty-basic .info-item {
-            display: inline-block;
-            margin-right: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .dynasty-basic .info-item span:first-child {
-            font-weight: 600;
-            color: #34495e;
+            border-bottom: 2px solid #8b5a2b;
         }
 
         /* 帝王列表 */
         .emperor-list {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.2rem;
         }
 
+        /* 帝王项 - 仿古籍人物卡片 */
         .emperor-item {
             padding: 1.2rem;
-            border-left: 4px solid #e74c3c;
-            background-color: #fdf2f1;
+            border-left: 4px solid #8b5a2b;
+            background-color: #f9f6f0;
             border-radius: 4px;
-            transition: transform 0.2s ease;
+            transition: all 0.2s ease;
+            border-right: 1px solid #e0d8c8;
+            border-bottom: 1px solid #e0d8c8;
+            display: grid;
+            grid-template-columns: 1fr 2fr 4fr; /* 分栏布局：姓名 | 在位时间 | 备注 */
+            gap: 1rem;
+            align-items: center;
+        }
+
+        /* 移动端适配分栏 */
+        @media (max-width: 768px) {
+            .emperor-item {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
         }
 
         .emperor-item:hover {
             transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
-        .emperor-header {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 0.8rem;
-        }
-
+        /* 帝王信息样式 */
         .emperor-name {
             font-size: 1.3rem;
-            color: #2c3e50;
+            color: #5c4033;
             font-weight: 600;
         }
 
         .emperor-reign {
-            font-size: 0.9rem;
-            color: #7f8c8d;
+            font-size: 0.95rem;
+            color: #666;
+            border-left: 1px solid #e0d8c8;
+            padding-left: 1rem;
         }
 
-        .emperor-reign span:first-child {
-            font-weight: 500;
-            color: #34495e;
-        }
-
-        .emperor-achievements {
+        .emperor-note {
             font-size: 0.95rem;
             color: #555;
-            line-height: 1.7;
+            border-left: 1px solid #e0d8c8;
+            padding-left: 1rem;
         }
 
-        .emperor-achievements span:first-child {
-            font-weight: 600;
-            color: #34495e;
-            display: block;
-            margin-bottom: 0.3rem;
+        .emperor-note strong {
+            color: #8b5a2b;
         }
 
         /* 响应式适配 */
@@ -176,388 +203,273 @@
                 font-size: 2rem;
             }
 
-            .dynasty-section {
+            .header-main-nav {
+                gap: 0.8rem;
+                padding: 0.6rem 0;
+            }
+
+            .header-main-nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .emperor-section {
                 padding: 1.5rem;
             }
 
-            .dynasty-section h2 {
+            .emperor-section h2 {
                 font-size: 1.5rem;
             }
 
             .emperor-name {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
 
-            .emperor-header {
-                gap: 1rem;
-            }
-
-            .dynasty-basic .info-item {
-                display: block;
-                margin-right: 0;
+            .emperor-reign, .emperor-note {
+                border-left: none;
+                padding-left: 0;
+                padding-top: 0.5rem;
+                border-top: 1px dashed #e0d8c8;
             }
         }
 
         /* 页脚 */
         footer {
-            background-color: #2c3e50;
-            color: white;
+            background-color: #5c4033;
+            color: #f8f5e6;
             text-align: center;
             padding: 1.5rem 0;
             margin-top: 3rem;
+            border-top: 2px solid #8b5a2b;
         }
 
         footer p {
-            opacity: 0.8;
+            opacity: 0.9;
         }
     </style>
 </head>
 <body>
     <!-- 头部 -->
     <header>
-        <h1>中国历代主要帝王表</h1>
-        <p>梳理帝王脉络，洞悉王朝兴衰</p>
+        <h1>中国历代帝王表</h1>
+        <p>纵览千秋帝王，读懂华夏历史</p>
+        <!-- 头部一级目录（当前页高亮） -->
+        <div class="header-main-nav">
+            <a href="index.html">历史朝代顺序表</a>
+            <a href="#" class="active">历代帝王表</a>
+            <a href="chronology.html">历史纪年表</a>
+            <a href="dynasty-era.html">王朝年代</a>
+            <a href="dynasty-song.html">朝代歌</a>
+        </div>
     </header>
 
-    <!-- 导航栏：新增「朝代顺序表」链接 -->
+    <!-- 导航栏 -->
     <nav>
         <div class="nav-container">
-            <a href="index.html">朝代顺序表</a>
-            <a href="chronology.html">历史纪年表</a>
-            <a href="dynasty_years.html">王朝年代详表</a>
-            <a href="#qin">秦朝</a>
-            <a href="#han">汉朝</a>
-            <a href="#sui">隋朝</a>
-            <a href="#tang">唐朝</a>
-            <a href="#song">宋朝</a>
-            <a href="#yuan">元朝</a>
-            <a href="#ming">明朝</a>
-            <a href="#qing">清朝</a>
+            <a href="#ancient">上古时期</a>
+            <a href="#qinhan">秦汉时期</a>
+            <a href="#weijin">魏晋南北朝</a>
+            <a href="#suitang">隋唐时期</a>
+            <a href="#songliao">宋辽夏金元</a>
+            <a href="#mingqing">明清时期</a>
         </div>
     </nav>
 
     <!-- 主体内容 -->
     <main>
-        <!-- 秦朝 -->
-        <section id="qin" class="dynasty-section">
-            <h2>秦朝</h2>
-            <div class="dynasty-basic">
-                <div class="info-item"><span>起止年份：</span>前221年 - 前207年</div>
-                <div class="info-item"><span>都城：</span>咸阳</div>
-                <div class="info-item"><span>开国君主：</span>嬴政（秦始皇）</div>
-                <div class="info-item"><span>末代君主：</span>嬴胡亥（秦二世）</div>
-            </div>
+        <!-- 上古时期帝王 -->
+        <section id="ancient" class="emperor-section">
+            <h2>上古时期（夏商周）</h2>
             <div class="emperor-list">
                 <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">嬴政（秦始皇）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>前221年 - 前210年（统一后）</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要功绩：</span>
-                        统一六国，建立中国历史上第一个大一统中央集权王朝；确立皇帝制度，废分封行郡县；统一文字、度量衡、货币；修长城、灵渠，北击匈奴，南征百越。
-                    </div>
+                    <div class="emperor-name">禹（夏禹）</div>
+                    <div class="emperor-reign">约前2070年 建立夏朝</div>
+                    <div class="emperor-note">夏朝开国君主，治水有功，结束禅让制，开启家天下先河。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">嬴胡亥（秦二世）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>前210年 - 前207年</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要特点：</span>
-                        昏庸残暴，宠信赵高，实行苛政，引发陈胜吴广起义；最终秦朝在其统治下灭亡，被赵高逼杀。
-                    </div>
+                    <div class="emperor-name">启</div>
+                    <div class="emperor-reign">约前2069年 - 约前2050年</div>
+                    <div class="emperor-note">禹之子，正式确立世袭制，建立中国第一个世袭王朝。</div>
+                </div>
+                <div class="emperor-item">
+                    <div class="emperor-name">汤（商汤）</div>
+                    <div class="emperor-reign">约前1600年 建立商朝</div>
+                    <div class="emperor-note">商朝开国君主，灭夏建商，推行仁政，史称“成汤革命”。</div>
+                </div>
+                <div class="emperor-item">
+                    <div class="emperor-name">盘庚</div>
+                    <div class="emperor-reign">约前1300年</div>
+                    <div class="emperor-note">迁都殷（殷墟），使商朝稳定发展，商朝又称“殷商”。</div>
+                </div>
+                <div class="emperor-item">
+                    <div class="emperor-name">姬发（周武王）</div>
+                    <div class="emperor-reign">前1046年 建立西周</div>
+                    <div class="emperor-note">灭商建周，定都镐京，开创分封制、宗法制，史称“牧野之战”。</div>
+                </div>
+                <div class="emperor-item">
+                    <div class="emperor-name">姬宜臼（周平王）</div>
+                    <div class="emperor-reign">前770年 - 前720年</div>
+                    <div class="emperor-note">迁都洛邑，开启东周（春秋）时期，周天子权威衰落。</div>
                 </div>
             </div>
         </section>
 
-        <!-- 汉朝 -->
-        <section id="han" class="dynasty-section">
-            <h2>汉朝（西汉+东汉）</h2>
-            <div class="dynasty-basic">
-                <div class="info-item"><span>西汉：</span>前202年 - 8年（都城：长安）</div>
-                <div class="info-item"><span>东汉：</span>25年 - 220年（都城：洛阳）</div>
-                <div class="info-item"><span>西汉开国：</span>刘邦（汉高祖）</div>
-                <div class="info-item"><span>东汉开国：</span>刘秀（汉光武帝）</div>
-            </div>
+        <!-- 秦汉时期帝王 -->
+        <section id="qinhan" class="emperor-section">
+            <h2>秦汉时期</h2>
             <div class="emperor-list">
                 <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">刘邦（汉高祖）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>前202年 - 前195年</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要功绩：</span>
-                        推翻秦朝，击败项羽，建立西汉；休养生息，轻徭薄赋，恢复社会经济；分封同姓王，巩固汉朝统治基础。
-                    </div>
+                    <div class="emperor-name">嬴政（秦始皇）</div>
+                    <div class="emperor-reign">前221年 - 前210年</div>
+                    <div class="emperor-note">中国第一个大一统皇帝，统一文字、度量衡、货币，建立中央集权制。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">刘彻（汉武帝）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>前141年 - 前87年</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要功绩：</span>
-                        罢黜百家独尊儒术，确立儒家思想正统地位；北击匈奴，通西域，开辟丝绸之路；颁布推恩令，加强中央集权；盐铁官营，统一铸币，强化经济管控。
-                    </div>
+                    <div class="emperor-name">刘邦（汉高祖）</div>
+                    <div class="emperor-reign">前202年 - 前195年</div>
+                    <div class="emperor-note">西汉开国皇帝，灭秦败楚，建立汉朝，休养生息，恢复生产。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">刘秀（汉光武帝）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>25年 - 57年</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要功绩：</span>
-                        推翻新莽政权，平定割据势力，建立东汉；轻徭薄赋，释放奴婢，恢复生产；加强中央集权，整顿吏治，史称“光武中兴”。
-                    </div>
+                    <div class="emperor-name">刘彻（汉武帝）</div>
+                    <div class="emperor-reign">前141年 - 前87年</div>
+                    <div class="emperor-note">罢黜百家独尊儒术，派卫青、霍去病击匈奴，开辟丝绸之路。</div>
+                </div>
+                <div class="emperor-item">
+                    <div class="emperor-name">刘秀（汉光武帝）</div>
+                    <div class="emperor-reign">25年 - 57年</div>
+                    <div class="emperor-note">东汉开国皇帝，平定乱世，重建汉朝，史称“光武中兴”。</div>
                 </div>
             </div>
         </section>
 
-        <!-- 隋朝 -->
-        <section id="sui" class="dynasty-section">
-            <h2>隋朝</h2>
-            <div class="dynasty-basic">
-                <div class="info-item"><span>起止年份：</span>581年 - 618年</div>
-                <div class="info-item"><span>都城：</span>大兴城、洛阳</div>
-                <div class="info-item"><span>开国君主：</span>杨坚（隋文帝）</div>
-                <div class="info-item"><span>末代君主：</span>杨广（隋炀帝）</div>
-            </div>
+        <!-- 魏晋南北朝帝王 -->
+        <section id="weijin" class="emperor-section">
+            <h2>魏晋南北朝</h2>
             <div class="emperor-list">
                 <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">杨坚（隋文帝）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>581年 - 604年</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要功绩：</span>
-                        取代北周，统一南北，结束南北朝分裂；创立三省六部制，完善中央官制；开创科举制，打破门阀垄断；轻徭薄赋，推行均田制，史称“开皇之治”。
-                    </div>
+                    <div class="emperor-name">曹丕（魏文帝）</div>
+                    <div class="emperor-reign">220年 - 226年</div>
+                    <div class="emperor-note">代汉建魏，定都洛阳，确立九品中正制，三国正式开端。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">杨广（隋炀帝）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>604年 - 618年</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要功过：</span>
-                        开凿大运河，贯通南北水系；完善科举制，设进士科；三征高句丽，滥用民力，引发农民起义；奢侈腐化，最终导致隋朝灭亡。
-                    </div>
+                    <div class="emperor-name">刘备（汉昭烈帝）</div>
+                    <div class="emperor-reign">221年 - 223年</div>
+                    <div class="emperor-note">建立蜀汉，定都成都，与魏、吴三足鼎立。</div>
+                </div>
+                <div class="emperor-item">
+                    <div class="emperor-name">孙权（吴大帝）</div>
+                    <div class="emperor-reign">229年 - 252年</div>
+                    <div class="emperor-note">建立东吴，定都建业，开发江南地区。</div>
+                </div>
+                <div class="emperor-item">
+                    <div class="emperor-name">司马炎（晋武帝）</div>
+                    <div class="emperor-reign">265年 - 290年</div>
+                    <div class="emperor-note">代魏建晋，灭吴统一全国，建立西晋，史称“太康之治”。</div>
+                </div>
+                <div class="emperor-item">
+                    <div class="emperor-name">杨坚（隋文帝）</div>
+                    <div class="emperor-reign">581年 - 604年</div>
+                    <div class="emperor-note">代周建隋，589年灭陈统一全国，创立三省六部制、科举制。</div>
                 </div>
             </div>
         </section>
 
-        <!-- 唐朝 -->
-        <section id="tang" class="dynasty-section">
-            <h2>唐朝</h2>
-            <div class="dynasty-basic">
-                <div class="info-item"><span>起止年份：</span>618年 - 907年</div>
-                <div class="info-item"><span>都城：</span>长安、洛阳</div>
-                <div class="info-item"><span>开国君主：</span>李渊（唐高祖）</div>
-                <div class="info-item"><span>鼎盛时期：</span>唐太宗、唐玄宗时期</div>
-            </div>
+        <!-- 隋唐时期帝王 -->
+        <section id="suitang" class="emperor-section">
+            <h2>隋唐时期</h2>
             <div class="emperor-list">
                 <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">李世民（唐太宗）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>626年 - 649年</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要功绩：</span>
-                        发动玄武门之变登基；虚心纳谏，任用贤能（魏征、房玄龄等）；轻徭薄赋，休养生息，开创“贞观之治”；对外开疆拓土，被尊为“天可汗”。
-                    </div>
+                    <div class="emperor-name">杨广（隋炀帝）</div>
+                    <div class="emperor-reign">604年 - 618年</div>
+                    <div class="emperor-note">开凿大运河，三征高句丽，滥用民力导致隋朝灭亡。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">李隆基（唐玄宗）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>712年 - 756年</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要功过：</span>
-                        开创“开元盛世”，唐朝达到鼎盛；后期怠政，宠信杨贵妃、杨国忠，爆发安史之乱；唐朝由盛转衰，其统治后期被迫退位。
-                    </div>
+                    <div class="emperor-name">李渊（唐高祖）</div>
+                    <div class="emperor-reign">618年 - 626年</div>
+                    <div class="emperor-note">唐朝开国皇帝，晋阳起兵，灭隋建唐。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">武则天（武周）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>690年 - 705年</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要功绩：</span>
-                        中国历史上唯一正统女皇帝；打击门阀，发展科举，首创殿试、武举；重视农业，轻徭薄赋，延续唐朝盛世。
-                    </div>
+                    <div class="emperor-name">李世民（唐太宗）</div>
+                    <div class="emperor-reign">626年 - 649年</div>
+                    <div class="emperor-note">发动玄武门之变，开创“贞观之治”，被尊为“天可汗”。</div>
+                </div>
+                <div class="emperor-item">
+                    <div class="emperor-name">武则天</div>
+                    <div class="emperor-reign">690年 - 705年</div>
+                    <div class="emperor-note">中国历史上唯一女皇帝，改唐为周，重视人才，开创殿试。</div>
+                </div>
+                <div class="emperor-item">
+                    <div class="emperor-name">李隆基（唐玄宗）</div>
+                    <div class="emperor-reign">712年 - 756年</div>
+                    <div class="emperor-note">开创“开元盛世”，后期爆发安史之乱，唐朝由盛转衰。</div>
                 </div>
             </div>
         </section>
 
-        <!-- 宋朝 -->
-        <section id="song" class="dynasty-section">
-            <h2>宋朝（北宋+南宋）</h2>
-            <div class="dynasty-basic">
-                <div class="info-item"><span>北宋：</span>960年 - 1127年（都城：开封）</div>
-                <div class="info-item"><span>南宋：</span>1127年 - 1279年（都城：临安）</div>
-                <div class="info-item"><span>北宋开国：</span>赵匡胤（宋太祖）</div>
-                <div class="info-item"><span>南宋开国：</span>赵构（宋高宗）</div>
-            </div>
+        <!-- 宋辽夏金元帝王 -->
+        <section id="songliao" class="emperor-section">
+            <h2>宋辽夏金元</h2>
             <div class="emperor-list">
                 <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">赵匡胤（宋太祖）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>960年 - 976年</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要功绩：</span>
-                        陈桥兵变建立北宋；杯酒释兵权，加强中央集权；重文轻武，结束五代十国分裂；统一中原及南方大部分地区。
-                    </div>
+                    <div class="emperor-name">赵匡胤（宋太祖）</div>
+                    <div class="emperor-reign">960年 - 976年</div>
+                    <div class="emperor-note">陈桥兵变，代周建宋，杯酒释兵权，加强中央集权。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">赵祯（宋仁宗）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>1022年 - 1063年</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要功绩：</span>
-                        宽厚仁政，任用范仲淹等推行“庆历新政”；经济、文化、科技高度发展，史称“仁宗盛治”；与辽签订“澶渊之盟”，维持长期和平。
-                    </div>
+                    <div class="emperor-name">耶律阿保机（辽太祖）</div>
+                    <div class="emperor-reign">916年 - 926年</div>
+                    <div class="emperor-note">契丹族，建立辽国，创制契丹文字。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">赵构（宋高宗）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>1127年 - 1162年</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要功过：</span>
-                        建立南宋，延续宋朝国祚；重用秦桧，杀害岳飞，与金签订“绍兴和议”；偏安江南，不思北伐，但推动南方经济发展。
-                    </div>
+                    <div class="emperor-name">李元昊（夏景宗）</div>
+                    <div class="emperor-reign">1038年 - 1048年</div>
+                    <div class="emperor-note">党项族，建立西夏，创制西夏文字。</div>
+                </div>
+                <div class="emperor-item">
+                    <div class="emperor-name">完颜阿骨打（金太祖）</div>
+                    <div class="emperor-reign">1115年 - 1123年</div>
+                    <div class="emperor-note">女真族，建立金国，灭辽攻宋。</div>
+                </div>
+                <div class="emperor-item">
+                    <div class="emperor-name">赵构（宋高宗）</div>
+                    <div class="emperor-reign">1127年 - 1162年</div>
+                    <div class="emperor-note">建立南宋，定都临安，与金达成“绍兴和议”。</div>
+                </div>
+                <div class="emperor-item">
+                    <div class="emperor-name">忽必烈（元世祖）</div>
+                    <div class="emperor-reign">1271年 - 1294年</div>
+                    <div class="emperor-note">蒙古族，改蒙古为元，1279年灭南宋统一全国，定都大都。</div>
                 </div>
             </div>
         </section>
 
-        <!-- 元朝 -->
-        <section id="yuan" class="dynasty-section">
-            <h2>元朝</h2>
-            <div class="dynasty-basic">
-                <div class="info-item"><span>起止年份：</span>1271年 - 1368年</div>
-                <div class="info-item"><span>都城：</span>大都（今北京）</div>
-                <div class="info-item"><span>开国君主：</span>忽必烈（元世祖）</div>
-                <div class="info-item"><span>末代君主：</span>妥懽帖睦尔（元顺帝）</div>
-            </div>
+        <!-- 明清时期帝王 -->
+        <section id="mingqing" class="emperor-section">
+            <h2>明清时期</h2>
             <div class="emperor-list">
                 <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">忽必烈（元世祖）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>1260年 - 1294年（1271年定国号为元）</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要功绩：</span>
-                        建立元朝，灭南宋统一全国；推行行省制度，加强中央对地方管控；重视农业，修治黄河，发展漕运；对外交流频繁，疆域空前辽阔。
-                    </div>
+                    <div class="emperor-name">朱元璋（明太祖）</div>
+                    <div class="emperor-reign">1368年 - 1398年</div>
+                    <div class="emperor-note">明朝开国皇帝，灭元建明，定都应天，废丞相，加强皇权。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">妥懽帖睦尔（元顺帝）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>1333年 - 1368年</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要特点：</span>
-                        元朝末代皇帝，前期励精图治，后期怠政腐败；爆发红巾军起义，朱元璋攻占大都后，退回蒙古草原，元朝灭亡。
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 明朝 -->
-        <section id="ming" class="dynasty-section">
-            <h2>明朝</h2>
-            <div class="dynasty-basic">
-                <div class="info-item"><span>起止年份：</span>1368年 - 1644年</div>
-                <div class="info-item"><span>都城：</span>应天（南京）、北京</div>
-                <div class="info-item"><span>开国君主：</span>朱元璋（明太祖）</div>
-                <div class="info-item"><span>末代君主：</span>朱由检（崇祯帝）</div>
-            </div>
-            <div class="emperor-list">
-                <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">朱元璋（明太祖）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>1368年 - 1398年</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要功绩：</span>
-                        推翻元朝，建立明朝；废除丞相，加强中央集权；轻徭薄赋，兴修水利，恢复生产；严惩贪官，整顿吏治。
-                    </div>
+                    <div class="emperor-name">朱棣（明成祖）</div>
+                    <div class="emperor-reign">1402年 - 1424年</div>
+                    <div class="emperor-note">发动靖难之役，迁都北京，派郑和下西洋，编纂《永乐大典》。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">朱棣（明成祖）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>1402年 - 1424年</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要功绩：</span>
-                        靖难之役登基，迁都北京；派郑和下西洋，加强中外交流；编纂《永乐大典》，完善内阁制度；五次亲征蒙古，巩固北部边防。
-                    </div>
+                    <div class="emperor-name">爱新觉罗·玄烨（康熙）</div>
+                    <div class="emperor-reign">1661年 - 1722年</div>
+                    <div class="emperor-note">平定三藩、收复台湾、抗击沙俄，开创康乾盛世。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">朱由检（崇祯帝）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>1627年 - 1644年</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要功过：</span>
-                        铲除魏忠贤阉党，力图挽救明朝；刚愎自用，频繁更换官员，冤杀袁崇焕；内有农民起义，外有后金威胁，最终自缢，明朝灭亡。
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 清朝 -->
-        <section id="qing" class="dynasty-section">
-            <h2>清朝</h2>
-            <div class="dynasty-basic">
-                <div class="info-item"><span>起止年份：</span>1636年 - 1912年</div>
-                <div class="info-item"><span>都城：</span>北京</div>
-                <div class="info-item"><span>开国君主：</span>皇太极（清太宗）</div>
-                <div class="info-item"><span>末代君主：</span>溥仪（宣统帝）</div>
-            </div>
-            <div class="emperor-list">
-                <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">玄烨（康熙帝）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>1661年 - 1722年</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要功绩：</span>
-                        平定三藩之乱，收复台湾；三征噶尔丹，抗击沙俄；轻徭薄赋，休养生息，开创“康乾盛世”；编纂《康熙字典》，重视文化发展。
-                    </div>
+                    <div class="emperor-name">爱新觉罗·弘历（乾隆）</div>
+                    <div class="emperor-reign">1735年 - 1796年</div>
+                    <div class="emperor-note">康乾盛世顶峰，编纂《四库全书》，后期清朝由盛转衰。</div>
                 </div>
                 <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">胤禛（雍正帝）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>1722年 - 1735年</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要功绩：</span>
-                        推行摊丁入亩、火耗归公，整顿财政；设立军机处，加强中央集权；平定罗卜藏丹津叛乱，巩固西北边防；严惩贪腐，改革吏治。
-                    </div>
-                </div>
-                <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">弘历（乾隆帝）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>1735年 - 1796年（禅位后仍掌权至1799年）</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要功过：</span>
-                        平定大小和卓叛乱，完善对西藏治理；编纂《四库全书》，“康乾盛世”达到顶峰；后期奢靡腐化，宠信和珅，闭关锁国，清朝由盛转衰。
-                    </div>
-                </div>
-                <div class="emperor-item">
-                    <div class="emperor-header">
-                        <div class="emperor-name">溥仪（宣统帝）</div>
-                        <div class="emperor-reign"><span>在位时间：</span>1908年 - 1912年</div>
-                    </div>
-                    <div class="emperor-achievements">
-                        <span>主要特点：</span>
-                        中国最后一位皇帝，幼年登基，由隆裕太后垂帘听政；1912年颁布退位诏书，清朝灭亡；后成为伪满洲国傀儡皇帝，1945年被俘虏，1959年特赦。
-                    </div>
+                    <div class="emperor-name">爱新觉罗·溥仪（宣统）</div>
+                    <div class="emperor-reign">1908年 - 1912年</div>
+                    <div class="emperor-note">中国最后一位皇帝，1912年退位，封建帝制结束。</div>
                 </div>
             </div>
         </section>
@@ -565,7 +477,17 @@
 
     <!-- 页脚 -->
     <footer>
-        <p>中国历代主要帝王表 | 整理自正史记载，仅供学习参考</p>
+        <p>中国历代帝王表 | 整理自《史记》《资治通鉴》等正史，仅供学习参考</p>
     </footer>
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e243130e8f6ef010e7208a7a5022e200";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 </body>
 </html>
